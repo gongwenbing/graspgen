@@ -1,0 +1,1 @@
+/home/zlq/GraspGen/piper_ros/src/piper_sim/piper_gazebo/scripts/vision_cube_to_basket.py

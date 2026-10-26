@@ -1,0 +1,1 @@
+/home/zlq/GraspGen/piper_ros/src/piper_sim/piper_gazebo/scripts/auto_cube_task.py

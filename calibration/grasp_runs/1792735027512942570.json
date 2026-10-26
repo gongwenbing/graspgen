@@ -1,0 +1,8 @@
+{
+  "started_unix": 1792735027.5129259,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "No stable fresh taught-bottle target within 15s: Vision: No eligible grasp candidate",
+  "finished_unix": 1792735045.5608547
+}

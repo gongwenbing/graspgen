@@ -1,0 +1,8 @@
+{
+  "started_unix": 1792681080.550629,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "Predicted arm/gripper state is in collision",
+  "finished_unix": 1792681084.6641414
+}

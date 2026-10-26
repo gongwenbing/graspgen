@@ -1,0 +1,60 @@
+{
+  "checked_unix": 1792932708.7875855,
+  "read_only_investigation": true,
+  "deleted_objects": false,
+  "classification": {
+    "codex_refs_only": {
+      "objects": 378,
+      "loose_allocated_bytes": 638976,
+      "packed_object_bytes": 413093665,
+      "large_index_versions": 1
+    },
+    "normal_history": {
+      "objects": 1069,
+      "loose_allocated_bytes": 0,
+      "packed_object_bytes": 170807479,
+      "large_index_versions": 0
+    },
+    "unreachable_current_refs_and_reflog": {
+      "objects": 3249,
+      "loose_allocated_bytes": 20956893184,
+      "packed_object_bytes": 822137767,
+      "large_index_versions": 51
+    }
+  },
+  "unreachable_loose_by_file": {
+    ".vscode/browse.vc.db": {
+      "objects": 49,
+      "allocated_bytes": 20930375680
+    },
+    "[metadata / small objects]": {
+      "objects": 3181,
+      "allocated_bytes": 26517504
+    }
+  },
+  "packs": {
+    "pack-b7cc37097f14167a697811642f3d95130a946cc0.pack": {
+      "bytes": 583955243,
+      "object_count": 1431,
+      "normal_history": 1069,
+      "all_refs": 1413
+    },
+    "pack-bf631e49aa8501f08aecd28c04de5c80a3c0f8f6.pack": {
+      "bytes": 411041882,
+      "object_count": 1,
+      "normal_history": 0,
+      "all_refs": 0
+    },
+    "pack-e6bb2026205a8579ac1670c5325539ea09c15867.pack": {
+      "bytes": 411041882,
+      "object_count": 1,
+      "normal_history": 0,
+      "all_refs": 1
+    }
+  },
+  "notes": [
+    "Reachability includes all refs and reflogs, including Codex refs.",
+    "Unreachable does not automatically mean immediately safe to delete; retain grace period and verify backups before GC.",
+    "No source, calibration, model, install or virtual environment deleted."
+  ]
+}

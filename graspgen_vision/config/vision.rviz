@@ -1,0 +1,66 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: camera_color_optical_frame
+    Frame Rate: 20
+  Displays:
+    - Class: rviz_default_plugins/Image
+      Name: YOLO segmentation
+      Enabled: true
+      Topic:
+        Value: /graspgen/segmentation/image
+        Reliability Policy: Best Effort
+        History Policy: Keep Last
+        Depth: 1
+        Durability Policy: Volatile
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Object clouds
+      Enabled: true
+      Topic:
+        Value: /graspgen/object_cloud
+        Reliability Policy: Best Effort
+        History Policy: Keep Last
+        Depth: 1
+        Durability Policy: Volatile
+      Color Transformer: RGB8
+      Position Transformer: XYZ
+      Size (Pixels): 3
+      Style: Points
+    - Class: rviz_default_plugins/MarkerArray
+      Name: PCA candidates
+      Enabled: true
+      Topic:
+        Value: /graspgen/markers
+        Reliability Policy: Best Effort
+        History Policy: Keep Last
+        Depth: 1
+        Durability Policy: Volatile
+    - Class: rviz_default_plugins/PoseArray
+      Name: Grasp poses
+      Enabled: true
+      Topic:
+        Value: /graspgen/grasp_poses
+        Reliability Policy: Best Effort
+        History Policy: Keep Last
+        Depth: 1
+        Durability Policy: Volatile
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 1.5
+      Focal Point: {X: 0.0, Y: 0.0, Z: 0.6}
+      Pitch: -0.5
+      Yaw: -1.57
+      Target Frame: camera_color_optical_frame
+Window Geometry:
+  Width: 1280
+  Height: 800

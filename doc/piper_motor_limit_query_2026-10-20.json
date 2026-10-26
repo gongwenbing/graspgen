@@ -1,0 +1,7 @@
+{
+  "query_id": "0x472",
+  "query_content": 1,
+  "query_count": 6,
+  "response_frames": [],
+  "decoded": "time stamp:0\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 0\n  max_angle_limit: 0\n  min_angle_limit: 0\n  max_joint_spd: 0\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 0\n  max_angle_limit: 0\n  min_angle_limit: 0\n  max_joint_spd: 0\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 0\n  max_angle_limit: 0\n  min_angle_limit: 0\n  max_joint_spd: 0\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 0\n  max_angle_limit: 0\n  min_angle_limit: 0\n  max_joint_spd: 0\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 0\n  max_angle_limit: 0\n  min_angle_limit: 0\n  max_joint_spd: 0\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 0\n  max_angle_limit: 0\n  min_angle_limit: 0\n  max_joint_spd: 0\n)\n)\n"
+}

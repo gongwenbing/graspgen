@@ -1,0 +1,27 @@
+{
+  "attached": true,
+  "object_id": "graspgen_camera_and_mount",
+  "link": "link6",
+  "dimensions_m": [
+    0.036,
+    0.131,
+    0.056
+  ],
+  "center_link6_m": [
+    -0.058844428311674496,
+    0.0017861844605250518,
+    0.06191735384302878
+  ],
+  "quaternion_link6_xyzw": [
+    -0.014114217180280463,
+    -0.696859081097917,
+    -0.019760025434783692,
+    0.716796868966077
+  ],
+  "physical_placement_verified": false,
+  "current_state_collision_free": true,
+  "contacts": [],
+  "padding_each_side_m": 0.003,
+  "no_motion_requested": true,
+  "model": "combined measured camera/mount envelope; nominal D455 case offset"
+}

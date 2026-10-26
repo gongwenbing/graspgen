@@ -1,0 +1,19 @@
+{
+  "firmware": "S-V1.8-2",
+  "sdk_path": "/home/zlq/piper_sdk",
+  "interface": "V2",
+  "failed_small_step": {
+    "delta_rad": 0.01,
+    "moveit_error": -4,
+    "gateway_received": 555,
+    "sdk_call_count": 555,
+    "rejected": 0,
+    "joint_feedback_changed": false
+  },
+  "mode_only_raw_status_samples": {
+    "0000010000000000": 739,
+    "0100010000000000": 196
+  },
+  "software_gates_closed": true,
+  "conclusion": "Commands reach gateway; SDK call count does not prove transport success. Raw feedback alternates standby/CAN during mode-only stream. Root cause remains unconfirmed; do not bypass mode check or retry motion."
+}

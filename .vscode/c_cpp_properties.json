@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${env:HOME}/.cache/vscode-cpptools/GraspGen/browse.vc.db",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/humble/include/**",
+        "${workspaceFolder}/piper_kinematics/include/**",
+        "/usr/include/**",
+        "${workspaceFolder}/install/piper_msgs/include/**",
+        "/usr/include/eigen3"
+      ],
+      "name": "ros2",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/g++",
+      "cStandard": "gnu11",
+      "cppStandard": "c++17",
+      "compileCommands": "${workspaceFolder}/build/piper_kinematics/compile_commands.json"
+    }
+  ],
+  "version": 4
+}

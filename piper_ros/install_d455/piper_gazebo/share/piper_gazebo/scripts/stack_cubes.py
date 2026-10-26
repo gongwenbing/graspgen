@@ -1,0 +1,1 @@
+/home/zlq/GraspGen/piper_ros/src/piper_sim/piper_gazebo/scripts/stack_cubes.py

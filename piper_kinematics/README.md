@@ -1,3 +1,136 @@
+## ROS2 Humble：模型一致性与启动控制
+
+以下说明适用于默认节点 `piper_ik_node`，命令在 GraspGen 根目录执行。
+
+```bash
+source /opt/ros/humble/setup.bash
+colcon build --base-paths piper_kinematics piper_ros/src/piper_msgs piper_ros/src/piper_description piper_ros/src/piper --cmake-args -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
+source install/setup.bash
+ros2 launch piper_kinematics piper_ik.launch.py
+```
+
+另开终端，加载同一工作区环境后显示模型：
+
+```bash
+ros2 launch piper_description display_urdf_follow.launch.py
+```
+
+RViz2 的 Fixed Frame 为 `base_link`。添加 `InteractiveMarkers`，将
+`Interactive Markers Namespace` 设为 `/interactive_marker`，使用 Interact 拖动。
+标记首次接收 `/ik/current_pose` 时对齐当前末端，不会把这次对齐作为运动目标。
+
+### 单一模型来源
+
+默认读取 `piper_description/urdf/piper_description.urdf`，直接使用 URDF 的关节
+原点、轴、上下限和速度限制计算正解、雅可比与逆解。旧 DH 头文件保留作历史算法资料，
+默认节点不再使用其中的 `0.211 m` 末端长度或硬编码限位。
+
+连续拖动优先以上一有效目标解为初值，局部求解失败后尝试确定性的备用初值，
+并使用加权误差、回溯步长及自适应阻尼改善限位和奇异位形附近的收敛。
+常规优化停滞时再修正位置/姿态容差边界，避免过度优化一项误差而误拒绝另一项可以达标的目标。
+所有结果仍必须满足原 URDF 限位和位置/姿态容差。
+重复的失败目标会短暂去重，拒绝日志最多每两秒输出一次，并报告最佳位置/姿态残差。
+该残差是数值求解结果，不构成目标绝对不可达的证明；固定位置旋转或固定姿态平移
+仍可能超出可达范围。
+
+目标 `/target_pose` 默认表示 **`link6` 法兰坐标系**在 `base_link` 中的位姿，
+不代表夹爪抓取中心。`tip_link` 可选择同一模型中含六个旋转关节的固定末端链。
+自定义 TCP 时，可直接启动节点并设置 `tool_xyz`、`tool_rpy`（均为三个浮点数，
+分别为米、弧度；变换相对于 `tip_link`）。例如：
+
+```bash
+ros2 run piper_kinematics piper_ik_node --ros-args -p 'tool_xyz:=[0.0, 0.0, 0.12]'
+```
+
+`model_path` 可指定 URDF 文件，或通过节点参数 `robot_description` 提供 XML。
+更换模型时必须让 robot_state_publisher 使用同一文件；显示启动文件支持 `model:=...`。
+可视化和测试一致不等于模型已经通过真实机械臂标定。
+
+### 状态与指令分开
+
+| 接口 | 含义 |
+|---|---|
+| `/target_pose` | 目标 TCP 位姿，必须明确填写 `base_frame`，默认为 `base_link` |
+| `/ik/joint_states` | 只供模型显示；第七项 `joint7` 为单侧夹指行程 |
+| `/ik/joint_commands` | 真机专用关节指令；第七项 `gripper` 为夹爪总开口 |
+| `/joint_states_single` | 驱动的真实关节反馈，按名称匹配 |
+| `/gripper_cmd_topic` | 夹爪总开口，单位米；当前 URDF 允许 0～0.07 |
+| `/ik/current_pose` | 当前状态的 TCP 位姿，用于标记初始对齐 |
+| `/ik_status` | 最近目标是否求解成功；**不表示机械臂已经到达** |
+| `/piper_ik_node/enable_commands` | SetBool 服务，启用/关闭本节点的真机指令输出 |
+
+TF `ik_current` 表示当前状态，`ik_solution` 表示限速后的指令状态，`ik_target`
+表示最近求解成功的目标。默认 `hardware_mode:=false` 仅驱动模型显示，
+永远不向 `/ik/joint_commands` 或 `/pos_cmd` 发送指令。
+
+夹爪反馈中的 `gripper` 是总开口；`joint7` 是单侧行程，显示时为总开口的一半。
+`joint8` 按 URDF mimic 关系反向跟随。数值非有限或超过模型行程的夹爪命令会被拒绝。
+
+### 真机模式的启动顺序
+
+本轮未运行 CAN 驱动，也未验证物理运动。后续只读反馈阶段可以分别启动：
+
+```bash
+ros2 launch piper start_single_piper.launch.py auto_enable:=false
+ros2 launch piper_kinematics piper_ik.launch.py hardware_mode:=true
+```
+
+两个单臂驱动启动文件 `start_single_piper.launch.py` 与
+`start_single_piper_rviz.launch.py` 已改为默认不自动使能，控制输入为
+`/ik/joint_commands`，夹爪倍率为 1。旧终端中的驱动必须停止并重新启动才能加载改动。
+本轮不修改双臂启动方式。
+
+真机模式启动时不发送零位或夹爪归零命令。收到六个具名关节及夹爪的完整反馈后，
+先同步当前状态；反馈需有限、在 URDF 限位内，且带有效时间戳。
+默认 `feedback_timeout:=0.5` 秒，按消息时间戳和本地单调时钟共同检查新鲜度。
+没有有效反馈时，启用输出的请求会失败。
+
+后续进行受控运动测试时，先确认反馈及模型一致，再允许本节点输出：
+
+```bash
+ros2 service call /piper_ik_node/enable_commands std_srvs/srv/SetBool '{data: true}'
+```
+
+这项服务**不会使能机械臂电机**。成功后仍需收到新的可达目标或有效夹爪命令才开始输出；
+启用前的目标不会缓存执行。关节指令默认以不超过 `max_joint_velocity:=0.2 rad/s`
+变化，并受 URDF 速度上限约束；夹爪总开口变化不超过 `max_gripper_velocity:=0.01 m/s`。
+这些是指令变化率约束，不是经过验证的轨迹加速度控制或碰撞规划。
+
+反馈过期、缺失、无效或越限会撤销输出许可；反馈恢复后不会自动恢复，
+必须重新启用并提供新目标。手动关闭输出：
+
+```bash
+ros2 service call /piper_ik_node/enable_commands std_srvs/srv/SetBool '{data: false}'
+```
+
+停止发布不等同于硬件急停或断使能，不能撤回驱动已经接收的命令。
+本轮暂时禁用旧 `use_analytic_ik:=true` 的 `/pos_cmd` 输出路径，
+因为固件末端坐标与当前 URDF/TCP 尚未校准，不能混用。
+
+完整测试结果与已修复问题见 [验证记录](../doc/ROS2_IK_VALIDATION.md)。
+
+### 无硬件回归验证
+
+```bash
+colcon build --base-paths piper_kinematics piper_ros/src/piper_msgs piper_ros/src/piper_description piper_ros/src/piper --cmake-args -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Release
+source install/setup.bash
+colcon test --packages-select piper_kinematics
+colcon test-result --test-result-base build/piper_kinematics --verbose
+python3 piper_kinematics/test/smoke_ros2.py
+python3 piper_kinematics/test/hardware_startup_ros2.py
+```
+
+两个 Python 测试分别使用独立 ROS 域 173、174。它们只启动模型、逆解、标记节点，
+并模拟硬件反馈；不启动 CAN 驱动。覆盖模型/限位、多姿态求解、工具偏移、
+模型 TF、标记链路、夹爪单位、无反馈与未启用时不输出、指令变化率、
+过期/无效反馈停发和恢复后不自动运动。
+
+`piper_ik_node_use_yaik` 仍是保留的实验节点，未纳入新的 URDF 与硬件控制入口，
+不能用于本次真机验证；`fixed_point_draw_cross_and_circle.py` 仍是未迁移的 ROS1 脚本。
+原 `.launch` 文件不再安装。后文为历史算法资料，参数、话题和旧命令以本节说明为准。
+
+---
+
 ## **机械臂实现Eigen线代库解算正逆运动学**
 
 ## 摘要

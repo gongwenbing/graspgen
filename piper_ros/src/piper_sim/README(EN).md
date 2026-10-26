@@ -2,105 +2,66 @@
 
 [中文](README.md)
 
-![ubuntu](https://img.shields.io/badge/Ubuntu-20.04-orange.svg)
+![ubuntu](https://img.shields.io/badge/Ubuntu-22.04-orange.svg)
 
 |ROS |STATE|
 |---|---|
-|![ros](https://img.shields.io/badge/ROS-noetic-blue.svg)|![Pass](https://img.shields.io/badge/Pass-blue.svg)|
+|![ros](https://img.shields.io/badge/ROS-humble-blue.svg)|![Pass](https://img.shields.io/badge/Pass-blue.svg)|
 
 ## 1 Gazebo Simulation
 
+### 0 Environment Setup
+
+```bash
+sudo apt update
+sudo apt install gazebo ros-humble-gazebo-ros-pkgs ros-humble-gazebo-ros2-control ros-humble-ros2-control ros-humble-ros2-controllers
+```
+
 ### 1.1 Piper Gazebo Simulation (With Gripper)
 
-Run the Gazebo simulation
+Run the Gazebo simulation:
 
 ```bash
 cd piper_ros
-source devel/setup.bash
+source install/setup.bash
 ```
 
 ```bash
-roslaunch piper_gazebo piper_gazebo.launch
-```
-
-Control the gripper arm via RViz GUI (Run in a new terminal)
-
-```bash
-cd piper_ros
-source devel/setup.bash
-```
-
-```bash
-roslaunch piper_description display_gripper_urdf.launch
+ros2 launch piper_gazebo piper_gazebo.launch.py
 ```
 
 ### 1.2 Piper Gazebo Simulation (Without Gripper)
 
-Run the Gazebo simulation
-
 ```bash
-cd piper_ros
-source devel/setup.bash
+ros2 launch piper_gazebo piper_no_gripper_gazebo.launch.py
 ```
 
-```bash
-roslaunch piper_gazebo piper_no_gripper_gazebo.launch
-```
-
-Control the arm without the gripper via RViz GUI (Run in a new terminal)
-
-```bash
-cd piper_ros
-source devel/setup.bash
-```
-
-```bash
-roslaunch piper_description display_no_gripper_urdf.launch
-```
-
-### Control the arm in Piper Gazebo through the following topics
-
-The `/joint_states` topic controls multiple joints simultaneously, while other topics control individual joints.
-
-Principle: The `joint_states_ctrl` node converts `/joint_states` control information into control information for each joint, such as `/piper_description/joint1_position_controller/command`, to control the arm in Gazebo simulation.
-Note: Joint 7 directly controls both joint 7 and joint 8, so joint 8 is not involved in the control of `/joint_states`.
-
-```text
-/joint_states
-/gazebo/joint1_position_controller/command
-/gazebo/joint2_position_controller/command
-/gazebo/joint3_position_controller/command
-/gazebo/joint4_position_controller/command
-/gazebo/joint5_position_controller/command
-/gazebo/joint6_position_controller/command
-/gazebo/joint7_position_controller/command
-/gazebo/joint8_position_controller/command
-```
+**Note:** If controlling via MoveIt, you must start Gazebo first, then MoveIt. Also, use `piper_moveit.launch.py` instead of `demo.launch.py`.
 
 ## 2 Mujoco Simulation
 
-### 2.1 Installing Mujoco210 and mujoco-py
+### 2.1 Installing Mujoco 2.1.0 and mujoco-py
 
 #### 2.1.1 Install Mujoco
 
-1. [Download Mujoco210](https://github.com/google-deepmind/mujoco/releases/download/2.1.0/mujoco210-linux-x86_64.tar.gz)
+1. [Download Mujoco 2.1.0](https://github.com/google-deepmind/mujoco/releases/download/2.1.0/mujoco210-linux-x86_64.tar.gz)
 
-2. Extract the files
+2. Extract the files:
 
     ```bash
     mkdir ~/.mujoco
-    cd (Directory containing the package)
+    cd (directory where the tar file is located)
     tar -zxvf mujoco210-linux-x86_64.tar.gz -C ~/.mujoco
     ```
 
-3. Add the environment variable
+3. Add environment variables:
 
     ```bash
     echo "export LD_LIBRARY_PATH=~/.mujoco/mujoco210/bin:\$LD_LIBRARY_PATH" >> ~/.bashrc
     source ~/.bashrc
     ```
 
-4. Test the installation
+4. Test the installation:
 
     ```bash
     cd ~/.mujoco/mujoco210/bin
@@ -109,13 +70,13 @@ Note: Joint 7 directly controls both joint 7 and joint 8, so joint 8 is not invo
 
 #### 2.1.2 Install mujoco-py
 
-1. Download the source code
+1. Clone the source code:
 
     ```bash
     git clone https://github.com/openai/mujoco-py.git
     ```
 
-2. Install (This step can be done within a conda environment)
+2. Install (this step can be performed in a conda environment):
 
     ```bash
     cd ~/mujoco-py
@@ -127,14 +88,18 @@ Note: Joint 7 directly controls both joint 7 and joint 8, so joint 8 is not invo
     sudo apt install patchelf
     ```
 
-3. Add the environment variable
+3. Add environment variables:
 
     ```bash
     echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia" >> ~/.bashrc
     source ~/.bashrc
     ```
 
-4. Test the installation
+4. Test the installation:
+
+    **Note:** If you encounter an error when importing `mujoco_py`, update `numpy`, `cmake`, or any other dependencies as instructed by the error message.
+
+    Run the following Python script:
 
     ```python
     import mujoco_py
@@ -150,62 +115,62 @@ Note: Joint 7 directly controls both joint 7 and joint 8, so joint 8 is not invo
 
 ### 2.2 Piper Mujoco Simulation (With Gripper)
 
-Run the Mujoco simulation
+Run the Mujoco simulation:
 
 ```bash
 cd piper_ros
-source devel/setup.bash
+source install/setup.bash
 ```
 
 ```bash
-roslaunch piper_mujoco piper_mujoco.launch
+ros2 run piper_mujoco piper_mujoco_ctrl.py
 ```
 
-Control the gripper arm via RViz GUI (Run in a new terminal)
+**Note:** If you are unable to control the Mujoco robot arm, restart Mujoco.
+
+To control the robot arm with the `rviz_gui` (run in a new terminal):
 
 ```bash
 cd piper_ros
-source devel/setup.bash
+source install/setup.bash
 ```
 
 ```bash
-roslaunch piper_description display_gripper_urdf.launch
+ros2 launch piper_description display_urdf.launch.py
 ```
 
 ### 2.3 Piper Mujoco Simulation (Without Gripper)
 
-Run the Mujoco simulation
+Run the Mujoco simulation:
 
 ```bash
 cd piper_ros
-source devel/setup.bash
+source install/setup.bash
 ```
 
 ```bash
-roslaunch piper_mujoco piper_no_gripper_mujoco.launch
+ros2 run piper_mujoco piper_no_gripper_mujoco_ctrl.py
 ```
 
-Control the arm without the gripper via RViz GUI (Run in a new terminal)
+To control the robot arm with `rviz_gui` (run in a new terminal):
 
 ```bash
 cd piper_ros
-source devel/setup.bash
+source install/setup.bash
 ```
 
 ```bash
-roslaunch piper_description display_no_gripper_urdf.launch
+ros2 launch piper_description display_no_gripper_urdf.launch.py
 ```
 
-### Control Parameter Explanation
+**Note:** If you cannot control the robot arm, run Mujoco after launching `rviz_gui`.
 
-[Control parameters for the gripper](../piper_description/mujoco_model/piper_description.xml)
+### Control Parameter Introduction
 
-[Control parameters for without gripper](../piper_description/mujoco_model/piper_no_gripper_description.xml)
+[Control parameters for the gripper version](../piper_description/mujoco_model/piper_description.xml)
 
-- damping="100" Adjust joint damping
+[Control parameters for the non-gripper version](../piper_description/mujoco_model/piper_no_gripper_description.xml)
 
-- kp="10000" Adjust joint control gain
-
-- forcerange="-100 100" Adjust joint torque control (Set `forcelimited="false"` to `true`, then add `forcerange="-100 100"`)
-
-[PID Control demo](piper_mujoco/scripts/piper_mujoco_pid.py)
+- `damping="100"` → Adjust joint damping
+- `kp="10000"` → Adjust joint control gain
+- `forcerange="-100 100"` → Adjust joint control torque range

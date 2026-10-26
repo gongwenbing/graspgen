@@ -1,0 +1,23 @@
+{
+  "checked_unix": 1792732808.4201078,
+  "started_components": [
+    "camera_reused",
+    "vision",
+    "handeye_mount",
+    "preview",
+    "move_group",
+    "rviz",
+    "can_gateway",
+    "trajectory_bridge"
+  ],
+  "collision_objects": [
+    "graspgen_table",
+    "graspgen_camera_and_mount"
+  ],
+  "outputs_enabled": false,
+  "execution_enabled": false,
+  "hardware_feedback_valid": false,
+  "can_rx_packets_at_check": 0,
+  "reason": "can0 UP at 1Mbps but no raw feedback received in 3 seconds; check arm power and CAN cable",
+  "actuator_commands_sent": false
+}

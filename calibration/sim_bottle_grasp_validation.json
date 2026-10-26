@@ -1,0 +1,105 @@
+{
+  "simulation": true,
+  "physics_attachment_used": false,
+  "model_dimensions_m": {
+    "radius": 0.0182,
+    "body_height": 0.091,
+    "height": 0.1316,
+    "center_z": 0.0658
+  },
+  "stages": [
+    {
+      "stage": "hover_preflight",
+      "tcp_world": [
+        0.39025748522833065,
+        0.09831909799498673,
+        1.184068532572357
+      ],
+      "xy_error_m": 0.009886401381071306,
+      "clearance_above_cap_m": 0.03747831573867616
+    },
+    {
+      "stage": "jaw_level_target",
+      "jaw_axis_vertical_component": -5.143992856254664e-07,
+      "adjustment_deg": 2.9472908051758445e-05,
+      "tcp_position_preserved": true
+    },
+    {
+      "stage": "jaw_level_verified",
+      "adjustment_skipped": true,
+      "axis_error_deg": 2.947290805088508e-05
+    },
+    {
+      "stage": "contact_target",
+      "descent_m": 0.11198775103396419,
+      "flange_world": [
+        0.35277560586814893,
+        0.08731665501417034,
+        1.1896887108304852
+      ],
+      "bottle_diameter_m": 0.0364,
+      "contact_height_above_bottle_bottom_m": 0.09
+    },
+    {
+      "stage": "open_gripper"
+    },
+    {
+      "stage": "cartesian_plan",
+      "fraction": 1.0,
+      "error": 1
+    },
+    {
+      "stage": "descend_execute"
+    },
+    {
+      "stage": "descent_verified"
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.038400000000000004
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0374
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0364
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0354
+    },
+    {
+      "stage": "bilateral_contact_verified",
+      "contacts": {
+        "left": true,
+        "right": true,
+        "bilateral": true,
+        "fresh": true
+      },
+      "commanded_total_opening_m": 0.0354
+    },
+    {
+      "stage": "cartesian_plan",
+      "fraction": 1.0,
+      "error": 1
+    },
+    {
+      "stage": "lift_execute",
+      "requested_rise_m": 0.01
+    },
+    {
+      "stage": "lift_measurement",
+      "actual_rise_m": 0.006014469277669132,
+      "relative_translation_drift_m": 0.005821775663794293,
+      "bilateral": true
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Physical lift/retention not verified; stop and inspect. No automatic retry or release."
+    }
+  ],
+  "success": false,
+  "jaw_leveling_success": true
+}

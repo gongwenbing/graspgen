@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-fee9c5b3b4172933c0b8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "piper_gazebo",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "bottle_contact_monitor::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bottle_contact_monitor-6dfbdd1f1ebe004088b0.json",
+					"name" : "bottle_contact_monitor",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "piper_gazebo_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-piper_gazebo_uninstall-8e263d8f975c62f3a945.json",
+					"name" : "piper_gazebo_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "piper_grasp_stabilizer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-piper_grasp_stabilizer-96714eb099dd92fab576.json",
+					"name" : "piper_grasp_stabilizer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-8bef787de2e55ade7fb2.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/zlq/GraspGen/piper_ros/build_d455/piper_gazebo",
+		"source" : "/home/zlq/GraspGen/piper_ros/src/piper_sim/piper_gazebo"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

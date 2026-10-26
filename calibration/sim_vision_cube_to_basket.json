@@ -1,0 +1,22 @@
+{
+  "success": false,
+  "target_source": "RGB-D color segmentation and known 0.04m cube geometry",
+  "physics_attachment_used": false,
+  "stages": [
+    {
+      "stage": "visual_target",
+      "label": "cube_red",
+      "center_world_m": [
+        0.39948589438513527,
+        0.0007810051750124659,
+        1.035463639210975
+      ],
+      "validation_error_m": 0.0010924027841807053,
+      "assisted_grasp": false
+    },
+    {
+      "stage": "inspection_complete",
+      "message": "No motion requested; execute:=true to pick and place"
+    }
+  ]
+}

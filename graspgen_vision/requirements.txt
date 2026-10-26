@@ -1,0 +1,6 @@
+# Install CPU torch/torchvision from the official CPU index first (see setup script).
+torch==2.7.1
+torchvision==0.22.1
+ultralytics==8.3.221
+numpy==1.24.4
+opencv-python==4.11.0.86

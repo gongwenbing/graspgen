@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ROS2 Humble: build IK and markers",
+      "type": "process",
+      "command": "/bin/bash",
+      "args": [
+        "--noprofile",
+        "--norc",
+        "-c",
+        "source /opt/ros/humble/setup.bash && exec /usr/bin/colcon build --base-paths piper_kinematics piper_ros/src/piper_msgs piper_ros/src/piper_description piper_ros/src/piper --executor sequential --event-handlers console_direct+ --cmake-args -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      },
+      "detail": "Build the migrated IK, interactive marker, Piper messages, robot description and driver launch configuration with ROS2 Humble."
+    },
+    {
+      "label": "ROS2 Humble: build perception",
+      "type": "process",
+      "command": "/bin/bash",
+      "args": [
+        "--noprofile",
+        "--norc",
+        "-c",
+        "source /opt/ros/humble/setup.bash && COLCON_EXTENSION_BLOCKLIST=colcon_notification.desktop_notification exec /usr/bin/colcon build --base-paths graspgen_camera graspgen_vision graspgen_handeye --executor sequential --event-handlers desktop_notification-"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}

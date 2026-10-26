@@ -1,0 +1,102 @@
+{
+  "simulation": true,
+  "physics_attachment_used": false,
+  "model_dimensions_m": {
+    "radius": 0.0182,
+    "body_height": 0.091,
+    "height": 0.1316,
+    "center_z": 0.0658
+  },
+  "stages": [
+    {
+      "stage": "hover_preflight",
+      "tcp_world": [
+        0.39036574089443454,
+        0.09830499715716806,
+        1.1841584560159306
+      ],
+      "xy_error_m": 0.017894624877386387,
+      "clearance_above_cap_m": 0.03755854477233028
+    },
+    {
+      "stage": "jaw_level_target",
+      "jaw_axis_vertical_component": -3.086763141896265e-07,
+      "adjustment_deg": 1.7685850039114863e-05,
+      "tcp_position_preserved": true
+    },
+    {
+      "stage": "jaw_level_verified",
+      "adjustment_skipped": true,
+      "axis_error_deg": 1.7685850038720047e-05
+    },
+    {
+      "stage": "contact_target",
+      "descent_m": 0.11206877475723287,
+      "flange_world": [
+        0.3606572432950966,
+        0.08932522419553973,
+        1.1897004505167035
+      ],
+      "bottle_diameter_m": 0.0364,
+      "contact_height_above_bottle_bottom_m": 0.09
+    },
+    {
+      "stage": "open_gripper"
+    },
+    {
+      "stage": "cartesian_plan",
+      "fraction": 1.0,
+      "error": 1
+    },
+    {
+      "stage": "descend_execute"
+    },
+    {
+      "stage": "descent_verified"
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.038400000000000004
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0374
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0364
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0354
+    },
+    {
+      "stage": "bilateral_contact_verified",
+      "contacts": {
+        "left": true,
+        "right": true,
+        "bilateral": true,
+        "fresh": true
+      },
+      "commanded_total_opening_m": 0.0354
+    },
+    {
+      "stage": "small_preload_execute",
+      "initial_opening_m": 0.036258817667196984,
+      "target_opening_m": 0.0352,
+      "extra_total_closure_mm": 0.2
+    },
+    {
+      "stage": "small_preload_feedback",
+      "bottle_displacement_m": 0.0038965749591746276,
+      "bottle_rotation_deg": 22.607471645472806,
+      "bilateral": true
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Small preload moved the bottle or lost bilateral contact; no lift requested."
+    }
+  ],
+  "success": false,
+  "jaw_leveling_success": true
+}

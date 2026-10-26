@@ -1,0 +1,11 @@
+{
+  "success": false,
+  "target_source": "RGB-D color segmentation and known 0.04m cube geometry",
+  "physics_attachment_used": true,
+  "stages": [
+    {
+      "stage": "STOPPED",
+      "reason": "The expected cube is no longer held"
+    }
+  ]
+}

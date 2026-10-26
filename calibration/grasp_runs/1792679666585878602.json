@@ -1,0 +1,8 @@
+{
+  "started_unix": 1792679666.585855,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "Return to recorded observation pose first; automatic observation motion is not performed",
+  "finished_unix": 1792679669.6365325
+}

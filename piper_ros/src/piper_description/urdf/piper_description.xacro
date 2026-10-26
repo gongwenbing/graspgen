@@ -3,27 +3,20 @@
   name="piper"
   xmlns:xacro="http://ros.org/wiki/xacro">
 <!-- world -->
-  <!-- <link name="world"/>
+  <xacro:arg name="base_height" default="0.0"/>
+  <link name="world"/>
   <joint name="fixed_base_joint" type="fixed">
+      <origin xyz="0 0 $(arg base_height)" rpy="0 0 0"/>
       <parent link="world"/>
       <child link="base_link"/>
-  </joint> -->
-<!-- piper -->
+  </joint>
+<!-- arm -->
 <link
-    name="arm_base">
+    name="base_link">
     <inertial>
-      <origin
-        xyz="-0.00473641164191482 2.56829134630247E-05 0.041451518036016"
-        rpy="0 0 0" />
-      <mass
-        value="1.02" />
-      <inertia
-        ixx="0.00267433" 
-        ixy="-0.00000073" 
-        ixz="-0.00017389" 
-        iyy="0.00282612" 
-        iyz="0.0000004" 
-        izz="0.00089624" />
+            <origin xyz="-0.00473641164191482 2.56829134630247E-05 0.041451518036016" rpy="0 0 0" />
+            <mass value="1.02" />
+            <inertia ixx="0.00267433" ixy="-0.00000073" ixz="-0.00017389" iyy="0.00282612" iyz="0.0000004" izz="0.00089624" />
     </inertial>
     <visual>
       <origin
@@ -52,18 +45,9 @@
   <link
     name="link1">
     <inertial>
-      <origin
-        xyz="0.000121504734057468 0.000104632162460536 -0.00438597309559853"
-        rpy="0 0 0" />
-      <mass
-        value="0.71" />
-      <inertia
-        ixx="0.00048916" 
-        ixy="-0.00000036" 
-        ixz="-0.00000224" 
-        iyy="0.00040472" 
-        iyz="-0.00000242" 
-        izz="0.00043982" />
+      <origin xyz="0.00032 -0.00041 -0.00348" rpy="0 0 0" />
+      <mass value="0.71" />
+      <inertia ixx="0.00050027" ixy="0.00000078" ixz="0.00000626" iyy="0.00040879" iyz="0.00000462" izz="0.00045802" />
     </inertial>
     <visual>
       <origin
@@ -96,32 +80,23 @@
       xyz="0 0 0.123"
       rpy="0 0 0" />
     <parent
-      link="arm_base" />
+      link="base_link" />
     <child
       link="link1" />
     <axis
       xyz="0 0 1" />
     <limit
       lower="-2.618"
-      upper="2.168"
+      upper="2.618"
       effort="100"
       velocity="5" />
   </joint>
   <link
     name="link2">
     <inertial>
-      <origin
-        xyz="0.198666145229743 -0.010926924140076 0.00142121714502687"
-        rpy="0 0 0" />
-      <mass
-        value="1.17" />
-      <inertia
-        ixx="0.00116918" 
-        ixy="-0.00180037" 
-        ixz="0.00025146" 
-        iyy="0.06785384" 
-        iyz="-0.00000455" 
-        izz="0.06774489" />
+      <origin xyz="0.21852 -0.00861 0.00126" rpy="0 0 0" />
+      <mass value="1.16" />
+      <inertia ixx="0.00111915" ixy="0.00182916" ixz="0.00019233" iyy="0.06763251" iyz="0.00000767" izz="0.067559" />
     </inertial>
     <visual>
       <origin
@@ -169,18 +144,9 @@
   <link
     name="link3">
     <inertial>
-      <origin
-        xyz="-0.0202737662122021 -0.133914995944595 -0.000458682652737356"
-        rpy="0 0 0" />
-      <mass
-        value="0.5" />
-      <inertia
-        ixx="0.01361711" 
-        ixy="0.00165794" 
-        ixz="-0.00000048" 
-        iyy="0.00045024" 
-        iyz="-0.00000045" 
-        izz="0.01380322" />
+      <origin xyz="-0.01999 -0.14808 -0.00053" rpy="0 0 0" />
+      <mass value="0.5" />
+      <inertia ixx="0.01347608" ixy="0.00161034" ixz="0.00000066" iyy="0.00046377" iyz="0.00000162" izz="0.01363321" />
     </inertial>
     <visual>
       <origin
@@ -228,18 +194,9 @@
   <link
     name="link4">
     <inertial>
-      <origin
-        xyz="-9.66635791618542E-05 0.000876064475651083 -0.00496880904640868"
-        rpy="0 0 0" />
-      <mass
-        value="0.38" />
-      <inertia
-        ixx="0.00018501" 
-        ixy="0.00000054" 
-        ixz="0.00000120" 
-        iyy="0.00018965" 
-        iyz="-0.00000841" 
-        izz="0.00015484" />
+      <origin xyz="0.00013 -0.00076 -0.00394" rpy="0 0 0" />
+      <mass value="0.38" />
+      <inertia ixx="0.00017844" ixy="0.00000062" ixz="0.00000067" iyy="0.00018914" iyz="0.00000408" izz="0.00014613" />
     </inertial>
     <visual>
       <origin
@@ -286,18 +243,9 @@
   <link
     name="link5">
     <inertial>
-      <origin
-        xyz="-4.10554118924211E-05 -0.0566486692356075 -0.0037205791677906"
-        rpy="0 0 0" />
-      <mass
-        value="0.383" />
-      <inertia
-        ixx="0.00166169" 
-        ixy="0.00000006" 
-        ixz="-0.00000007" 
-        iyy="0.00018510" 
-        iyz="0.00001026" 
-        izz="0.00164321" />
+      <origin xyz="0.00018 -0.06104 -0.00227" rpy="0 0 0" />
+      <mass value="0.383" />
+      <inertia ixx="0.00172318" ixy="0.00000259" ixz="0.00000010" iyy="0.00017936" iyz="0.00000990" izz="0.00171172" />
     </inertial>
     <visual>
       <origin
@@ -344,18 +292,9 @@
   <link
     name="link6">
     <inertial>
-      <origin
-        xyz="-8.82590762930069E-05 9.0598378529832E-06 -0.002"
-        rpy="0 0 0" />
-      <mass
-        value="0.007" />
-      <inertia
-        ixx="5.73015540542155E-07" 
-        ixy="-1.98305403089247E-22"
-        ixz="-7.2791893904596E-23"
-        iyy="5.73015540542155E-07" 
-        iyz="-3.4146026640245E-24"
-        izz="1.06738869138926E-06" />
+      <origin xyz="-0.00003 0.00006 0.04618" rpy="0 0 0" />
+      <mass value="0.007" />
+      <inertia ixx="0.00152112" ixy="0.00000202" ixz="0.00000261" iyy="0.00138626" iyz="0.00000002" izz="0.00031152" />
     </inertial>
     <visual>
       <origin
@@ -438,7 +377,7 @@
           filename="package://piper_description/meshes/gripper_base.STL" />
       </geometry>
     </collision>
-  </link> 
+  </link>
   <joint
     name="joint6_to_gripper_base"
     type="fixed">
@@ -481,13 +420,8 @@
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://piper_description/meshes/link7.STL" />
-      </geometry>
+      <origin xyz="0 -0.038 0.006" rpy="0 0 0"/>
+      <geometry><box size="0.04 0.076 0.012"/></geometry>
     </collision>
   </link>
   <joint
@@ -539,18 +473,14 @@
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://piper_description/meshes/link8.STL" />
-      </geometry>
+      <origin xyz="0 -0.038 0.006" rpy="0 0 0"/>
+      <geometry><box size="0.04 0.076 0.012"/></geometry>
     </collision>
   </link>
   <joint
     name="joint8"
     type="prismatic">
+    <mimic joint="joint7" multiplier="-1" offset="0"/>
     <origin
       xyz="0 0 0.1358"
       rpy="1.5708 0 -3.1416" />
@@ -591,12 +521,13 @@
   <xacro:transmission_block tran_name="tran8" joint_name="joint8" motor_name="motor8"/>
 <!-- gazebo -->
   <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
         <robotNamespace>/piper</robotNamespace>
+        <parameters> $(find piper_gazebo)/config/ros2_controllers.yaml </parameters>
         <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
- 
+
   <!-- <gazebo reference="base_link">
     <material>Gazebo/Black</material>
   </gazebo>
@@ -604,7 +535,7 @@
   <gazebo reference="link1">
     <material>Gazebo/White</material>
   </gazebo>
- 
+
   <gazebo reference="link2">
     <material>Gazebo/White</material>
   </gazebo>
@@ -612,23 +543,23 @@
   <gazebo reference="link3">
     <material>Gazebo/White</material>
   </gazebo>
- 
+
   <gazebo reference="link4">
     <material>Gazebo/Black</material>
   </gazebo>
- 
+
   <gazebo reference="link5">
     <material>Gazebo/White</material>
   </gazebo>
- 
+
   <gazebo reference="link6">
     <material>Gazebo/White</material>
   </gazebo>
- 
+
   <gazebo reference="link7">
     <material>Gazebo/Orange</material>
   </gazebo>
- 
+
   <gazebo reference="link8">
     <material>Gazebo/Orange</material>
   </gazebo> -->

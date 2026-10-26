@@ -1,0 +1,91 @@
+{
+  "simulation": true,
+  "physics_attachment_used": false,
+  "stages": [
+    {
+      "stage": "hover_preflight",
+      "tcp_world": [
+        0.3363548380577934,
+        0.0010137565317985691,
+        1.233252579132031
+      ],
+      "xy_error_m": 0.013682610264128271,
+      "clearance_above_cap_m": 0.030252570715457006
+    },
+    {
+      "stage": "contact_target",
+      "descent_m": 0.10115930027312325,
+      "flange_world": [
+        0.3010901976167643,
+        -0.00014729093487884356,
+        1.249691538699171
+      ],
+      "bottle_diameter_m": 0.052,
+      "contact_height_above_bottle_bottom_m": 0.15
+    },
+    {
+      "stage": "open_gripper"
+    },
+    {
+      "stage": "cartesian_plan",
+      "fraction": 1.0,
+      "error": 1
+    },
+    {
+      "stage": "descend_execute"
+    },
+    {
+      "stage": "descent_verified"
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.054
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.053
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.052
+    },
+    {
+      "stage": "bilateral_contact_verified",
+      "contacts": {
+        "left": true,
+        "right": true,
+        "bilateral": true,
+        "fresh": true
+      },
+      "commanded_total_opening_m": 0.052
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Planning attachment failed."
+    },
+    {
+      "stage": "resume_lift",
+      "message": "No descent, reopening or additional close requested."
+    },
+    {
+      "stage": "cartesian_plan",
+      "fraction": 1.0,
+      "error": 1
+    },
+    {
+      "stage": "lift_execute",
+      "requested_rise_m": 0.01
+    },
+    {
+      "stage": "lift_measurement",
+      "actual_rise_m": -1.8759544021307306e-05,
+      "relative_translation_drift_m": 0.010019282550531632,
+      "bilateral": true
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Physical lift/retention not verified; stop and inspect. No automatic retry or release."
+    }
+  ],
+  "success": false
+}

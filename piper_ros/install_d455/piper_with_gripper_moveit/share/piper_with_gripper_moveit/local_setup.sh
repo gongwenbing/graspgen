@@ -1,0 +1,1 @@
+/home/zlq/GraspGen/piper_ros/build_d455/piper_with_gripper_moveit/ament_cmake_environment_hooks/local_setup.sh

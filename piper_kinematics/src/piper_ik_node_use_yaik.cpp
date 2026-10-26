@@ -1,17 +1,19 @@
 #include "yaik_cpp_common.h"
-#include <ros/ros.h>
-#include <geometry_msgs/PoseStamped.h>
-#include <sensor_msgs/JointState.h>
-#include <tf/transform_broadcaster.h>
-#include <tf/transform_datatypes.h>
-#include <visualization_msgs/InteractiveMarkerFeedback.h>
+#include <rclcpp/rclcpp.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <sensor_msgs/msg/joint_state.hpp>
+#include <tf2_ros/transform_broadcaster.h>
+#include <tf2/LinearMath/Matrix3x3.h>
+#include <visualization_msgs/msg/interactive_marker_feedback.hpp>
 #include <Eigen/Geometry>
 #include <memory>
-#include <eigen_conversions/eigen_msg.h>
-#include <std_msgs/Bool.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include <chrono>
+#include <functional>
+#include <std_msgs/msg/bool.hpp>
 #include <deque>
-#include <piper_msgs/PosCmd.h>
-#include <std_msgs/Float64.h>
+#include <piper_msgs/msg/pos_cmd.hpp>
+#include <std_msgs/msg/float64.hpp>
 #include <algorithm>
 
 using namespace yaik_cpp;
@@ -1290,25 +1292,25 @@ void test_ik_solve_spherical_wrist_six_axis()
 //     test_ik_solve_spherical_wrist_six_axis();
 // }
 
-class PiperIKNode {
+class PiperIKNode : public rclcpp::Node {
 private:
-    ros::NodeHandle nh_;
-    ros::Publisher joint_state_pub_;
-    ros::Publisher ik_status_pub_;
-    ros::Subscriber gripper_cmd_sub_;
-    ros::Subscriber real_joint_position_sub_;
-    ros::Subscriber target_pose_sub_;
-    ros::Subscriber marker_feedback_sub_;
-    ros::Timer publish_timer_;
+    std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
+    rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub_;
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr ik_status_pub_;
+    rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr gripper_cmd_sub_;
+    rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr real_joint_position_sub_;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr target_pose_sub_;
+    rclcpp::Subscription<visualization_msgs::msg::InteractiveMarkerFeedback>::SharedPtr marker_feedback_sub_;
+    rclcpp::TimerBase::SharedPtr publish_timer_;
     
-    double gripper_cmd_;
-    sensor_msgs::JointState current_joint_state_;
-    sensor_msgs::JointState real_joint_state_;
+    double gripper_cmd_ = 0.0;
+    sensor_msgs::msg::JointState current_joint_state_;
+    sensor_msgs::msg::JointState real_joint_state_;
     std::vector<double> previous_solution_;
     double publish_rate_;
 
 public:
-    PiperIKNode(const std::string& node_name) : nh_(node_name), gripper_cmd_(0.0), publish_rate_(50.0) {
+    PiperIKNode(const std::string& node_name) : rclcpp::Node(node_name), gripper_cmd_(0.0), publish_rate_(50.0) {
         initialize();
     }
 
@@ -1319,44 +1321,59 @@ public:
         std::string real_joint_position_topic;
         std::string marker_feedback_topic;
         
-        nh_.param<std::string>("joint_state_topic", joint_state_topic, "/joint_states");
-        nh_.param<std::string>("target_pose_topic", target_pose_topic, "/target_pose");
-        nh_.param<std::string>("gripper_cmd_topic", gripper_cmd_topic, "/gripper_cmd_topic");
-        nh_.param<std::string>("real_joint_position_topic", real_joint_position_topic, "/joint_states_single");
-        nh_.param<std::string>("marker_feedback_topic", marker_feedback_topic, "/rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic");
-        nh_.param<double>("publish_rate", publish_rate_, 50);
+        joint_state_topic = declare_parameter<std::string>("joint_state_topic", "/joint_states");
+        target_pose_topic = declare_parameter<std::string>("target_pose_topic", "/target_pose");
+        gripper_cmd_topic = declare_parameter<std::string>("gripper_cmd_topic", "/gripper_cmd_topic");
+        real_joint_position_topic = declare_parameter<std::string>("real_joint_position_topic", "/joint_states_single");
+        marker_feedback_topic = declare_parameter<std::string>("marker_feedback_topic", "/rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic");
+        publish_rate_ = declare_parameter<double>("publish_rate", 50);
+
+        tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+        if (!std::isfinite(publish_rate_) || publish_rate_ <= 0.0) {
+            throw std::invalid_argument("publish_rate must be positive and finite");
+        }
 
         // Initialize publishers and subscribers
-        joint_state_pub_ = nh_.advertise<sensor_msgs::JointState>(joint_state_topic, 10);
-        ik_status_pub_ = nh_.advertise<std_msgs::Bool>("/ik_status", 10);
-        gripper_cmd_sub_ = nh_.subscribe(gripper_cmd_topic, 1, &PiperIKNode::gripperCmdCallback, this);
-        real_joint_position_sub_ = nh_.subscribe(real_joint_position_topic, 10, &PiperIKNode::jointPositionCallback, this);
-        target_pose_sub_ = nh_.subscribe(target_pose_topic, 10, &PiperIKNode::targetPoseCallback, this);
-        marker_feedback_sub_ = nh_.subscribe(marker_feedback_topic, 10, &PiperIKNode::markerFeedbackCallback, this);
+        joint_state_pub_ = create_publisher<sensor_msgs::msg::JointState>(joint_state_topic, 10);
+        ik_status_pub_ = create_publisher<std_msgs::msg::Bool>("/ik_status", 10);
+        gripper_cmd_sub_ = create_subscription<std_msgs::msg::Float64>(gripper_cmd_topic, 1, std::bind(&PiperIKNode::gripperCmdCallback, this, std::placeholders::_1));
+        real_joint_position_sub_ = create_subscription<sensor_msgs::msg::JointState>(real_joint_position_topic, 10, std::bind(&PiperIKNode::jointPositionCallback, this, std::placeholders::_1));
+        target_pose_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>(target_pose_topic, 10, std::bind(&PiperIKNode::targetPoseCallback, this, std::placeholders::_1));
+        marker_feedback_sub_ = create_subscription<visualization_msgs::msg::InteractiveMarkerFeedback>(marker_feedback_topic, 10, std::bind(&PiperIKNode::markerFeedbackCallback, this, std::placeholders::_1));
 
         // Initialize joint state
         current_joint_state_.name = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6", "joint7"};
         current_joint_state_.position.resize(7, 0.0);
 
         // Initialize timer for continuous publishing
-        publish_timer_ = nh_.createTimer(ros::Duration(1.0 / publish_rate_), &PiperIKNode::publishJointState, this);
+        publish_timer_ = create_wall_timer(std::chrono::duration<double>(1.0 / publish_rate_), std::bind(&PiperIKNode::publishJointState, this));
     }
 
-    void gripperCmdCallback(const std_msgs::Float64::ConstPtr& msg) {
+    void gripperCmdCallback(const std_msgs::msg::Float64::ConstSharedPtr& msg) {
         gripper_cmd_ = msg->data;
     }
 
-    void markerFeedbackCallback(const visualization_msgs::InteractiveMarkerFeedbackConstPtr& msg) {
-        if (msg->event_type == visualization_msgs::InteractiveMarkerFeedback::POSE_UPDATE) {
-            geometry_msgs::PoseStamped pose_stamped;
+    void markerFeedbackCallback(const visualization_msgs::msg::InteractiveMarkerFeedback::ConstSharedPtr& msg) {
+        if (msg->event_type == visualization_msgs::msg::InteractiveMarkerFeedback::POSE_UPDATE) {
+            geometry_msgs::msg::PoseStamped pose_stamped;
             pose_stamped.pose = msg->pose;
             pose_stamped.header = msg->header;
-            targetPoseCallback(boost::make_shared<geometry_msgs::PoseStamped>(pose_stamped));
+            targetPoseCallback(std::make_shared<geometry_msgs::msg::PoseStamped>(pose_stamped));
         }
     }
 
-    void targetPoseCallback(const geometry_msgs::PoseStampedConstPtr& msg) {
+    void targetPoseCallback(const geometry_msgs::msg::PoseStamped::ConstSharedPtr& msg) {
         try {
+            if (!msg->header.frame_id.empty() && msg->header.frame_id != "base_link") {
+                throw std::invalid_argument("target_pose must use base_link frame");
+            }
+            const auto& pos = msg->pose.position;
+            const auto& rot = msg->pose.orientation;
+            const double norm = rot.x*rot.x + rot.y*rot.y + rot.z*rot.z + rot.w*rot.w;
+            if (!std::isfinite(pos.x) || !std::isfinite(pos.y) || !std::isfinite(pos.z) ||
+                !std::isfinite(norm) || norm < 1e-12) {
+                throw std::invalid_argument("target_pose must be finite with a nonzero quaternion");
+            }
             // Convert PoseStamped to Eigen::Matrix4d
             Eigen::Matrix4d target_pose = Eigen::Matrix4d::Identity();
             
@@ -1381,12 +1398,12 @@ public:
                 for (int i = 0; i < 6; ++i) {
                     current_joint_state_.position[i] = ik_output[0][i]; // Use first solution
                 }
-                current_joint_state_.header.stamp = ros::Time::now();
+                current_joint_state_.header.stamp = now();
 
                 // Log results
-                ROS_INFO("IK Solution Found:");
+                RCLCPP_INFO(get_logger(), "IK Solution Found:");
                 for (size_t i = 0; i < ik_output[0].size(); ++i) {
-                    ROS_INFO("  Joint %zu: %.4f rad (%.2f deg)", 
+                    RCLCPP_INFO(get_logger(), "  Joint %zu: %.4f rad (%.2f deg)",
                            i+1, ik_output[0][i], ik_output[0][i] * 180.0 / M_PI);
                 }
 
@@ -1395,63 +1412,47 @@ public:
                 publishSolutionTF(joint_values, target_pose);
 
                 // Publish IK status
-                std_msgs::Bool ik_status;
+                std_msgs::msg::Bool ik_status;
                 ik_status.data = true;
-                ik_status_pub_.publish(ik_status);
+                ik_status_pub_->publish(ik_status);
             } else {
-                ROS_WARN("No IK solution found");
-                std_msgs::Bool ik_status;
+                RCLCPP_WARN(get_logger(), "No IK solution found");
+                std_msgs::msg::Bool ik_status;
                 ik_status.data = false;
-                ik_status_pub_.publish(ik_status);
+                ik_status_pub_->publish(ik_status);
             }
 
         } catch (const std::exception& e) {
-            ROS_ERROR("IK failed: %s", e.what());
-            std_msgs::Bool ik_status;
+            RCLCPP_ERROR(get_logger(), "IK failed: %s", e.what());
+            std_msgs::msg::Bool ik_status;
             ik_status.data = false;
-            ik_status_pub_.publish(ik_status);
+            ik_status_pub_->publish(ik_status);
         }
     }
 
     void publishSolutionTF(const std::vector<double>& joint_values, const Eigen::Matrix4d& target_pose) {
-        static tf::TransformBroadcaster tf_broadcaster;
-        
-        // Publish target pose
-        tf::Transform target_tf;
-        target_tf.setOrigin(tf::Vector3(
-            target_pose(0, 3),
-            target_pose(1, 3),
-            target_pose(2, 3)
-        ));
-        
-        Eigen::Quaterniond q(target_pose.block<3, 3>(0, 0));
-        tf::Quaternion tf_q(q.x(), q.y(), q.z(), q.w());
-        target_tf.setRotation(tf_q);
-        
-        tf_broadcaster.sendTransform(tf::StampedTransform(
-            target_tf, ros::Time::now(), "base_link", "ik_target"));
-
-        // Compute FK for current solution
+        auto send_pose = [this](const Eigen::Matrix4d& pose, const std::string& child) {
+            geometry_msgs::msg::TransformStamped transform;
+            transform.header.stamp = now();
+            transform.header.frame_id = "base_link";
+            transform.child_frame_id = child;
+            transform.transform.translation.x = pose(0, 3);
+            transform.transform.translation.y = pose(1, 3);
+            transform.transform.translation.z = pose(2, 3);
+            Eigen::Quaterniond q(pose.block<3, 3>(0, 0));
+            transform.transform.rotation.x = q.x();
+            transform.transform.rotation.y = q.y();
+            transform.transform.rotation.z = q.z();
+            transform.transform.rotation.w = q.w();
+            tf_broadcaster_->sendTransform(transform);
+        };
+        send_pose(target_pose, "ik_target");
         Eigen::Matrix4d current_pose = spherical_wrist_six_axis_ik::computeFK(
-            {joint_values[0], joint_values[1], joint_values[2], 
-             joint_values[3], joint_values[4], joint_values[5]});
-        
-        tf::Transform current_tf;
-        current_tf.setOrigin(tf::Vector3(
-            current_pose(0, 3),
-            current_pose(1, 3),
-            current_pose(2, 3)
-        ));
-        
-        Eigen::Quaterniond q_current(current_pose.block<3, 3>(0, 0));
-        tf::Quaternion tf_q_current(q_current.x(), q_current.y(), q_current.z(), q_current.w());
-        current_tf.setRotation(tf_q_current);
-        
-        tf_broadcaster.sendTransform(tf::StampedTransform(
-            current_tf, ros::Time::now(), "base_link", "ik_solution"));
+            {joint_values[0], joint_values[1], joint_values[2], joint_values[3], joint_values[4], joint_values[5]});
+        send_pose(current_pose, "ik_solution");
     }
 
-    void jointPositionCallback(const sensor_msgs::JointStateConstPtr& msg) {
+    void jointPositionCallback(const sensor_msgs::msg::JointState::ConstSharedPtr& msg) {
         try {
             real_joint_state_ = *msg;
             
@@ -1464,28 +1465,25 @@ public:
                 previous_solution_ = new_previous;
             }
         } catch (const std::exception& e) {
-            ROS_ERROR("Error in real joint position callback: %s", e.what());
+            RCLCPP_ERROR(get_logger(), "Error in real joint position callback: %s", e.what());
         }
     }
 
-    void publishJointState(const ros::TimerEvent&) {
-        current_joint_state_.header.stamp = ros::Time::now();
+    void publishJointState() {
+        current_joint_state_.header.stamp = now();
         if(gripper_cmd_ > 0){
             current_joint_state_.position[6] = gripper_cmd_;
         } else {
             current_joint_state_.position[6] = 0.0;
         }
         
-        joint_state_pub_.publish(current_joint_state_);
+        joint_state_pub_->publish(current_joint_state_);
     }
 };
 
 int main(int argc, char** argv) {
-    ros::init(argc, argv, "piper_ik_node_use_yaik");
-    
-    PiperIKNode ik_node("piper_ik_node_use_yaik");
-    
-    ros::spin();
-    
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<PiperIKNode>("piper_ik_node_use_yaik"));
+    rclcpp::shutdown();
     return 0;
 }

@@ -1,0 +1,18 @@
+# Local generated build/runtime artifacts
+/build/
+/install/
+/log/
+/.venv-vision/
+/.cache/
+/models/*.pt
+/models/*.download
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# VS Code C/C++ generated indexes (keep editor settings)
+browse.vc.db
+browse.vc.db-*
+*.ipch
+**/.vscode/ipch/
+browse.vc.db.*

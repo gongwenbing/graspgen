@@ -1,53 +1,33 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
 project(piper_kinematics)
-
-## Compile as C++17, supported in ROS Kinetic and newer
-add_compile_options(-std=c++17)
-add_definitions(-DAPI_EXPORTS)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_BUILD_TYPE Release)
-
-## Find catkin macros and libraries
-find_package(catkin REQUIRED COMPONENTS 
-  roscpp 
-  rospy
-  std_msgs
-  sensor_msgs
-  geometry_msgs
-  tf
-  visualization_msgs
-  piper_msgs
-)
-
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(ament_cmake REQUIRED)
 find_package(Eigen3 REQUIRED)
-
-catkin_package(
-  CATKIN_DEPENDS 
-  roscpp 
-  rospy
-  std_msgs
-  sensor_msgs
-  geometry_msgs
-  tf
-  visualization_msgs
-  piper_msgs
-)
-
-## Specify additional locations of header files
-include_directories(
-  include
-  ${catkin_INCLUDE_DIRS}
-  ${EIGEN3_INCLUDE_DIR}
-)
-
-add_executable(piper_ik_node src/piper_ik_node.cpp)
-target_link_libraries(piper_ik_node
-  ${catkin_LIBRARIES}
-  ${Eigen3_LIBRARIES}
-)
-
-add_executable(piper_ik_node_use_yaik src/piper_ik_node_use_yaik.cpp)
-target_link_libraries(piper_ik_node_use_yaik
-  ${catkin_LIBRARIES}
-  ${Eigen3_LIBRARIES}
-)
+set(ROS_DEPENDENCIES rclcpp geometry_msgs sensor_msgs std_msgs visualization_msgs
+    tf2 tf2_ros tf2_geometry_msgs piper_msgs std_srvs urdf kdl_parser ament_index_cpp)
+find_package(orocos_kdl REQUIRED)
+foreach(dependency IN LISTS ROS_DEPENDENCIES)
+  find_package(${dependency} REQUIRED)
+endforeach()
+foreach(node piper_ik_node piper_ik_node_use_yaik)
+  add_executable(${node} src/${node}.cpp)
+  target_include_directories(${node} PRIVATE include)
+  target_link_libraries(${node} Eigen3::Eigen ${orocos_kdl_LIBRARIES})
+  ament_target_dependencies(${node} ${ROS_DEPENDENCIES})
+  install(TARGETS ${node} DESTINATION lib/${PROJECT_NAME})
+endforeach()
+install(PROGRAMS scripts/interactive_pose_marker.py DESTINATION lib/${PROJECT_NAME})
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME} PATTERN "*.launch" EXCLUDE PATTERN "__pycache__" EXCLUDE)
+if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
+  add_executable(probe_drag_workspace test/probe_drag_workspace.cpp)
+  target_include_directories(probe_drag_workspace PRIVATE include)
+  target_link_libraries(probe_drag_workspace Eigen3::Eigen ${orocos_kdl_LIBRARIES})
+  ament_target_dependencies(probe_drag_workspace urdf kdl_parser ament_index_cpp)
+  ament_add_gtest(test_urdf_model test/test_urdf_model.cpp)
+  target_include_directories(test_urdf_model PRIVATE include)
+  target_link_libraries(test_urdf_model Eigen3::Eigen ${orocos_kdl_LIBRARIES})
+  ament_target_dependencies(test_urdf_model urdf kdl_parser ament_index_cpp)
+endif()
+ament_package()

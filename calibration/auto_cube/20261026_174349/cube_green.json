@@ -1,0 +1,85 @@
+{
+  "success": false,
+  "target_source": "RGB-D color segmentation and known 0.04m cube geometry",
+  "physics_attachment_used": true,
+  "stages": [
+    {
+      "stage": "visual_target",
+      "label": "cube_green",
+      "center_world_m": [
+        0.32306191098885884,
+        -0.2257459717596002,
+        1.035509817100626
+      ],
+      "validation_error_m": 0.0011948126788508396,
+      "assisted_grasp": true
+    },
+    {
+      "stage": "bilateral_contact",
+      "physics_attachment_used": true
+    },
+    {
+      "stage": "lift_measurement",
+      "actual_rise_m": 0.049991790428546956,
+      "relative_drift_m": 5.4011731392776416e-05
+    },
+    {
+      "stage": "lift_verified"
+    },
+    {
+      "stage": "transfer_target",
+      "cube_center_world_m": [
+        0.28,
+        0.16,
+        1.137
+      ],
+      "clearance_above_release_m": 0.09
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Approach IK failed (-31); cube may be unreachable."
+    },
+    {
+      "stage": "resume_placement"
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "No collision-free basket transfer orientation at requested height"
+    },
+    {
+      "stage": "resume_placement"
+    },
+    {
+      "stage": "transfer_target",
+      "cube_center_world_m": [
+        0.16,
+        0.22,
+        1.137
+      ],
+      "clearance_above_release_m": 0.09
+    },
+    {
+      "stage": "transfer_measurement",
+      "cube_center_world_m": [
+        0.160115688895995,
+        0.21979872737566436,
+        1.1366032181612151
+      ],
+      "target_error_m": 0.0004597068822119322
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Service/action request timed out; check Gazebo and MoveIt logs."
+    }
+  ],
+  "initial_arm_positions": {
+    "joint1": -0.4370802479578604,
+    "joint2": 0.10871744833579644,
+    "joint3": -0.5361183473867763,
+    "joint4": -0.09456818856637916,
+    "joint5": 1.2186664440520447,
+    "joint6": 0.1608055178510952,
+    "joint7": 0.03499999386188124,
+    "joint8": -0.03499999386188124
+  }
+}

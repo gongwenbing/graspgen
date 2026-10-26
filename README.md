@@ -1,302 +1,121 @@
-# GraspGen-位姿生成与抓取
+# GraspGen：ROS 2 Humble 物体分割与抓取候选生成
 
-## 
+当前运行环境：Ubuntu 22.04、ROS 2 Humble、PiPER、RealSense D455。
+ROS 1 相机和视觉包已被替换，旧 catkin / roslaunch / rosrun 启动流程不再适用。
 
-本文通过TensorRT加速YoloV8-Pose推理，使用主成分分析实现了一种基于位姿生成工具，实现了实时的位姿生成与抓取。
+当前链路：
 
-## 标签
-
-PiPER机械臂、YoloV8-Pose模型、TensorRT、运动学正逆解、位姿控制、夹爪控制
-
-## 仓库
-
-- GraspGen:[https://github.com/vanstrong12138/GraspGen](https://github.com/vanstrong12138/GraspGen)
-- Agilex-Collge:[https://github.com/agilexrobotics/Agilex-College/tree/master](https://github.com/agilexrobotics/Agilex-College/tree/master)
-
-## 环境配置
-
-支持桌面平台与Jetson平台双平台部署
-
-### 桌面平台
-
-- Ubuntu20.04
-- ROS noetic
-- NVIDIA Driver Version  470.256.02
-- CUDA Version  11.4
-- cuDNN 8.4.1
-- TensorRT 8.6.1.6
-- OpenCV 4.5.3
-
-1. 安装NVIDIA显卡驱动
-```bash
-sudo apt update
-sudo apt upgrade
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update
-sudo apt install nvidia-driver-470
-#重启
-reboot
+```text
+D455 彩色图 + 对齐深度 + 内参
+  → YOLOv8 实例分割
+  → 掩码内有效深度 / 物体点云 / 离群点过滤
+  → PCA 表面方向 / 包围盒 / 抓取候选（相机坐标系）
 ```
 
-2. 安装CUDA Toolkit 11.4
+候选姿态不等于已验证的抓取动作。手眼标定、TCP 方向、环境碰撞模型以及
+预抓取/接近/闭爪/抬起动作仍需完成；视觉节点不会发送机械臂运动指令。
 
--   先前往[NVIDIA官网](https://developer.nvidia.com/cuda-11-4-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=runfile_local)下载CUDA的runfile文件
-![alt text](doc/image.png)
+## 1. 环境和安装
 
-- 执行安装命令
-```bash
-wget https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda_11.4.0_470.42.01_linux.run
-sudo sh cuda_11.4.0_470.42.01_linux.run
-```
--   安装时取消勾选第一项driver，因为我们第一步已经安装过显卡驱动了
-
-3. 添加环境变量
-```bash
-echo 'export PATH=/usr/local/cuda-11.4/bin:$PATH' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
-source ~/.bashrc
-```
-
-4. 安装后可以执行nvcc -V查看CUDA信息
-```bash
-nvcc -V
-```
-
-5. 安装cuDNN
--   去[NVIDIA官网](https://developer.nvidia.com/nvidia-tensorrt-8x-download)下载TensorRT的tar文件，解压后对文件进行拷贝
-![alt text](doc/image-1.png)
-
--     解压后执行下面的命令把cuDNN拷贝到CUDA的安装目录下
-```bash
-sudo cp cuda/include/cudnn*.h /usr/local/cuda/include
-sudo cp cuda/lib/libcudnn* /usr/local/cuda/lib64
-sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
-```
-
-6. 安装TensorRT，去[NVIDIA官网](https://developer.nvidia.com/nvidia-tensorrt-8x-download)下载TensorRT的tar文件，解压后对文件进行拷贝
-![alt text](doc/image-2.png)
-
--   解压后执行下面的命令把TensorRT拷贝到/usr/local目录下
+已安装 ROS 2 Humble 后：
 
 ```bash
-#解压
-tar -xvf TensorRT-8.6.1.6.Linux.x86_64-gnu.cuda-12.0.tar.gz 
-
-#进入TensorRT-8.6.1.6.Linux.x86_64-gnu.cuda-11.8
-cd TensorRT-8.6.1.6.Linux.x86_64-gnu.cuda-11.8/
-
-#拷贝到/usr/local目录下
-sudo mv TensorRT-8.6.1.6/ /usr/local/
+sudo apt install ros-humble-realsense2-camera ros-humble-realsense2-description \
+  ros-humble-cv-bridge ros-humble-image-transport ros-humble-message-filters \
+  ros-humble-sensor-msgs-py ros-humble-visualization-msgs
+cd ~/GraspGen
+bash scripts/setup_vision.sh
+source /opt/ros/humble/setup.bash
+colcon build --base-paths graspgen_camera graspgen_vision --executor sequential
 ```
 
-- 测试TensorRT是否安装成功
-```bash
-#进入MNIST手写数字识别的目录下
-cd /usr/local/TensorRT-8.6.1.6/samples/sampleOnnxMNIST
+推理依赖在项目 `.venv-vision`，不会替换系统 Python 或显卡驱动。
+当前使用 YOLOv8n-seg / PyTorch CPU 后端，尚未提供 TensorRT/GPU 加速。
+无需照旧文档安装驱动470、CUDA11.4、TensorRT8.6或重新编译 OpenCV。
+官方预训练模型为 COCO 类别；未训练的自定义物体类别不能保证识别。
+模型下载到 `models/yolov8n-seg.pt`。Ultralytics 的使用遵循其上游许可。
 
-#编译
-make
-
-#在/usr/local/TensorRT-8.6.1.6/bin找到可执行文件sample_onnx_mnist
-cd /usr/local/TensorRT-8.6.1.6/bin
-./sample_onnx_mnist
-```
-
-7. 安装带CUDA加速的OpenCV
-
-- [去官网下载OpenCV 4.5.3](https://opencv.org/releases/page/2/)，解压后进入目录
-![alt text](doc/image-3.png)
-
-- 安装opencv依赖
-```bash
-sudo apt install build-essential cmake git pkg-config libgtk-3-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libjpeg-dev libpng-dev libtiff-dev gfortran openexr libatlas-base-dev python3-dev python3-numpy libtbb2 libtbb-dev libdc1394-22-dev
-```
-
-- Github下载[opencv_contrib](https://github.com/opencv/opencv_contrib.git)并将opencv_contrib放入opencv目录里（也可以放在其他目录，但需要修改cmake编译时的命令）
-
-- 预编译，执行下面的命令指定编译时候的参数，注意-D OPENCV_EXTRA_MODULES_PATH=your_opencv-contirb-modules_path修改为自定义的路径
-```bash
-cmake \
--D WITH_CUDA=ON \
--D CUDA_ARCH_BIN="8.6" \
--D WITH_CUDNN=ON \
--D OPENCV_DNN_CUDA=ON  \
--D cuDNN_VERSION='8.4' \
--D cuDNN_INCLUDE_DIR='/usr/local/cuda/include' \
--D CUDA_ARCH_PTX="" \
--D OPENCV_EXTRA_MODULES_PATH=/home/khalillee/opencv-4.5.3/opencv_contrib-4.5.3/modules \
--D WITH_GSTREAMER=ON \
--D WITH_LIBV4L=ON  \
--D BUILD_opencv_python3=ON \
--D BUILD_TESTS=OFF \
--D BUILD_PERF_TESTS=OFF \
--D BUILD_EXAMPLES=OFF \
--D CMAKE_BUILD_TYPE=RELEASE \
--D CMAKE_INSTALL_PREFIX=/usr/local \
--D ENABLE_FAST_MATH=1 \
--D CUDA_FAST_MATH=1 \
--D WITH_CUBLAS=1 \
--D PYTHON3_EXECUTABLE=$(which python3) \
--D PYTHON3_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
--D PYTHON3_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
--D OPENCV_ENABLE_NONFREE=ON \
--D PYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3/dist-packages/numpy/core/include \
--D PYTHON3_PACKAGES_PATH=/usr/lib/python3/dist-packages \
--D PYTHON_DEFAULT_EXECUTABLE=$(which python3) \
--D OPENCV_PYTHON3_INSTALL_PATH=/usr/lib/python3/dist-packages \
--D BUILD_opencv_python3=ON \
--D BUILD_opencv_python2=OFF \
--D HAVE_opencv_python3=ON \
--D INSTALL_PYTHON_EXAMPLES=ON \
--D INSTALL_C_EXAMPLES=ON \
--D BUILD_opencv_python3=ON \
--D OPENCV_GENERATE_PKGCONFIG=YES \
-.. 
-```
-
-- 此步骤较慢请耐心等待，完成后正式开始编译
-```bash
-# nproc为CPU线程数量
-make -j$(nproc) 
-
-#安装
-sudo make install
-```
-
-- 将OpenCV的库添加到环境
-```bash
-sudo gedit /etc/ld.so.conf.d/opencv4.conf 
-```
-
-- 执行此命令后打开的可能是一个空白的文件，只需要在文件末尾加上/usr/local/lib
-
-- 更新系统动态链接器缓存，使系统能够正确地找到库文件
-```bash
-sudo ldconfig
-```
-
-- 配置环境变量，编辑/etc/bash.bashrc
-```bash
-sudo gedit /etc/bash.bashrc
-
-#在文件最后添加
-PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
-export PKG_CONFIG_PATH 
-#然后保存并退出
-```
-
-- 然后执行source /etc/bash.bashrc使环境变量生效，最后输入pkg-config --modversion opencv4来查看opencv的版本
-
-8. 安装此项目所依赖的ROS包
-```bash
-sudo apt install -y ros-noetic-sensor-msgs ros-noetic-image-transport ros-noetic-cv-bridge ros-noetic-vision-msgs ros-noetic-image-geometry ros-noetic-pcl-conversions ros-noetic-pcl-ros ros-noetic-message-filters
-```
-
-### Jetson Orin
-
-- Ubuntu20.04
-- ROS noetic
-- JetPack 5.1.5
-- CUDA 11.4.315
-- cuDNN 8.6.0.166
-- TensorRT 8.5.2.2
-
-1. 下载[SDKManager](https://developer.nvidia.com/sdk-manager)JetPack 5.1.5
-![alt text](doc/image-4.png)
-
-2. 选择只刷入系统还是刷入全部组件（如果只刷了系统，后续进入系统后还可手动安装上述依赖）
-![alt text](doc/image-5.png)
-
-3. 如果只安装了系统，则须手动安装依赖；如果在SDKManager中安装了全部组件，则可跳过后续步骤！
-```bash
-sudo apt update && sudo apt upgrade
-```
-
-4. 安装CUDA并指定环境变量
-```bash
-sudo apt-get install cuda-toolkit-11-4
-# 指定环境变量
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.4/lib64
-export PATH=$PATH:/usr/local/cuda-11.4/bin
-export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-11.4
-```
-
-5. 安装cuDNN
-```bash
-sudo apt-cache policy libcudnn8
-```
-
-6. 安装TensorRT
-```bash
-sudo apt-cache policy tensorrt
-```
-
-7. 安装项目依赖的ROS功能包
-```bash
-sudo apt install -y ros-noetic-sensor-msgs ros-noetic-image-transport ros-noetic-cv-bridge ros-noetic-vision-msgs ros-noetic-image-geometry ros-noetic-pcl-conversions ros-noetic-pcl-ros ros-noetic-message-filters
-```
-
-## 克隆与编译
-
-- 克隆此项目到本地
+## 2. 每个新终端加载环境
 
 ```bash
-cd your_ws
-
-git clone https://github.com/AgilexRobotics/GraspGen.git
-
-catkin_make
+cd ~/GraspGen
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+export ROS_DOMAIN_ID=187
 ```
 
-## 运行
+## 3. 相机（终端 A）
 
-1. 启动Piper_kinematics逆解节点
 ```bash
-# 逆解
-rosrun piper_kinematics piper_ik_node
-
-# 交互式标记
-rosrun piper_kinematics interactive_pose_marker.py
+ros2 launch graspgen_camera rgbd.launch.py
 ```
 
-- 或者一键启动Piper_kinematics逆解节点与交互式标记节点
+独立检查：`ros2 run graspgen_camera check_rgbd`。
+[相机说明](graspgen_camera/README.md)。
+
+## 4. 视觉（终端 B）
+
 ```bash
-roslaunch piper_kinematics piper_ik.launch
+ros2 launch graspgen_vision vision.launch.py
 ```
 
-2. 启动Piper驱动节点并拖拽交互式标记至目标位置
+默认处理 bottle、cup、mouse、cell phone、orange；更改示例：
+
 ```bash
-cd piper_ros
-# 激活CAN接口
-./can_activate.sh
-
-#启动机械臂驱动节点
-roslaunch piper start_single_piper_ik_rviz.launch
+ros2 launch graspgen_vision vision.launch.py target_classes:='bottle,cup'
 ```
-![alt text](doc/image-6.png)
 
-- 拖拽交互式标记至目标位置，即可驱动机械臂运动至目标位置
-![alt text](doc/image-7.png)
+默认有效深度 0.15..1.5 m。请放置支持类别的物体，检查其深度是否有效。
+无目标、深度无效、宽度超过70 mm或PCA方向不明确时不生成候选。
 
+## 5. 可视化（终端 C）
 
-3. 启动GraspGen节点
 ```bash
-#启动realsense相机节点
-roslaunch realsense2_camera rs_aligned_depth.launch 
-
-#启动GraspGen节点
-roslaunch tensorrtx_yolov8_ros yolov8.launch
+rviz2 -d "$(ros2 pkg prefix graspgen_vision)/share/graspgen_vision/config/vision.rviz"
 ```
 
-4. 放置物体至相机前方，即可看到GraspGen检测到的物体
-![alt text](doc/image-9.png)
-![alt text](doc/image-8.png)
+已配置分割画面、彩色物体点云、包围盒及姿态坐标轴。
+固定坐标系为 `camera_color_optical_frame`，未伪造相机到 `base_link` 的变换。
 
-5. 添加可视化表现插件，可以看到程序正常生成物体的AABB包围盒以及经过主成分分析后的抓取姿态
-![alt text](doc/image-10.png)
+```bash
+ros2 topic echo /graspgen/status --field data --once
+```
 
-6. 执行抓取任务
+状态包括类别、置信度、点数、候选有效性及原因、开口估计等。
+[视觉算法及完整话题说明](graspgen_vision/README.md)。
 
-- 在GraspGen节点窗口中按下小写s键，可以执行抓取任务
+## 6. 机械臂控制
 
+[MoveIt 真机桥接与门控](piper_moveit_bridge/README.md)。
+[URDF 逆解与交互标记](piper_kinematics/README.md)。
+视觉调试阶段请关闭机械臂运动门控；当前视觉输出不会自动触发抓取。
+旧 `arm_action.py` / `item_confer.py` 按 s 自动运动流程已删除。
 
+## 7. 眼在手上标定
+
+已配置 ID0、黑色外框边长95毫米的ArUco标记。相机固定在末端，标记固定在桌面。
+
+```bash
+ros2 launch graspgen_handeye collect.launch.py
+```
+
+RViz Image话题为 `/handeye/image`，状态话题为 `/handeye/status`。
+工具只观测并在手动调用服务时保存样本，不自动移动机械臂。
+采集、求解及相机安装TF发布步骤见 [中文标定说明](graspgen_handeye/README.md)。
+**目前配置的是标定工具，尚未采集实物样本并得到手眼标定结果。**
+
+## 8. 验证
+
+```bash
+PYTHONPATH="$PWD/graspgen_vision:$PYTHONPATH" python3 -m pytest -q graspgen_vision/test/test_geometry.py
+python3 graspgen_vision/test/check_ros2_pipeline.py
+```
+
+第二项使用隔离 ROS 域及合成输入，不访问相机或机械臂。
+真实模型的离线验证见 `graspgen_vision/test/check_real_inference.py`，其深度为合成数据。
+
+## 上游
+
+- [原 GraspGen 仓库](https://github.com/vanstrong12138/GraspGen)
+- [Ultralytics YOLO](https://github.com/ultralytics/ultralytics)
+- [RealSense ROS 2](https://github.com/realsenseai/realsense-ros)

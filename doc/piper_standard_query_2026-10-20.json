@@ -1,0 +1,250 @@
+{
+  "frame_type": "standard",
+  "query_count": 7,
+  "query_ids": [
+    "0x4af",
+    "0x472"
+  ],
+  "firmware": "S-V1.8-2",
+  "responses": [
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        72,
+        45,
+        86,
+        49,
+        46,
+        50,
+        45,
+        49
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        49,
+        48,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        65,
+        82,
+        77,
+        95,
+        77,
+        67,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        51,
+        48,
+        65,
+        72,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        0,
+        0,
+        0,
+        0,
+        83,
+        45,
+        86,
+        49
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        46,
+        56,
+        45,
+        50,
+        50,
+        53,
+        49,
+        48
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        50,
+        53,
+        0,
+        0,
+        49,
+        53,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0x4af",
+      "extended": false,
+      "data": [
+        23,
+        69,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "0x473",
+      "extended": false,
+      "data": [
+        1,
+        5,
+        220,
+        250,
+        36,
+        0,
+        200,
+        0
+      ]
+    },
+    {
+      "id": "0x473",
+      "extended": false,
+      "data": [
+        2,
+        7,
+        8,
+        0,
+        0,
+        0,
+        200,
+        0
+      ]
+    },
+    {
+      "id": "0x473",
+      "extended": false,
+      "data": [
+        3,
+        0,
+        0,
+        249,
+        92,
+        0,
+        200,
+        0
+      ]
+    },
+    {
+      "id": "0x473",
+      "extended": false,
+      "data": [
+        4,
+        3,
+        232,
+        252,
+        24,
+        0,
+        200,
+        0
+      ]
+    },
+    {
+      "id": "0x473",
+      "extended": false,
+      "data": [
+        5,
+        2,
+        188,
+        253,
+        68,
+        0,
+        200,
+        0
+      ]
+    },
+    {
+      "id": "0x473",
+      "extended": false,
+      "data": [
+        6,
+        7,
+        8,
+        248,
+        248,
+        0,
+        200,
+        0
+      ]
+    }
+  ],
+  "motor_limits": "time stamp:1792500669.365833\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 1\n  max_angle_limit: 1500\n  min_angle_limit: -1500\n  max_joint_spd: 200\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 2\n  max_angle_limit: 1800\n  min_angle_limit: 0\n  max_joint_spd: 200\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 3\n  max_angle_limit: 0\n  min_angle_limit: -1700\n  max_joint_spd: 200\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 4\n  max_angle_limit: 1000\n  min_angle_limit: -1000\n  max_joint_spd: 200\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 5\n  max_angle_limit: 700\n  min_angle_limit: -700\n  max_joint_spd: 200\n)\nArmMsgFeedbackCurrentMotorAngleLimitMaxSpd(\n  motor_num: 6\n  max_angle_limit: 1800\n  min_angle_limit: -1800\n  max_joint_spd: 200\n)\n)\n"
+}

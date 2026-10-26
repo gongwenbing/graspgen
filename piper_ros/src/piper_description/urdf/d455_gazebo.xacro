@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Ideal registered RGB-D camera, not a stereo/noise model of the D455.
+       camera_link uses the nominal RealSense depth origin. The color origin
+       is 59 mm along -Y; optical axes are +Z forward, +X right, +Y down.
+       Default mount is derived from calibration/handeye_result.yaml, not
+       the optical transform copied directly onto camera_link. -->
+  <xacro:macro name="d455_gazebo" params="parent mount_xyz mount_rpy
+      width:=640 height:=480 rate:=30 hfov:=1.211 near:=0.35 far:=1.5">
+    <joint name="camera_mount_joint" type="fixed">
+      <parent link="${parent}"/><child link="camera_link"/>
+      <origin xyz="${mount_xyz}" rpy="${mount_rpy}"/>
+    </joint>
+    <link name="camera_link">
+      <!-- Approximate housing. Dimensions/offset follow nominal D455 URDF;
+           mass is an engineering approximation; bracket/cable not modeled. -->
+      <inertial>
+        <origin xyz="-0.00845 -0.0475 0"/>
+        <mass value="0.12"/>
+        <inertia ixx="0.00016217" ixy="0" ixz="0"
+                 iyy="0.00001517" iyz="0" izz="0.00016052"/>
+      </inertial>
+      <visual>
+        <origin xyz="-0.00845 -0.0475 0"/>
+        <geometry><box size="0.026 0.124 0.029"/></geometry>
+        <material name="d455_black"><color rgba="0.12 0.12 0.12 1"/></material>
+      </visual>
+      <collision>
+        <origin xyz="-0.00845 -0.0475 0"/>
+        <geometry><box size="0.026 0.124 0.029"/></geometry>
+      </collision>
+    </link>
+    <joint name="camera_color_joint" type="fixed">
+      <parent link="camera_link"/><child link="camera_color_frame"/>
+      <origin xyz="0 -0.059 0"/>
+    </joint>
+    <link name="camera_color_frame"/>
+    <joint name="camera_color_optical_joint" type="fixed">
+      <parent link="camera_color_frame"/><child link="camera_color_optical_frame"/>
+      <origin rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+    <link name="camera_color_optical_frame"/>
+    <!-- Gazebo cameras look along +X of their sensor frame. Both images
+         come from this ONE sensor: equal projection, timestamp and viewpoint. -->
+    <gazebo reference="camera_color_frame">
+      <sensor name="d455_rgbd" type="depth">
+        <always_on>true</always_on><update_rate>${rate}</update_rate>
+        <visualize>false</visualize>
+        <camera>
+          <horizontal_fov>${hfov}</horizontal_fov>
+          <image><width>${width}</width><height>${height}</height><format>R8G8B8</format></image>
+          <clip><near>${near}</near><far>${far}</far></clip>
+        </camera>
+        <plugin name="d455_rgbd_ros" filename="libgazebo_ros_camera.so">
+          <ros>
+            <namespace>/camera</namespace>
+            <remapping>d455/image_raw:=color/image_raw</remapping>
+            <remapping>d455/camera_info:=color/camera_info</remapping>
+            <remapping>d455/depth/image_raw:=aligned_depth_to_color/image_raw</remapping>
+            <remapping>d455/depth/camera_info:=aligned_depth_to_color/camera_info</remapping>
+            <remapping>d455/points:=depth/color/points</remapping>
+          </ros>
+          <camera_name>d455</camera_name>
+          <frame_name>camera_color_optical_frame</frame_name>
+          <min_depth>${near}</min_depth><max_depth>${far}</max_depth>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>

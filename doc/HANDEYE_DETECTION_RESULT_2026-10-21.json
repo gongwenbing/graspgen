@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "status": 75,
+    "pose": 137,
+    "image": 137
+  },
+  "status": {
+    "marker_id": 0,
+    "marker_length_m": 0.095,
+    "dictionary": "DICT_4X4_50",
+    "sample_count": 0,
+    "capture_ready": false,
+    "reason": "\"base_link\" passed to lookupTransform argument target_frame does not exist. ",
+    "reprojection_error_px": null
+  },
+  "marker_position_camera_m": [
+    -0.011728078895189242,
+    0.054899373022425896,
+    0.4055785533326293
+  ]
+}

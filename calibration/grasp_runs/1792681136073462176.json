@@ -1,0 +1,82 @@
+{
+  "started_unix": 1792681136.0734384,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "vision_snapshot": {
+    "valid": true,
+    "reason": "",
+    "frame": "camera_color_optical_frame",
+    "stamp_sec": 1792681141.0623455,
+    "selected_id": 0,
+    "objects": [
+      {
+        "id": 0,
+        "class": "bottle",
+        "confidence": 0.7629022002220154,
+        "valid": true,
+        "point_count": 1618,
+        "opening_m": 0.03287445389141983,
+        "center_m": [
+          0.0389006978010953,
+          0.1445759979395449,
+          0.3809096896196659
+        ],
+        "quaternion_xyzw": [
+          0.2565548935168228,
+          -0.12587437995097028,
+          0.6741077895368521,
+          0.6811122632652193
+        ],
+        "observed_extent_m": [
+          0.11329088619541236,
+          0.027874453891419834,
+          0.01320708968319385
+        ]
+      }
+    ],
+    "processing_age_sec": 0.11868739128112793
+  },
+  "preview_snapshot": {
+    "display_only": true,
+    "tcp_provisional": true,
+    "current_tcp_valid": true,
+    "target_valid": true,
+    "hover_height_m": 0.1,
+    "surface_base_m": [
+      0.10238929350874817,
+      -0.353686167925434,
+      0.04063577308843319
+    ],
+    "pregrasp_tcp_base_m": [
+      0.10238929350874817,
+      -0.353686167925434,
+      0.1406357730884332
+    ],
+    "pregrasp_link6_base_m": [
+      0.10238929350874817,
+      -0.353686167925434,
+      0.2764357730884332
+    ],
+    "reason": ""
+  },
+  "targets_link6_base_m": {
+    "hover": [
+      0.09696193002617357,
+      -0.33920017652072376,
+      0.273733508646812
+    ],
+    "grasp": [
+      0.09696193002617357,
+      -0.33920017652072376,
+      0.19373350864681202
+    ],
+    "lift": [
+      0.09696193002617357,
+      -0.33920017652072376,
+      0.20373350864681203
+    ]
+  },
+  "error": "Predicted arm/gripper state is in collision at opening=69.40mm: base_link <-> graspgen_table",
+  "finished_unix": 1792681141.4102495
+}

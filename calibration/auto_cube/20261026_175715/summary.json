@@ -1,0 +1,86 @@
+{
+  "success": true,
+  "physics_attachment_used": true,
+  "completed": [
+    "cube_red",
+    "cube_blue",
+    "cube_green"
+  ],
+  "stages": [
+    {
+      "stage": "waiting_for_simulation",
+      "timeout_sec": 180.0,
+      "physics_attachment_used": true,
+      "reports": "/home/zlq/GraspGen/calibration/auto_cube/20261026_175715"
+    },
+    {
+      "stage": "simulation_ready"
+    },
+    {
+      "stage": "observe",
+      "target": "cube_red",
+      "slot": 0
+    },
+    {
+      "stage": "pick_and_place",
+      "target": "cube_red",
+      "slot": 0
+    },
+    {
+      "stage": "placed",
+      "target": "cube_red"
+    },
+    {
+      "stage": "observe",
+      "target": "cube_blue",
+      "slot": 1
+    },
+    {
+      "stage": "pick_and_place",
+      "target": "cube_blue",
+      "slot": 1
+    },
+    {
+      "stage": "placed",
+      "target": "cube_blue"
+    },
+    {
+      "stage": "observe",
+      "target": "cube_green",
+      "slot": 2
+    },
+    {
+      "stage": "pick_and_place",
+      "target": "cube_green",
+      "slot": 2
+    },
+    {
+      "stage": "placed",
+      "target": "cube_green"
+    },
+    {
+      "stage": "final_basket_verified",
+      "positions": {
+        "cube_red": [
+          -0.06004919590492219,
+          6.626701642614696e-06,
+          0.025897553712121102
+        ],
+        "cube_blue": [
+          -7.827289895789846e-05,
+          4.7461436209012e-05,
+          0.025897553712121102
+        ],
+        "cube_green": [
+          -0.060066429495732404,
+          0.060039293266271276,
+          0.025897553712121102
+        ]
+      }
+    },
+    {
+      "stage": "SUCCESS",
+      "count": 3
+    }
+  ]
+}

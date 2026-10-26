@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "method": "single_success_empirical",
+  "tcp_verified": false,
+  "tcp_translation_m": [
+    0.0,
+    0.0,
+    0.1358
+  ],
+  "reference_surface_base_m": [
+    0.09829229785188022,
+    -0.34136525843302146,
+    0.03371350570140014
+  ],
+  "correction_radial_tangent_z_m": [
+    0.010937397426422697,
+    0.0008738035918971262,
+    0.0198968177499044
+  ],
+  "orientation_in_radial_xyzw": [
+    -0.0265319551939322,
+    -0.9948500054246763,
+    -0.010214614924869178,
+    -0.09728917566741728
+  ],
+  "closed_opening_m": 0.0445,
+  "approach_height_m": 0.08,
+  "test_lift_m": 0.01,
+  "maximum_reference_distance_m": 0.05,
+  "object_class": "bottle",
+  "sample_count": 1,
+  "scope": "same bottle, same fixed observation pose, near taught position; not a general TCP calibration",
+  "reference_observation_joints_rad": {
+    "joint1": -1.3090492988733071,
+    "joint2": 0.5024104784790877,
+    "joint3": -0.9077631972547708,
+    "joint4": 0.12330751165339938,
+    "joint5": 1.1284775344619735,
+    "joint6": 0.0,
+    "joint7": 0.0
+  },
+  "created_unix": 1792679359.038313,
+  "user_confirmed_held": true,
+  "recorded_lift_m": 0.01,
+  "reference_path": "/home/zlq/GraspGen/calibration/pregrasp_plan_preview.json",
+  "reference_sha256": "1222132b6ce5f6d9aff8dd1c1338b015b161429896361b5b85a5cfa00c9ac1be",
+  "handeye_sha256": "2d5653640218eb8a7a01fcb35dfd43c6593d7026749a2157fd8acf89d570101c",
+  "urdf_sha256": "f780f2dcc66b7270cd78c3411e18ab864635be94391c2c94ab68f0a869f1900f",
+  "reference_object_extent_m": [
+    0.10270410887345843,
+    0.02761562511854688,
+    0.012809717042942922
+  ],
+  "reference_observed_opening_m": 0.032615625118546876,
+  "successful_held_joints": {
+    "header": {
+      "stamp": {
+        "sec": 1792679359,
+        "nanosec": 8046627
+      },
+      "frame_id": ""
+    },
+    "name": [
+      "joint1",
+      "joint2",
+      "joint3",
+      "joint4",
+      "joint5",
+      "joint6",
+      "joint7"
+    ],
+    "position": [
+      -1.2984027904361415,
+      1.770776152488407,
+      -1.1613769908620668,
+      0.02218313479284793,
+      0.8534660042252272,
+      0.0324107642095347,
+      0.02225
+    ],
+    "velocity": [],
+    "effort": []
+  },
+  "successful_held_link6": {
+    "position": {
+      "x": 0.09288570773369714,
+      "y": -0.32687150099599743,
+      "z": 0.196811241259779
+    },
+    "orientation": {
+      "x": 0.6194758142969934,
+      "y": 0.7788967797089472,
+      "z": -0.05034611059741016,
+      "w": 0.08387366218201207
+    }
+  },
+  "manual_corrections_user_reported": {
+    "descent_mm": 80,
+    "outward_mm": 20,
+    "inward_mm": 10,
+    "test_lift_mm": 10
+  },
+  "tcp_note": "135.8mm remains provisional. Empirical correction is not an independent TCP calibration.",
+  "evidence_file": "/home/zlq/GraspGen/calibration/grasp_success_1792679359039285422.json",
+  "evidence_sha256": "faf430a4c38523f5585d6a5bfb78e61e696ee35f1d8e903aabf0722a25d36294"
+}

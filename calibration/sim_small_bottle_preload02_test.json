@@ -1,0 +1,126 @@
+{
+  "simulation": true,
+  "physics_attachment_used": false,
+  "model_dimensions_m": {
+    "radius": 0.0182,
+    "body_height": 0.091,
+    "height": 0.1316,
+    "center_z": 0.0658
+  },
+  "stages": [
+    {
+      "stage": "hover_preflight",
+      "tcp_world": [
+        0.39038973742762617,
+        0.09829570793985273,
+        1.1841774836954206
+      ],
+      "xy_error_m": 0.009760157502090815,
+      "clearance_above_cap_m": 0.0375872668617398
+    },
+    {
+      "stage": "jaw_level_target",
+      "jaw_axis_vertical_component": -0.010036835166454018,
+      "adjustment_deg": 0.5750793083720479,
+      "tcp_position_preserved": true
+    },
+    {
+      "stage": "cartesian_plan",
+      "fraction": 1.0,
+      "error": 1
+    },
+    {
+      "stage": "jaw_level_execute"
+    },
+    {
+      "stage": "jaw_level_verified",
+      "jaw_axis_vertical_component": -2.749654908207333e-07,
+      "axis_error_deg": 1.5754362135771394e-05,
+      "tcp_translation_drift_m": 9.471996419717047e-06
+    },
+    {
+      "stage": "contact_target",
+      "descent_m": 0.11208579976026756,
+      "flange_world": [
+        0.3527911439402958,
+        0.08723161765637728,
+        1.1896845959925686
+      ],
+      "bottle_diameter_m": 0.0364,
+      "contact_height_above_bottle_bottom_m": 0.09
+    },
+    {
+      "stage": "open_gripper"
+    },
+    {
+      "stage": "cartesian_plan",
+      "fraction": 1.0,
+      "error": 1
+    },
+    {
+      "stage": "descend_execute"
+    },
+    {
+      "stage": "descent_verified"
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.038400000000000004
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0374
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0364
+    },
+    {
+      "stage": "close_probe",
+      "commanded_total_opening_m": 0.0354
+    },
+    {
+      "stage": "bilateral_contact_verified",
+      "contacts": {
+        "left": true,
+        "right": true,
+        "bilateral": true,
+        "fresh": true
+      },
+      "commanded_total_opening_m": 0.0354
+    },
+    {
+      "stage": "small_preload_execute",
+      "initial_opening_m": 0.03626446606229601,
+      "target_opening_m": 0.03606446606229601,
+      "extra_total_closure_mm": 0.2
+    },
+    {
+      "stage": "small_preload_feedback",
+      "bottle_displacement_m": 0.0007108932213295865,
+      "bottle_rotation_deg": 1.0449829481675266,
+      "bilateral": true
+    },
+    {
+      "stage": "cartesian_plan",
+      "fraction": 1.0,
+      "error": 1
+    },
+    {
+      "stage": "lift_execute",
+      "requested_rise_m": 0.002
+    },
+    {
+      "stage": "lift_measurement",
+      "actual_rise_m": 5.701768696053655e-05,
+      "relative_translation_drift_m": 0.0019629330597014136,
+      "bilateral": true
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Physical lift/retention not verified; stop and inspect. No automatic retry or release."
+    }
+  ],
+  "success": false,
+  "jaw_leveling_success": true
+}

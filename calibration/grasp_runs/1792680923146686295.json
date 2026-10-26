@@ -1,0 +1,8 @@
+{
+  "started_unix": 1792680923.146653,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "No stable fresh taught-bottle target within 15s",
+  "finished_unix": 1792680942.2226548
+}

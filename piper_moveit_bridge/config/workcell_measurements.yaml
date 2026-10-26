@@ -1,0 +1,18 @@
+# 用户实测，单位：米。桌边方向及相机包围盒中心尚未核对。
+table:
+  measured_size: [1.195, 0.546]
+  top_z: 0.0
+  collision_size: [2.0, 2.0, 0.05]
+  collision_center: [0.0, 0.0, -0.025]
+  conservative_coverage: true
+camera_and_mount:
+  size_left_right_front_back_up_down: [0.125, 0.030, 0.050]
+  # camera_link原点在深度传感器，不在外壳中心。
+  # 官方_d455.urdf.xacro: 光学零深度到玻璃4.55mm，左右偏置47.5mm，
+  # 外壳高29mm。用户确认总高50mm，顶面沿用外壳顶面，向下覆盖支架。
+  center_camera_link_m: [-0.01045, -0.0475, -0.0105]
+  # 只读余量对比：5mm与link8相交，4mm及以下无接触。
+  # 保留实测外形，额外余量取3mm；不改变手眼TF或屏蔽夹指碰撞。
+  padding_each_side_m: 0.003
+  placement_verified: false
+  # 是否已添加以MoveIt读回和calibration/camera_collision_report.json为准。

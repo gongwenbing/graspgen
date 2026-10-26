@@ -1,0 +1,79 @@
+{
+  "counts": {
+    "image": 75,
+    "cloud": 75,
+    "poses": 75,
+    "status": 75
+  },
+  "valid_frames": 68,
+  "best_valid_status": {
+    "valid": true,
+    "reason": "",
+    "frame": "camera_color_optical_frame",
+    "stamp_sec": 1792582474.8379269,
+    "selected_id": 2,
+    "objects": [
+      {
+        "id": 2,
+        "class": "mouse",
+        "confidence": 0.5939918160438538,
+        "valid": true,
+        "point_count": 625,
+        "opening_m": 0.043872690395135104,
+        "center_m": [
+          -0.23495258017406778,
+          0.05537299521618828,
+          0.7480706662335631
+        ],
+        "quaternion_xyzw": [
+          -0.21707168075024033,
+          -0.06623250126377005,
+          -0.12138173622970562,
+          0.9663123797729556
+        ],
+        "observed_extent_m": [
+          0.07158424599367098,
+          0.03887269039513511,
+          0.012547908227584927
+        ]
+      }
+    ],
+    "processing_age_sec": 0.10348057746887207
+  },
+  "status": {
+    "valid": true,
+    "reason": "",
+    "frame": "camera_color_optical_frame",
+    "stamp_sec": 1792582474.8379269,
+    "selected_id": 2,
+    "objects": [
+      {
+        "id": 2,
+        "class": "mouse",
+        "confidence": 0.5939918160438538,
+        "valid": true,
+        "point_count": 625,
+        "opening_m": 0.043872690395135104,
+        "center_m": [
+          -0.23495258017406778,
+          0.05537299521618828,
+          0.7480706662335631
+        ],
+        "quaternion_xyzw": [
+          -0.21707168075024033,
+          -0.06623250126377005,
+          -0.12138173622970562,
+          0.9663123797729556
+        ],
+        "observed_extent_m": [
+          0.07158424599367098,
+          0.03887269039513511,
+          0.012547908227584927
+        ]
+      }
+    ],
+    "processing_age_sec": 0.10348057746887207
+  },
+  "cloud_points": 625,
+  "pose_count": 1
+}

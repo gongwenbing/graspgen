@@ -1,0 +1,13 @@
+{
+  "event": "user_confirmed_stable_contact_after_35mm_command",
+  "user_confirmed_held": true,
+  "command_opening_m": 0.035,
+  "observed_opening_m": 0.0395,
+  "observed_effort_nm": -1.044,
+  "feedback_captured_unix": 1792682121.700244,
+  "driver_enabled": true,
+  "driver_fault": false,
+  "source": "User confirmed held; read-only local SDK feedback captured in previous turn",
+  "record_created_unix": 1792732396.85516,
+  "previous_profile_sha256": "1a5b67e43bb15fdd78cda2f77bbdfc6e29ea1ea88f2f20879b8234330d82fdf7"
+}

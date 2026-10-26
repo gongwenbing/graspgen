@@ -1,0 +1,17 @@
+{
+  "vision": {
+    "valid": false,
+    "reason": "No eligible grasp candidate",
+    "frame": "camera_color_optical_frame",
+    "stamp_sec": 1792670529.754433,
+    "selected_id": null,
+    "objects": [],
+    "processing_age_sec": 0.08895516395568848
+  },
+  "input": {
+    "rgb_frame": "camera_color_optical_frame",
+    "depth_frame": "camera_color_optical_frame",
+    "image_delta_sec": 0.0
+  },
+  "marker_error": "Marker ID 0 not detected"
+}

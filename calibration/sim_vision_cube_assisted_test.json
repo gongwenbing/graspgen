@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "target_source": "RGB-D color segmentation and known 0.04m cube geometry",
+  "physics_attachment_used": true,
+  "stages": [
+    {
+      "stage": "visual_target",
+      "label": "cube_red",
+      "center_world_m": [
+        0.39866118203545026,
+        -0.005817503663114651,
+        1.0354245834755758
+      ],
+      "validation_error_m": 0.0009244540402389861,
+      "assisted_grasp": true
+    },
+    {
+      "stage": "bilateral_contact",
+      "physics_attachment_used": true
+    },
+    {
+      "stage": "lift_measurement",
+      "actual_rise_m": 0.049983548388960575,
+      "relative_drift_m": 3.532212825776241e-05
+    },
+    {
+      "stage": "lift_verified"
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Approach IK failed (-31); cube may be unreachable."
+    },
+    {
+      "stage": "resume_placement"
+    },
+    {
+      "stage": "transfer_target",
+      "cube_center_world_m": [
+        0.16,
+        0.16,
+        1.137
+      ],
+      "clearance_above_release_m": 0.09
+    },
+    {
+      "stage": "placed",
+      "label": "cube_red",
+      "basket_local_m": [
+        -0.059948925730850505,
+        0.00026014766343315787,
+        0.025897553712121102
+      ]
+    },
+    {
+      "stage": "SUCCESS",
+      "placed": 1
+    }
+  ]
+}

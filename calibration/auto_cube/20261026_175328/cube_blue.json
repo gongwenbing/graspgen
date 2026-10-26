@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "target_source": "RGB-D color segmentation and known 0.04m cube geometry",
+  "physics_attachment_used": true,
+  "stages": [
+    {
+      "stage": "visual_target",
+      "label": "cube_blue",
+      "center_world_m": [
+        0.3435474469076242,
+        -0.10347748860552203,
+        1.0355143896015835
+      ],
+      "validation_error_m": 0.0013415266485095948,
+      "assisted_grasp": true
+    },
+    {
+      "stage": "bilateral_contact",
+      "physics_attachment_used": true
+    },
+    {
+      "stage": "lift_measurement",
+      "actual_rise_m": 0.04999251061828147,
+      "relative_drift_m": 5.504440537901679e-05
+    },
+    {
+      "stage": "lift_verified"
+    },
+    {
+      "stage": "transfer_target",
+      "cube_center_world_m": [
+        0.22,
+        0.16,
+        1.137
+      ],
+      "clearance_above_release_m": 0.09
+    },
+    {
+      "stage": "transfer_measurement",
+      "cube_center_world_m": [
+        0.22003966178658071,
+        0.16037966689160443,
+        1.137218253439179
+      ],
+      "target_error_m": 0.0004397210133810047
+    },
+    {
+      "stage": "placed",
+      "label": "cube_blue",
+      "basket_local_m": [
+        -5.8864761757648765e-05,
+        4.8741788367945293e-05,
+        0.025897553712121102
+      ]
+    },
+    {
+      "stage": "SUCCESS",
+      "placed": 1
+    }
+  ],
+  "initial_arm_positions": {
+    "joint1": -0.26130161878527236,
+    "joint2": 0.1458502272284985,
+    "joint3": -0.6153950748260355,
+    "joint4": 0.00356948057011941,
+    "joint5": 1.2191773888800466,
+    "joint6": 0.050243044415165805,
+    "joint7": 0.03499999985061216,
+    "joint8": -0.03499999985061216
+  }
+}

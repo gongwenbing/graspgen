@@ -1,0 +1,26 @@
+{
+  "success": false,
+  "target_source": "RGB-D color segmentation and known 0.04m cube geometry",
+  "physics_attachment_used": false,
+  "stages": [
+    {
+      "stage": "visual_target",
+      "label": "cube_red",
+      "center_world_m": [
+        0.39948589438493,
+        0.0007810051763891431,
+        1.035463639211105
+      ],
+      "validation_error_m": 0.0010924027853287258,
+      "assisted_grasp": false
+    },
+    {
+      "stage": "bilateral_contact",
+      "physics_attachment_used": false
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Cartesian path incomplete (70.4%); no motion executed."
+    }
+  ]
+}

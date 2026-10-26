@@ -1,0 +1,31 @@
+{
+  "success": false,
+  "target_source": "RGB-D color segmentation and known 0.04m cube geometry",
+  "physics_attachment_used": false,
+  "stages": [
+    {
+      "stage": "visual_target",
+      "label": "cube_red",
+      "center_world_m": [
+        0.3989901552012687,
+        -0.005706254848392761,
+        1.0354235519430977
+      ],
+      "validation_error_m": 0.001023298374606801,
+      "assisted_grasp": false
+    },
+    {
+      "stage": "bilateral_contact",
+      "physics_attachment_used": false
+    },
+    {
+      "stage": "lift_verified",
+      "actual_rise_m": 4.3446712052253034e-05,
+      "relative_drift_m": 0.04994685247464026
+    },
+    {
+      "stage": "STOPPED",
+      "reason": "Cube retention failed; stop before transfer"
+    }
+  ]
+}

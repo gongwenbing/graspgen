@@ -1,18 +1,17 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(piper_mujoco)
 
-find_package(catkin REQUIRED COMPONENTS rospy std_msgs)
+# 设置 CMake 的编译选项
+find_package(ament_cmake REQUIRED)
+find_package(rclpy REQUIRED)
+find_package(std_msgs REQUIRED)
 
-catkin_package(
-  CATKIN_DEPENDS rospy std_msgs
+# 创建 Python 脚本安装规则
+install(PROGRAMS
+  scripts/piper_mujoco_ctrl.py
+  scripts/piper_no_gripper_mujoco_ctrl.py
+  DESTINATION lib/${PROJECT_NAME}
 )
 
-include_directories(${catkin_INCLUDE_DIRS})
-
-# 安装 Python 脚本
-catkin_install_python(PROGRAMS
-  scripts/piper_no_gripper_mujoco_ros.py
-  scripts/piper_mujoco_ros.py
-  scripts/piper_mujoco_pid.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+# 包的描述
+ament_package()
