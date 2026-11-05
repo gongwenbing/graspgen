@@ -17,7 +17,9 @@ class SDK:
     def ConnectPort(self,**kwargs):assert kwargs=={'piper_init':False}
     def DisconnectPort(self):pass
     def GetArmJointMsgs(self):return S(joint_state=S(**{f'joint_{i}':v for i,v in enumerate(self.joints,1)}))
-    def GetArmGripperMsgs(self):return S(gripper_state=S(grippers_angle=self.width))
+    def GetArmGripperMsgs(self):
+        foc=S(driver_enable_status=True,voltage_too_low=False,motor_overheating=False,driver_overcurrent=False,driver_overheating=False,sensor_status=False,driver_error_status=False)
+        return S(time_stamp=time.time(),gripper_state=S(grippers_angle=self.width,grippers_effort=0,foc_status=foc))
     def GetArmStatus(self):return S(arm_status=self.status)
     def GetArmLowSpdInfoMsgs(self):return S(**{f'motor_{i}':S(foc_status=S(driver_enable_status=True)) for i in range(1,7)})
     def EnableArm(self,*a):self.calls.append(('enable',a))

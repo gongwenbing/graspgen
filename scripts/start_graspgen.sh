@@ -29,7 +29,7 @@ fi
 GRASPGEN_START_CAMERA=true
 while IFS= read -r GRASPGEN_NODE; do
     case "$GRASPGEN_NODE" in
-        /piper_can_gateway|/piper_trajectory_bridge|/move_group|/graspgen_vision|/grasp_preview|/handeye_mount)
+        /piper_can_gateway|/piper_trajectory_bridge|/move_group|/graspgen_vision|/graspgen_grasp_generator|/grasp_preview|/handeye_mount)
             echo '发现已有机械臂/识别/手眼节点。请在原启动终端Ctrl+C停止旧流程后再启动，避免同名节点。'
             exit 1
             ;;
@@ -47,4 +47,4 @@ for GRASPGEN_FILE in calibration/handeye_result.yaml calibration/grasp_profile.j
 done
 echo '启动相机、识别、手眼TF、预览、MoveIt和真机桥接；随后加入桌面/相机碰撞模型。'
 echo '运动门控保持关闭，不自动使能、回零、开闭夹爪或执行抓取。Ctrl+C停止本次启动的节点。'
-exec /usr/bin/python3 /opt/ros/humble/bin/ros2 launch piper_moveit_bridge grasp_system.launch.py "start_camera:=$GRASPGEN_START_CAMERA"
+exec /usr/bin/python3 /opt/ros/humble/bin/ros2 launch piper_moveit_bridge grasp_system.launch.py "start_camera:=$GRASPGEN_START_CAMERA" "$@"

@@ -1,3 +1,4 @@
+from .speed_settings import GRIPPER_OPENING_CAP
 """PiPER 0.6.2 CAN gateway: passive startup; actuator writes require explicit gates."""
 import json
 import math
@@ -36,7 +37,7 @@ class CanGateway(Node):
         self.timeout=self.declare_parameter('feedback_timeout',0.3).value
         self.command_timeout=self.declare_parameter('command_timeout',0.5).value
         self.max_velocity=self.declare_parameter('max_arm_velocity',0.2).value
-        self.max_opening_velocity=self.declare_parameter('max_opening_velocity',0.01).value
+        self.max_opening_velocity=self.declare_parameter('max_opening_velocity',GRIPPER_OPENING_CAP).value
         for v in (self.timeout,self.command_timeout,self.max_velocity,self.max_opening_velocity):
             if not math.isfinite(v) or v<=0:raise ValueError('Timeouts and limits must be positive and finite')
         self.model=Model(self.declare_parameter('model_path',str(Path(get_package_share_directory('piper_description'))/'urdf/piper_description.urdf')).value)

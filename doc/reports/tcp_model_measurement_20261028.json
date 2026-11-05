@@ -1,0 +1,64 @@
+{
+  "method": "binary STL vertices transformed with URDF visual and fixed/zero finger joint origins into link6; dimensions in mm",
+  "joint7_m": 0,
+  "joint8_m": 0,
+  "model_bounds_mm": {
+    "link6": {
+      "min": [
+        -17.531512305140495,
+        -17.476746812462807,
+        -4.000000189989805
+      ],
+      "max": [
+        17.411740496754646,
+        17.494866624474525,
+        1.3877787807814457e-14
+      ]
+    },
+    "gripper_base": {
+      "min": [
+        -39.99999910593033,
+        -72.49999791383743,
+        -1.2727396297073684e-14
+      ],
+      "max": [
+        30.500000342726707,
+        72.49999791383743,
+        63.00000101327896
+      ]
+    },
+    "link7": {
+      "min": [
+        -28.000000864267346,
+        -26.499751059712693,
+        59.29990409109348
+      ],
+      "max": [
+        28.000000864267346,
+        3.681351644947279e-05,
+        135.8
+      ]
+    },
+    "link8": {
+      "min": [
+        -27.999986172593093,
+        -0.00013022225130754597,
+        59.29990409109348
+      ],
+      "max": [
+        28.000122077471538,
+        26.49988329437562,
+        135.8
+      ]
+    }
+  },
+  "notes": [
+    "Model dimensions only, not physical TCP calibration.",
+    "135.8 mm is distal fingertip level, not automatically the chosen grasp center.",
+    "The near-Y=0 end planes span about Z=125.778..135.8 mm at zero opening.",
+    "Their axial midpoint ~130.789 mm is only a geometric reference, not an applied TCP.",
+    "110 mm is inside the finger span but is not a uniquely defined contact center from the mesh.",
+    "Existing TCP/configuration and empirical profile were not changed."
+  ],
+  "urdf_sha256": "f780f2dcc66b7270cd78c3411e18ab864635be94391c2c94ab68f0a869f1900f"
+}

@@ -25,7 +25,7 @@
   ],
   "closed_opening_m": 0.035,
   "approach_height_m": 0.08,
-  "test_lift_m": 0.05,
+  "test_lift_m": 0.01,
   "maximum_reference_distance_m": 0.05,
   "object_class": "bottle",
   "sample_count": 1,

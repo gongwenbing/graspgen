@@ -24,6 +24,7 @@ class FakeYOLO:
     task='segment';detect=True
     names={39:'bottle',41:'cup',64:'mouse',67:'cell phone',49:'orange'}
     def predict(self,bgr,**kwargs):
+        assert kwargs['imgsz']==960
         mask=np.zeros(bgr.shape[:2],np.float32);mask[30:90,30:130]=1
         return [S(masks=S(data=Tensor(mask[None])) if self.detect else None,
                   boxes=S(cls=[39],conf=[.9]),names={39:'bottle'},plot=lambda:bgr)]
@@ -31,9 +32,10 @@ net=FakeYOLO()
 sys.modules['torch']=S(set_num_threads=lambda _:None)
 sys.modules['ultralytics']=S(YOLO=lambda *a,**kw:net)
 from graspgen_vision.node import SegmentGrasp
+from graspgen_vision.grasp_generator_node import GraspGenerator
 model=Path('/tmp/graspgen-vision-mock.pt');model.touch()
 rclpy.init(args=['--ros-args','-p',f'model:={model}'])
-vision=SegmentGrasp();test=Node('synthetic_rgbd_test');cv=CvBridge();seen={};publishing=True
+vision=SegmentGrasp();generator=GraspGenerator();test=Node('synthetic_rgbd_test');cv=CvBridge();seen={};publishing=True
 pubs=[test.create_publisher(kind,topic,qos_profile_sensor_data) for kind,topic in [
  (Image,'/camera/color/image_raw'),(Image,'/camera/aligned_depth_to_color/image_raw'),
  (CameraInfo,'/camera/color/camera_info'),(CameraInfo,'/camera/aligned_depth_to_color/camera_info')]]
@@ -49,7 +51,7 @@ def publish():
     for pub,msg in zip(pubs,[rgb,depth,info,info]):
         msg.header.stamp=stamp;msg.header.frame_id='camera_color_optical_frame';pub.publish(msg)
 timer=test.create_timer(.1,publish)
-executor=MultiThreadedExecutor(num_threads=4);executor.add_node(vision);executor.add_node(test)
+executor=MultiThreadedExecutor(num_threads=4);executor.add_node(vision);executor.add_node(generator);executor.add_node(test)
 thread=threading.Thread(target=executor.spin);thread.start()
 def wait(pred,timeout=10):
     end=time.monotonic()+timeout
@@ -72,4 +74,4 @@ try:
     wait(lambda:'No fresh' in json.loads(seen['status'].data)['reason'],5)
     print('PASS: synchronized ROS2 mask -> metric RGB cloud -> PCA pose/status; empty detections and input timeout clear outputs; no stale selected pose replay')
 finally:
-    executor.shutdown();thread.join(timeout=3);vision.destroy_node();test.destroy_node();rclpy.shutdown();model.unlink(missing_ok=True)
+    executor.shutdown();thread.join(timeout=3);vision.destroy_node();generator.destroy_node();test.destroy_node();rclpy.shutdown();model.unlink(missing_ok=True)

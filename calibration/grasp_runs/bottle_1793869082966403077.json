@@ -1,0 +1,10 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793869082.9664102,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "No stable bottle within 20s: Vision: Insufficient mask depth coverage 35.5%; require 60% within 0.35..1.50m. Move to a valid observation distance; do not use isolated background depths Missing=23.2%, too_near=41.3%, too_far=0.0%, positive_depth_median=0.347m.",
+  "possible_held_object": false,
+  "finished_unix": 1793869106.0358946
+}

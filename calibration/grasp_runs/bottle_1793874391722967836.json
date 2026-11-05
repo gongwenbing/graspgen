@@ -1,0 +1,47 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793874391.722975,
+  "execute_requested": true,
+  "reach_only": false,
+  "pick_only": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "random_placement_candidates_xy": [
+    [
+      0.035,
+      -0.615
+    ],
+    [
+      0.095,
+      -0.465
+    ],
+    [
+      0.095,
+      -0.525
+    ],
+    [
+      0.155,
+      -0.525
+    ],
+    [
+      0.025,
+      -0.505
+    ],
+    [
+      0.125,
+      -0.395
+    ],
+    [
+      0.055,
+      -0.395
+    ],
+    [
+      0.225,
+      -0.325
+    ]
+  ],
+  "error": "Previously placed bottle differs from selected source; inspect scene before overwriting",
+  "placed_object_retained": false,
+  "possible_held_object": false,
+  "finished_unix": 1793874397.8908186
+}

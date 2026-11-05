@@ -102,7 +102,7 @@ def main(execution=None):
             # a mismatch rather than silently tilt about a different point.
             tcp=v.get('pregrasp_tcp_base_m');flange=v.get('pregrasp_link6_base_m')
             if tcp is not None and flange is not None and abs(math.dist(tcp,flange)-math.sqrt(sum(x*x for x in tcp_xyz)))>.001:
-                raise ValueError('Tilt requires preview TCP offset 0.1358m')
+                raise ValueError('Preview TCP/link6 offsets disagree with configured TCP')
         return tilt_hover(pose,args.tilt_deg,tcp_xyz=tcp_xyz),js
     try:
         if not math.isfinite(args.tilt_deg) or not 0<=args.tilt_deg<=20:raise ValueError('--tilt-deg must be within 0..20 degrees')

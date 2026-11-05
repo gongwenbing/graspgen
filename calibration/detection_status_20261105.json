@@ -1,0 +1,10 @@
+{
+  "valid": false,
+  "reason": "No eligible grasp candidate",
+  "frame": "base_link",
+  "stamp_sec": 1793869031.9799678,
+  "selected_id": null,
+  "objects": [],
+  "generator": "bottle_cylinder",
+  "processing_age_sec": 0.13721156120300293
+}

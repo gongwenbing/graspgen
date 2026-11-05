@@ -1,0 +1,10 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793276923.5336452,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "No stable bottle within 20s: Vision: Observed bottle height inconsistent with table Z=0 / measured total height",
+  "possible_held_object": false,
+  "finished_unix": 1793276947.3402293
+}

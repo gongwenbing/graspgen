@@ -1,0 +1,10 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793277748.831409,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "No stable bottle within 20s: Vision: Bottle height mismatch in base_link: Z p01=-17.7mm, p99=81.7mm; allowed [-5.0,125.0]mm. Check table plane / image-time hand-eye TF; TCP does not affect this cloud transform",
+  "possible_held_object": false,
+  "finished_unix": 1793277772.636224
+}

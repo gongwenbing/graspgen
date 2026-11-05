@@ -1,0 +1,8 @@
+{
+  "started_unix": 1793276360.5484922,
+  "execute_requested": true,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "TCP changed; empirical correction must be recaptured",
+  "finished_unix": 1793276364.5983303
+}

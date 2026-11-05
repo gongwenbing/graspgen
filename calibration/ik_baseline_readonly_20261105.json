@@ -1,0 +1,151 @@
+{
+  "seed": {
+    "joint1": -1.3088922192406274,
+    "joint2": 0.5024977449416874,
+    "joint3": -0.9088802079760471,
+    "joint4": 0.12276645958528114,
+    "joint5": 1.1287916937273326,
+    "joint6": 0.0,
+    "joint7": 0.0347
+  },
+  "cases": [
+    {
+      "label": "current FK",
+      "collision_check": false,
+      "code": 1,
+      "solution": {
+        "joint1": -1.3088922192406274,
+        "joint2": 0.5024977449416874,
+        "joint3": -0.9088802079760471,
+        "joint4": 0.12276645958528114,
+        "joint5": 1.1287916937273326,
+        "joint6": 0.0,
+        "joint7": 0.0347,
+        "joint8": -0.0347
+      }
+    },
+    {
+      "label": "current FK",
+      "collision_check": true,
+      "code": -31,
+      "solution": null
+    },
+    {
+      "label": "tilt0",
+      "collision_check": false,
+      "code": -31,
+      "solution": null
+    },
+    {
+      "label": "tilt0",
+      "collision_check": true,
+      "code": -31,
+      "solution": null
+    },
+    {
+      "label": "tilt20",
+      "collision_check": false,
+      "code": 1,
+      "solution": {
+        "joint1": -1.2920499697520442,
+        "joint2": 2.0978498669234824,
+        "joint3": -1.5732375988060878,
+        "joint4": 1.1558700622082106e-05,
+        "joint5": 0.7843200701317151,
+        "joint6": -8.887650713875102e-06,
+        "joint7": 0.0347,
+        "joint8": -0.0347
+      }
+    },
+    {
+      "label": "tilt20",
+      "collision_check": true,
+      "code": -31,
+      "solution": null
+    },
+    {
+      "label": "tilt30",
+      "collision_check": false,
+      "code": 1,
+      "solution": {
+        "joint1": -1.2920499694188128,
+        "joint2": 2.005059740356001,
+        "joint3": -1.3412120797412435,
+        "joint4": 1.7334206419067352e-05,
+        "joint5": 0.4705535617154081,
+        "joint6": -1.5423068325447437e-05,
+        "joint7": 0.0347,
+        "joint8": -0.0347
+      }
+    },
+    {
+      "label": "tilt30",
+      "collision_check": true,
+      "code": -31,
+      "solution": null
+    },
+    {
+      "label": "tilt40",
+      "collision_check": false,
+      "code": 1,
+      "solution": {
+        "joint1": -1.2920499334500128,
+        "joint2": 1.9511271186509032,
+        "joint3": -1.1435394865244357,
+        "joint4": 5.127926002961674e-05,
+        "joint5": 0.1522806670891518,
+        "joint6": -4.9905430159596166e-05,
+        "joint7": 0.0347,
+        "joint8": -0.0347
+      }
+    },
+    {
+      "label": "tilt40",
+      "collision_check": true,
+      "code": -31,
+      "solution": null
+    },
+    {
+      "label": "tilt50",
+      "collision_check": false,
+      "code": 1,
+      "solution": {
+        "joint1": -1.292049765849828,
+        "joint2": 1.9404300449543739,
+        "joint3": -0.9784760897936101,
+        "joint4": -4.372968445204891e-05,
+        "joint5": -0.17661850659929293,
+        "joint6": 4.465705863542597e-05,
+        "joint7": 0.0347,
+        "joint8": -0.0347
+      }
+    },
+    {
+      "label": "tilt50",
+      "collision_check": true,
+      "code": -31,
+      "solution": null
+    },
+    {
+      "label": "tilt60",
+      "collision_check": false,
+      "code": 1,
+      "solution": {
+        "joint1": -1.2920495160928531,
+        "joint2": 1.9782390729121828,
+        "joint3": -0.8497598659593097,
+        "joint4": -1.3927316527934216e-05,
+        "joint5": -0.5176767581952703,
+        "joint6": 1.4445453052977773e-05,
+        "joint7": 0.0347,
+        "joint8": -0.0347
+      }
+    },
+    {
+      "label": "tilt60",
+      "collision_check": true,
+      "code": -31,
+      "solution": null
+    }
+  ]
+}

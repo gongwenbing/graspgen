@@ -1,0 +1,115 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793871676.8072243,
+  "execute_requested": false,
+  "reach_only": false,
+  "pick_only": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "random_placement_candidates_xy": [
+    [
+      0.23500000000000001,
+      -0.295
+    ],
+    [
+      0.295,
+      -0.405
+    ],
+    [
+      0.355,
+      -0.425
+    ],
+    [
+      0.385,
+      -0.335
+    ],
+    [
+      0.20500000000000002,
+      -0.355
+    ],
+    [
+      0.405,
+      -0.275
+    ],
+    [
+      0.395,
+      -0.47500000000000003
+    ],
+    [
+      0.335,
+      -0.295
+    ]
+  ],
+  "config": {
+    "schema_version": 1,
+    "diameter_m": 0.032,
+    "total_height_m": 0.12,
+    "body_bottom_m": 0.045,
+    "body_top_m": 0.075,
+    "grasp_height_m": 0.06,
+    "note": "用户实测直径32mm、总高120mm，夹中间60mm；45..75mm为待几何检查的采样区域，不宣称整个瓶身为直筒。",
+    "table_z_m": -0.0118,
+    "table_reference_note": "用户最新实测：机械臂底座底面比瓶子桌面高约11.8mm；瓶身尺寸及夹持高度相对该桌面。"
+  },
+  "tcp": {
+    "translation_m": [
+      0.0,
+      0.0,
+      0.1358
+    ],
+    "translation_verified": false,
+    "orientation_verified": false,
+    "method": "model_fingertip_level_user_selected",
+    "note": "2026-10-29 用户要求恢复135.8mm：指尖高度处两指之间的中心。实物与模型尺寸一致，未经多姿态TCP拟合。",
+    "physical_geometry_user_confirmed": true
+  },
+  "source_snapshot": {
+    "valid": true,
+    "frame": "base_link",
+    "generator": "bottle_cylinder",
+    "stamp_sec": 1793871680.1962166,
+    "selected_id": 0,
+    "objects": [
+      {
+        "schema_version": 1,
+        "diameter_m": 0.032,
+        "total_height_m": 0.12,
+        "body_bottom_m": 0.045,
+        "body_top_m": 0.075,
+        "grasp_height_m": 0.06,
+        "note": "用户实测直径32mm、总高120mm，夹中间60mm；45..75mm为待几何检查的采样区域，不宣称整个瓶身为直筒。",
+        "table_z_m": -0.0118,
+        "table_reference_note": "用户最新实测：机械臂底座底面比瓶子桌面高约11.8mm；瓶身尺寸及夹持高度相对该桌面。",
+        "id": 0,
+        "class": "bottle",
+        "valid": true,
+        "position_semantics": "bottle_grasp_center",
+        "fit_rms_m": 0.001,
+        "arc_deg": 120.0,
+        "center_m": [
+          0.13464630215496184,
+          -0.47047486188252224,
+          0.0482
+        ],
+        "handeye_sha256": "daaafce2c6016320bd61af316c7dcfef160b2fd4c2b6fa59614f55161600e561"
+      }
+    ]
+  },
+  "configuration_sha256": {
+    "/home/zlq/GraspGen/calibration/bottle_geometry.json": "dd1546be619ad93d3ceba123207afe0c6b0771b398e207438d8ee06454eabc92",
+    "/home/zlq/GraspGen/calibration/tcp_config.json": "0c12dd5b3f1e93b21ca316c8fa0b30347710584c43c583c6eddee21ee4210ad0",
+    "/home/zlq/GraspGen/calibration/handeye_result.yaml": "daaafce2c6016320bd61af316c7dcfef160b2fd4c2b6fa59614f55161600e561"
+  },
+  "target_tcp_base_m": [
+    0.13464630215496184,
+    -0.47047486188252224,
+    0.0482
+  ],
+  "direct_grasp": true,
+  "contact_model": "expected diameter ±1.5mm, closing torque <=-0.25Nm; not proof of hold",
+  "collision_model": "target cylinder and existing MoveIt scene; placement support from observed full cloud",
+  "error": "Target collision scene update rejected",
+  "placed_object_retained": false,
+  "possible_held_object": false,
+  "finished_unix": 1793871680.3524048
+}

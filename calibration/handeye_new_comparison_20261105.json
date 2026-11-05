@@ -1,0 +1,94 @@
+{
+  "sample_count": 32,
+  "table_constraint_rank": 5,
+  "table_constraint_condition_number": 10.938238991577688,
+  "table_constrained_translation_m": [
+    -0.07467251674831255,
+    -0.010381108846693743,
+    0.06001365348429668
+  ],
+  "table_constrained_reference_m": [
+    0.06823563884491984,
+    -0.4193826777088256,
+    0.0
+  ],
+  "table_constrained_held_out_rms_mm": 7.789370849792155,
+  "table_constrained_max_error_mm": 16.705745755197917,
+  "unconstrained_reference_z_mm": -10.134663933771884,
+  "unconstrained_held_out_rms_mm": 4.584452606530534,
+  "active_calibration_changed": false,
+  "independent_pose_results_m": [
+    {
+      "file": "marker_depth_inspection_20261105.json",
+      "old": [
+        0.07090253120337284,
+        -0.4124414559860463,
+        -0.02416061076915707
+      ],
+      "new": [
+        0.07276800855310954,
+        -0.4217544641203479,
+        -0.013228468139089372
+      ],
+      "table_constrained": [
+        0.0661077660236287,
+        -0.418477115960878,
+        -0.0050537071692520474
+      ]
+    },
+    {
+      "file": "marker_depth_pose1.json",
+      "old": [
+        0.06548457581580473,
+        -0.42016244523498425,
+        -0.015792298903323565
+      ],
+      "new": [
+        0.07185003001048265,
+        -0.4245107841876208,
+        -0.009254363713348535
+      ],
+      "table_constrained": [
+        0.06813452075676701,
+        -0.4228784466008207,
+        0.0010148632980741534
+      ]
+    },
+    {
+      "file": "marker_depth_pose2.json",
+      "old": [
+        0.06727597006529282,
+        -0.41983541081460696,
+        -0.01821460691163937
+      ],
+      "new": [
+        0.07262722668929934,
+        -0.4228852028154785,
+        -0.012018510320449455
+      ],
+      "table_constrained": [
+        0.06905298739130823,
+        -0.41970794788922605,
+        -0.0020658009909170494
+      ]
+    }
+  ],
+  "old_independent_max_pairwise_mm": 12.60938376954811,
+  "old_independent_z_mm": [
+    -24.16061076915707,
+    -15.792298903323566,
+    -18.21460691163937
+  ],
+  "new_independent_max_pairwise_mm": 4.922752370845757,
+  "new_independent_z_mm": [
+    -13.228468139089372,
+    -9.254363713348535,
+    -12.018510320449455
+  ],
+  "table_constrained_independent_max_pairwise_mm": 7.765757765170162,
+  "table_constrained_independent_z_mm": [
+    -5.053707169252047,
+    1.0148632980741534,
+    -2.065800990917049
+  ]
+}

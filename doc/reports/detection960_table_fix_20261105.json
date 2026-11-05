@@ -1,0 +1,11 @@
+{
+  "unit_tests": 141,
+  "real_moveit_table_roundtrip": "passed in isolated domain197, no hardware",
+  "synthetic_rgbd_pipeline": "passed with imgsz960",
+  "same_real_rgb_bottle_score_640": 0.2743,
+  "same_real_rgb_bottle_score_960": 0.8211,
+  "confidence_threshold": 0.45,
+  "operational_imgsz_default": 960,
+  "hardware_motion_requested": false,
+  "runtime_nodes_need_restart": true
+}

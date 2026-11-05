@@ -1,0 +1,8 @@
+{
+  "started_unix": 1793082949.1528778,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "Require empty opened gripper before a new grasp; never start while holding bottle",
+  "finished_unix": 1793082952.2232742
+}

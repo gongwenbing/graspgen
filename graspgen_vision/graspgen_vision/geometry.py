@@ -5,6 +5,24 @@ from scipy.spatial import cKDTree
 from scipy.spatial.transform import Rotation
 
 
+def mask_depth_statistics(mask, depth, min_depth=.35, max_depth=1.5):
+    """Measured fractions inside an eroded instance mask; no range changes."""
+    if mask.shape != depth.shape or depth.ndim != 2:
+        raise ValueError('Mask/depth dimensions differ')
+    interior = cv2.erode(mask.astype(np.uint8), np.ones((3,3),np.uint8)).astype(bool)
+    values = np.asarray(depth)[interior]
+    if not len(values):
+        return dict(mask_pixels=0, missing_fraction=1., too_near_fraction=0.,
+                    too_far_fraction=0., valid_fraction=0., positive_depth_median_m=None)
+    positive = np.isfinite(values) & (values > 0)
+    valid = positive & (values >= min_depth) & (values <= max_depth)
+    return dict(mask_pixels=len(values), missing_fraction=float(np.mean(~positive)),
+                too_near_fraction=float(np.mean(positive & (values < min_depth))),
+                too_far_fraction=float(np.mean(positive & (values > max_depth))),
+                valid_fraction=float(np.mean(valid)),
+                positive_depth_median_m=float(np.median(values[positive])) if positive.any() else None)
+
+
 def object_points(mask, depth, bgr, k, distortion=(), min_depth=.15, max_depth=1.5,
                   depth_band=.08, max_points=12000, min_points=80,
                   min_valid_fraction=.6, min_component_fraction=.3):
@@ -17,7 +35,10 @@ def object_points(mask, depth, bgr, k, distortion=(), min_depth=.15, max_depth=1
     area=int(np.count_nonzero(interior))
     coverage=np.count_nonzero(valid)/max(area,1)
     if coverage<min_valid_fraction:
-        raise ValueError(f'Insufficient mask depth coverage {coverage:.1%}; require {min_valid_fraction:.0%} within {min_depth:.2f}..{max_depth:.2f}m. Move to a valid observation distance; do not use isolated background depths')
+        stats=mask_depth_statistics(mask,depth,min_depth,max_depth)
+        median=stats['positive_depth_median_m']
+        detail=f" Missing={stats['missing_fraction']:.1%}, too_near={stats['too_near_fraction']:.1%}, too_far={stats['too_far_fraction']:.1%}, positive_depth_median={median:.3f}m." if median is not None else ' No positive depth inside mask.'
+        raise ValueError(f'Insufficient mask depth coverage {coverage:.1%}; require {min_valid_fraction:.0%} within {min_depth:.2f}..{max_depth:.2f}m. Move to a valid observation distance; do not use isolated background depths'+detail)
     if np.count_nonzero(valid)<min_points:raise ValueError('Insufficient valid mask depth')
     median=float(np.median(depth[valid]))
     valid &= np.abs(depth-median)<=depth_band
@@ -67,3 +88,13 @@ def pca_grasp(points,max_opening=.07,clearance=.005):
     if opening>max_opening:raise ValueError(f'Observed closing width {opening:.3f} m exceeds gripper {max_opening:.3f} m')
     return {'center':center,'quaternion':Rotation.from_matrix(axes).as_quat(),
             'extent':extent,'opening':opening,'axes':axes}
+
+
+def scene_points(depth,k,distortion=(),min_depth=.35,max_depth=1.5,stride=3):
+    """Unsegmented observed scene for tabletop support, sampled on RGB-D grid."""
+    v,u=np.mgrid[0:depth.shape[0]:stride,0:depth.shape[1]:stride]
+    z=depth[v,u];valid=np.isfinite(z)&(z>=min_depth)&(z<=max_depth)
+    u=u[valid];v=v[valid];z=z[valid]
+    uv=np.stack([u,v],axis=1).astype(float).reshape(-1,1,2)
+    rays=cv2.undistortPoints(uv,np.asarray(k,dtype=float),np.asarray(distortion,dtype=float) if len(distortion) else None).reshape(-1,2) if len(u) else np.empty((0,2))
+    return np.column_stack([rays*z[:,None],z])

@@ -1,3 +1,4 @@
+from .speed_settings import GRIPPER_OPENING_CAP
 import json
 import math
 import threading
@@ -42,7 +43,7 @@ class TrajectoryBridge(Node):
         self.model = Model(self.declare_parameter('model_path', str(Path(get_package_share_directory('piper_description')) / 'urdf/piper_description.urdf')).value)
         self.timeout = self.declare_parameter('feedback_timeout', 0.3).value
         self.arm_speed = self.declare_parameter('max_arm_velocity', 0.2).value
-        self.jaw_speed = self.declare_parameter('max_jaw_velocity', 0.005).value
+        self.jaw_speed = self.declare_parameter('max_jaw_velocity', GRIPPER_OPENING_CAP/2).value
         self.start_tolerance = self.declare_parameter('start_tolerance', 0.02).value
         self.goal_tolerance = self.declare_parameter('goal_tolerance', 0.01).value
         self.jaw_tolerance = self.declare_parameter('jaw_tolerance', 0.0005).value

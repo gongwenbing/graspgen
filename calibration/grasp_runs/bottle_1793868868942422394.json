@@ -1,0 +1,10 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793868868.9424307,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "Execution requires graspgen_table and camera/mount attached to link6; run add_table/add_camera with gates closed first",
+  "possible_held_object": false,
+  "finished_unix": 1793868872.9953587
+}

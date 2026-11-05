@@ -1,0 +1,58 @@
+{
+  "sample_count": 20,
+  "flange_center_height_mm": 325.3404918126589,
+  "flange_xyz_mm": [
+    -1.1816250765422296,
+    -78.24968910738525,
+    325.3404918126589
+  ],
+  "tcp_height_mm": 224.11927015026575,
+  "joint_degrees": [
+    -83.922,
+    32.208999999999996,
+    -42.43,
+    -6.644,
+    63.911,
+    0.0
+  ],
+  "flange_peak_to_peak_mm": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "latest_hardware": {
+    "gripper_effort_nm": -0.04,
+    "gripper_enabled": true,
+    "gripper_fault": false,
+    "gripper_feedback_age_sec": 0.0016064643859863281,
+    "read_only": false,
+    "outputs_enabled": false,
+    "ctrl_mode": 2,
+    "teach_status": 2,
+    "err_code": 0,
+    "motors_enabled": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "joint_degrees": [
+      -83.922,
+      32.208999999999996,
+      -42.43,
+      -6.644,
+      63.911,
+      0.0
+    ],
+    "command_received_count": 3473,
+    "sdk_command_call_count": 3473,
+    "command_rejected_count": 0,
+    "last_command_error": "",
+    "gripper_opening_m": 0.0693,
+    "reason": "Teaching/recording mode active; exit it manually before enabling control"
+  },
+  "read_only": true,
+  "table_assumed_base_z_m": 0
+}

@@ -1,0 +1,12 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793871372.0416667,
+  "execute_requested": false,
+  "reach_only": false,
+  "pick_only": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "placed_object_retained": false,
+  "possible_held_object": false,
+  "finished_unix": 1793871372.0456786
+}

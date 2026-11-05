@@ -4,7 +4,7 @@
   <description>Explicitly gated PiPER MoveIt trajectory execution and passive CAN feedback</description>
   <maintainer email="maintainer@example.com">GraspGen</maintainer><license>Apache-2.0</license>
   <buildtool_depend>ament_python</buildtool_depend>
-  <exec_depend>rclpy</exec_depend><exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>rclpy</exec_depend><exec_depend>sensor_msgs</exec_depend><exec_depend>sensor_msgs_py</exec_depend>
   <exec_depend>std_msgs</exec_depend><exec_depend>std_srvs</exec_depend>
   <exec_depend>moveit_msgs</exec_depend><exec_depend>control_msgs</exec_depend><exec_depend>trajectory_msgs</exec_depend>
   <exec_depend>ament_index_python</exec_depend><exec_depend>python3-can</exec_depend>

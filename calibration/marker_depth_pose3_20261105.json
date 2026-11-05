@@ -1,0 +1,81 @@
+{
+  "read_only": true,
+  "marker_id": 0,
+  "marker_length_m": 0.095,
+  "sample_count": 0,
+  "reliable_sample_count": 0,
+  "failure_counts": {
+    "Marker ID 0 not detected": 111
+  },
+  "samples": [],
+  "latest_status": {
+    "hardware": {
+      "gripper_effort_nm": -0.022,
+      "gripper_enabled": true,
+      "gripper_fault": false,
+      "gripper_feedback_age_sec": 0.005303859710693359,
+      "read_only": false,
+      "outputs_enabled": false,
+      "ctrl_mode": 2,
+      "teach_status": 2,
+      "err_code": 0,
+      "motors_enabled": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "joint_degrees": [
+        -83.922,
+        32.208999999999996,
+        -42.43,
+        -6.592,
+        64.318,
+        0.0
+      ],
+      "command_received_count": 3473,
+      "sdk_command_call_count": 3473,
+      "command_rejected_count": 0,
+      "last_command_error": "",
+      "gripper_opening_m": 0.0693,
+      "reason": "Teaching/recording mode active; exit it manually before enabling control"
+    },
+    "vision": {
+      "valid": false,
+      "reason": "Insufficient mask depth coverage 7.0%; require 60% within 0.35..1.50m. Move to a valid observation distance; do not use isolated background depths Missing=92.6%, too_near=0.0%, too_far=0.4%, positive_depth_median=0.465m.",
+      "frame": "base_link",
+      "stamp_sec": 1793867030.8410351,
+      "selected_id": null,
+      "objects": [
+        {
+          "id": 0,
+          "class": "bottle",
+          "confidence": 0.7439063787460327,
+          "cloud_valid": false,
+          "depth_diagnostics": {
+            "mask_pixels": 2405,
+            "missing_fraction": 0.925987525987526,
+            "too_near_fraction": 0.0,
+            "too_far_fraction": 0.004158004158004158,
+            "valid_fraction": 0.06985446985446986,
+            "positive_depth_median_m": 0.4650000333786011
+          },
+          "reason": "Insufficient mask depth coverage 7.0%; require 60% within 0.35..1.50m. Move to a valid observation distance; do not use isolated background depths Missing=92.6%, too_near=0.0%, too_far=0.4%, positive_depth_median=0.465m.",
+          "valid": false
+        }
+      ],
+      "generator": "bottle_cylinder",
+      "processing_age_sec": 0.10412263870239258
+    }
+  },
+  "images_received": {
+    "rgb": 40,
+    "depth": 40
+  },
+  "camera_info_received": [
+    "depth",
+    "rgb"
+  ]
+}

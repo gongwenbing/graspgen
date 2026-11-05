@@ -3,25 +3,25 @@
   "object_id": "graspgen_camera_and_mount",
   "link": "link6",
   "dimensions_m": [
-    0.036,
-    0.131,
-    0.056
+    0.034,
+    0.129,
+    0.054000000000000006
   ],
   "center_link6_m": [
-    -0.058844428311674496,
-    0.0017861844605250518,
-    0.06191735384302878
+    -0.05929099784096967,
+    0.004706704664770238,
+    0.05903248385739125
   ],
   "quaternion_link6_xyzw": [
-    -0.014114217180280463,
-    -0.696859081097917,
-    -0.019760025434783692,
-    0.716796868966077
+    -0.02978737175752376,
+    -0.7038674496151055,
+    -0.031375370971833856,
+    0.7090126317298485
   ],
   "physical_placement_verified": false,
   "current_state_collision_free": true,
   "contacts": [],
-  "padding_each_side_m": 0.003,
+  "padding_each_side_m": 0.002,
   "no_motion_requested": true,
   "model": "combined measured camera/mount envelope; nominal D455 case offset"
 }

@@ -1,0 +1,42 @@
+[
+  {
+    "candidate": "vertical_radial",
+    "error_code": -31,
+    "solution": null
+  },
+  {
+    "candidate": "vertical_tangent",
+    "error_code": -31,
+    "solution": null
+  },
+  {
+    "candidate": "tilt_+10",
+    "error_code": -31,
+    "solution": null
+  },
+  {
+    "candidate": "tilt_+15",
+    "error_code": -31,
+    "solution": null
+  },
+  {
+    "candidate": "tilt_+20",
+    "error_code": -31,
+    "solution": null
+  },
+  {
+    "candidate": "tilt_-10",
+    "error_code": -31,
+    "solution": null
+  },
+  {
+    "candidate": "tilt_-15",
+    "error_code": -31,
+    "solution": null
+  },
+  {
+    "candidate": "tilt_-20",
+    "error_code": -31,
+    "solution": null
+  }
+]

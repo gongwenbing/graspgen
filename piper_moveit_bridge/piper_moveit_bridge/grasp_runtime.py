@@ -1,4 +1,4 @@
-from .speed_settings import APPROACH_VELOCITY_SCALE,APPROACH_ACCELERATION_SCALE,ARM_EXECUTION_CAP,CARTESIAN_LINEAR_SPEED,GRIPPER_TOTAL_SPEED,GRIPPER_MIN_DURATION
+from .speed_settings import APPROACH_VELOCITY_SCALE,APPROACH_ACCELERATION_SCALE,ARM_EXECUTION_CAP,CARTESIAN_LINEAR_SPEED,GRIPPER_OPEN_SPEED,GRIPPER_CLOSE_SPEED,GRIPPER_MIN_DURATION
 """Shared ROS helpers. Construction and planning never send actuator targets."""
 import copy
 import hashlib
@@ -9,16 +9,21 @@ from pathlib import Path
 from types import SimpleNamespace
 import numpy as np
 import rclpy
-from sensor_msgs.msg import JointState
+from sensor_msgs.msg import JointState,PointCloud2
+from sensor_msgs_py import point_cloud2
+from tf2_ros import Buffer,TransformListener
+from rclpy.time import Time
+from scipy.spatial.transform import Rotation
 from std_msgs.msg import String
 from moveit_msgs.msg import DisplayTrajectory,Constraints,PositionConstraint,OrientationConstraint,BoundingVolume,RobotState
 from shape_msgs.msg import SolidPrimitive
-from geometry_msgs.msg import Pose
-from moveit_msgs.srv import GetPositionFK,GetMotionPlan,GetCartesianPath,GetStateValidity
+from geometry_msgs.msg import Pose,PoseStamped
+from moveit_msgs.srv import GetPositionFK,GetMotionPlan,GetCartesianPath,GetStateValidity,GetPositionIK
 from rclpy.action import ActionClient
 from control_msgs.action import FollowJointTrajectory
 from control_msgs.msg import JointTolerance
 from .grasp_contact import contact_matches
+from .gripper_timing import gripper_points
 from trajectory_msgs.msg import JointTrajectoryPoint
 from .model import ARM,Model,validate_trajectory
 from .execute_pregrasp import HoverExecution
@@ -40,7 +45,11 @@ def atomic_json(path,data):
 class Runtime:
     def __init__(self,node,execute=False):
         self.node=node;self.execute=execute;self.states=deque(maxlen=1);self.hardware=deque(maxlen=1);self.ready=deque(maxlen=1)
-        self.preview=deque(maxlen=1);self.vision=deque(maxlen=1);self.subs=[]
+        self.subs=[]
+        self.scene_clouds=deque(maxlen=10)
+        self.tf=Buffer();self.tf_listener=TransformListener(self.tf,node)
+        self.subs.append(node.create_subscription(PointCloud2,'/graspgen/scene_cloud',lambda m:self.scene_clouds.append((time.monotonic(),m)),2))
+        self.preview=deque(maxlen=1);self.vision=deque(maxlen=1)
         for kind,topic,dst in [(JointState,'/joint_states',self.states),(String,'/piper_hardware/status',self.hardware),
              (String,'/piper_bridge/readiness',self.ready),(String,'/grasp_preview/status',self.preview),(String,'/graspgen/status',self.vision)]:
             self.subs.append(node.create_subscription(kind,topic,lambda m,dst=dst:dst.append((time.monotonic(),m)),1))
@@ -48,10 +57,11 @@ class Runtime:
         self.runner=HoverExecution();self.runner.motion_name='Automatic local grasp'
         self.fk=node.create_client(GetPositionFK,'/compute_fk')
         self.cart=node.create_client(GetCartesianPath,'/compute_cartesian_path')
+        self.ik=node.create_client(GetPositionIK,'/compute_ik')
         self.motion=node.create_client(GetMotionPlan,'/plan_kinematic_path')
         self.valid=node.create_client(GetStateValidity,'/check_state_validity')
         self.runner.prepare(node,self.wait,need_action=execute)
-        for c in [self.fk,self.cart,self.motion,self.valid]:
+        for c in [self.fk,self.cart,self.motion,self.valid,self.ik]:
             if not c.wait_for_service(timeout_sec=8):raise RuntimeError('MoveIt planning service missing')
         until=time.monotonic()+3;self.wait(lambda:time.monotonic()>=until,5)
         self.wait(lambda:all([self.states,self.hardware,self.ready]))
@@ -78,7 +88,7 @@ class Runtime:
         js=self.states[-1][1];stamp=js.header.stamp.sec+js.header.stamp.nanosec*1e-9
         if not -.1<=self.node.get_clock().now().nanoseconds*1e-9-stamp<=.3:raise ValueError('Stale joint timestamp')
         h=json.loads(self.hardware[-1][1].data);b=json.loads(self.ready[-1][1].data)
-        if h.get('reason') or h.get('ctrl_mode')!=1 or h.get('teach_status')!=0 or h.get('err_code')!=0:
+        if h.get('reason') or h.get('ctrl_mode') not in (0,1) or h.get('teach_status')!=0 or h.get('err_code')!=0:
             raise ValueError('Hardware not healthy: '+json.dumps(h))
         if b.get('active'):raise ValueError('Trajectory bridge still reports an active action')
         if self.execute:self.runner.check_hardware(h,b)
@@ -129,7 +139,30 @@ class Runtime:
         if np.linalg.norm(pose_array(end)[0]-pose_array(target)[0])>.001:raise ValueError('Cartesian endpoint mismatch')
         return r.solution
 
+    def scene_points_at(self,stamp):
+        matches=[m for received,m in self.scene_clouds if abs(m.header.stamp.sec+m.header.stamp.nanosec*1e-9-stamp)<1e-6 and time.monotonic()-received<1.5]
+        if not matches:raise ValueError('No matching full scene cloud for random placement; restart updated vision')
+        cloud=matches[-1]
+        self.wait(lambda:self.tf.can_transform('base_link',cloud.header.frame_id,Time.from_msg(cloud.header.stamp)),1,error='Scene image-time TF unavailable')
+        tf=self.tf.lookup_transform('base_link',cloud.header.frame_id,Time.from_msg(cloud.header.stamp))
+        q=tf.transform.rotation;t=tf.transform.translation
+        rows=list(point_cloud2.read_points(cloud,field_names=('x','y','z'),skip_nans=True))
+        points=np.asarray([list(p) for p in rows],dtype=float)
+        if points.ndim!=2 or points.shape[1]!=3:raise ValueError('Empty full scene cloud')
+        return Rotation.from_quat([q.x,q.y,q.z,q.w]).apply(points)+[t.x,t.y,t.z]
+
+    def pose_ik(self,start,target):
+        req=GetPositionIK.Request();q=req.ik_request;q.group_name='arm';q.ik_link_name='link6'
+        q.robot_state.joint_state=start;q.robot_state.is_diff=True;q.avoid_collisions=True
+        q.pose_stamped=PoseStamped(pose=copy.deepcopy(target));q.pose_stamped.header.frame_id='base_link'
+        q.timeout.sec=0;q.timeout.nanosec=200000000
+        r=self.call(self.ik,req)
+        return r.error_code.val==1,r.error_code.val
+
     def hover_plan(self,start,target):
+        return self.pose_plan(start,target,label='Hover')
+
+    def pose_plan(self,start,target,label='Direct grasp',keep_orientation=False):
         req=GetMotionPlan.Request();m=req.motion_plan_request;m.group_name='arm';m.start_state.joint_state=start;m.start_state.is_diff=True
         m.allowed_planning_time=10.;m.num_planning_attempts=3;m.max_velocity_scaling_factor=APPROACH_VELOCITY_SCALE;m.max_acceleration_scaling_factor=APPROACH_ACCELERATION_SCALE
         c=Constraints();pc=PositionConstraint();pc.header.frame_id='base_link';pc.link_name='link6';pc.weight=1.
@@ -137,11 +170,39 @@ class Runtime:
         oc=OrientationConstraint();oc.header.frame_id='base_link';oc.link_name='link6';oc.orientation=target.orientation;oc.weight=1.
         oc.absolute_x_axis_tolerance=.005;oc.absolute_y_axis_tolerance=.005;oc.absolute_z_axis_tolerance=.005
         c.position_constraints=[pc];c.orientation_constraints=[oc];m.goal_constraints=[c]
-        r=self.call(self.motion,req).motion_plan_response
-        if r.error_code.val!=1:raise ValueError(f'Hover planning failed: {r.error_code.val}')
+        if keep_orientation:
+            upright=copy.deepcopy(oc);upright.absolute_x_axis_tolerance=.04;upright.absolute_y_axis_tolerance=.04;upright.absolute_z_axis_tolerance=.04
+            m.path_constraints=Constraints(orientation_constraints=[upright])
+        for attempt in range(3):
+            r=self.call(self.motion,req).motion_plan_response
+            if r.error_code.val!=-2:break
+            if attempt<2:
+                print(f'{label}: MoveIt rejected invalid/colliding path; retry {attempt+2}/3 with same target and collision checks',flush=True)
+        if r.error_code.val!=1:
+            detail=' (invalid path; inspect MoveIt collision contacts)' if r.error_code.val==-2 else ''
+            raise ValueError(f'{label} planning failed: {r.error_code.val}'+detail)
+        # Uniformly slow the MoveIt timing to the same limits enforced by the
+        # bridge, including supplied derivatives and each segment's mean speed.
+        trajectory=r.trajectory.joint_trajectory
+        previous=self.model.feedback(start);last_time=0.;factor=1.
+        for point in trajectory.points:
+            stamp=point.time_from_start.sec+point.time_from_start.nanosec*1e-9
+            for i,name in enumerate(trajectory.joint_names):
+                cap=min(ARM_EXECUTION_CAP,self.model.limits[name][2])
+                if point.velocities:factor=max(factor,abs(point.velocities[i])/cap)
+                if stamp>last_time:factor=max(factor,abs(point.positions[i]-previous[name])/((stamp-last_time)*cap))
+                previous[name]=point.positions[i]
+            last_time=stamp
+        if factor>1.:
+            factor*=1.001
+            for point in trajectory.points:
+                ns=round((point.time_from_start.sec*1e9+point.time_from_start.nanosec)*factor)
+                point.time_from_start.sec,point.time_from_start.nanosec=divmod(ns,1000000000)
+                point.velocities=[v/factor for v in point.velocities]
+                point.accelerations=[a/factor**2 for a in point.accelerations]
         self.validate(r.trajectory,start)
         final=self.pose(self.state_after(start,r.trajectory.joint_trajectory));a,ra=pose_array(final);b,rb=pose_array(target)
-        if np.linalg.norm(a-b)>.002 or (ra.inv()*rb).magnitude()>.015:raise ValueError('Hover endpoint mismatch')
+        if np.linalg.norm(a-b)>.002 or (ra.inv()*rb).magnitude()>.015:raise ValueError(f'{label} endpoint mismatch')
         return r.trajectory
 
     def valid_state(self,js):
@@ -174,13 +235,30 @@ class Runtime:
         self.wait_idle_after_result()
 
     def close_gripper(self,target,contact=None):
+        result=self._move_gripper(target,contact=contact,closing=True)
+        if contact is not None:self.runner.contact_guard=lambda h:contact_matches(h,contact)
+        return result
+
+    def open_gripper(self,target):
+        result=self._move_gripper(target,closing=False)
+        self.runner.contact_guard=None
+        return result
+
+    def _move_gripper(self,target,contact=None,closing=True):
         start,q=self.inputs();opening=q['joint7']*2
-        if not .005<=target<opening<=.07:raise ValueError('Invalid close target/current opening')
+        if not .005<=target<=.07 or not 0<=opening<=.07:raise ValueError('Invalid gripper target/current opening')
+        if closing and not target<opening:raise ValueError('Invalid close target/current opening')
+        if not closing and not target>opening:raise ValueError('Invalid open target/current opening')
         if not self.gripper.wait_for_server(timeout_sec=5):raise RuntimeError('Gripper action unavailable')
         goal=FollowJointTrajectory.Goal();goal.trajectory.joint_names=['joint7']
-        duration=max(GRIPPER_MIN_DURATION,(opening-target)/GRIPPER_TOTAL_SPEED)
-        a=JointTrajectoryPoint(positions=[opening/2]);b=JointTrajectoryPoint(positions=[target/2]);b.time_from_start.sec=math_ceil(duration)
-        goal.trajectory.points=[a,b]
+        requested_speed=GRIPPER_CLOSE_SPEED if closing else GRIPPER_OPEN_SPEED
+        points,duration,effective=gripper_points(opening,target,requested_speed,GRIPPER_MIN_DURATION,
+                                               2*self.model.limits['joint7'][2])
+        goal.trajectory.points=points
+        print(f"Gripper {'close' if closing else 'open'}: {opening*1000:.1f} -> {target*1000:.1f}mm; "
+              f"duration={duration:.3f}s, speed cap={effective*1000:.1f}mm/s",flush=True)
+        if effective<requested_speed:
+            print('Requested gripper speed exceeds configured pipeline cap; using bounded timing',flush=True)
         if contact is not None:
             gap=contact['observed_opening_m']-target
             if not .001<gap<=.005 or abs(contact['command_opening_m']-target)>1e-6:
@@ -191,6 +269,7 @@ class Runtime:
             if h.get('gripper_fault') or not h.get('gripper_enabled') or not bstate.get('gripper_contact_tolerance_supported'):
                 raise ValueError('Require enabled healthy gripper and updated contact-aware bridge')
             goal.goal_tolerance=[JointTolerance(name='joint7',position=min(.003,(gap+.001)/2))]
+        self.gripper_finished=False;self.gripper_handle=None
         f=self.gripper.send_goal_async(goal);self.wait(f.done,8);self.gripper_handle=f.result()
         if not self.gripper_handle.accepted:raise RuntimeError('Gripper goal rejected')
         f=self.gripper_handle.get_result_async();end=time.monotonic()+duration+12
@@ -228,7 +307,3 @@ class Runtime:
             except Exception as exc:print(f'Gripper cancellation not confirmed: {exc}')
         self.runner.close()
 
-
-def math_ceil(value):
-    import math
-    return math.ceil(value)

@@ -23,11 +23,13 @@ def generate_launch_description():
         DeclareLaunchArgument('can_port',default_value='can0'),
         DeclareLaunchArgument('sdk_path',default_value=str(Path.home()/'piper_sdk')),
         DeclareLaunchArgument('rviz',default_value='true'),
+        DeclareLaunchArgument('generator',default_value='auto'),
+        DeclareLaunchArgument('imgsz',default_value='960'),
         include('graspgen_camera','rgbd.launch.py',condition=IfCondition(LaunchConfiguration('start_camera'))),
         include('piper_moveit_bridge','moveit_hardware.launch.py',{
             'sdk_path':LaunchConfiguration('sdk_path'),'can_port':LaunchConfiguration('can_port'),
             'read_only':'false','rviz':LaunchConfiguration('rviz')}),
-        include('graspgen_vision','vision.launch.py'),
+        include('graspgen_vision','vision.launch.py',{'generator':LaunchConfiguration('generator'),'imgsz':LaunchConfiguration('imgsz')}),
         Node(package='graspgen_handeye',executable='publish_mount',output='screen',parameters=[{'calibration_file':str(root/'calibration/handeye_result.yaml')}]),
         include('graspgen_handeye','preview.launch.py',{'rviz':'false'}),
         RegisterEventHandler(OnProcessExit(target_action=table,on_exit=lambda event,context:

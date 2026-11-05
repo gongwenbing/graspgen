@@ -1,5 +1,9 @@
 # PiPER MoveIt 真机桥接（ROS2 Humble）
 
+> 2026-11-05：启用32样本新手眼标定；实测桌面Z=-11.8mm、瓶子夹持中心Z=48.2mm，TCP仍为135.8mm。需重启完整系统以同步TF和碰撞场景，详见瓶身几何抓取说明。
+
+> 2026-10-28 更新：已拆分独立抓取生成节点，新增32mm直径/120mm高度瓶子的圆柱拟合与MoveIt抓取。2026-10-29按用户要求恢复135.8mm指尖高度TCP；旧经验模式与新瓶身拟合模式仍分别使用。完整启动、参数、规划/执行和限制见[瓶身几何抓取说明](../doc/BOTTLE_GEOMETRY_ROS2.md)。
+
 本包提供 `/arm_controller/follow_joint_trajectory` 和
 `/gripper_controller/follow_joint_trajectory`，把 MoveIt 轨迹按时间插值为 PiPER
 关节命令，并以真实反馈判定到位。硬件启动不使用 GenericSystem，也不需要旧 PiPER 控制节点。

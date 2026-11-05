@@ -47,3 +47,12 @@ def test_d455_near_range_rejected_with_operating_limit():
     depth=np.full((40,40),.25,np.float32)
     with pytest.raises(ValueError,match='coverage'):
         object_points(np.ones((40,40),bool),depth,np.zeros((40,40,3),np.uint8),np.array([[500.,0,20],[0,500,20],[0,0,1]]),min_depth=.35)
+
+
+def test_depth_diagnostics_partitions_missing_near_far_and_valid():
+    from graspgen_vision.geometry import mask_depth_statistics
+    depth=np.tile([0.,.30,.45,2.],(12,3))
+    stats=mask_depth_statistics(np.ones(depth.shape,bool),depth,.35,1.5)
+    for field in ('missing_fraction','too_near_fraction','too_far_fraction','valid_fraction'):
+        assert stats[field]==pytest.approx(.25)
+    assert stats['positive_depth_median_m']==pytest.approx(.45)

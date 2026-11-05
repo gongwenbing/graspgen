@@ -1,0 +1,69 @@
+{
+  "hardware_samples": 222,
+  "hardware_latest": {
+    "gripper_effort_nm": -0.019,
+    "gripper_enabled": true,
+    "gripper_fault": false,
+    "gripper_feedback_age_sec": 0.0027129650115966797,
+    "read_only": false,
+    "outputs_enabled": false,
+    "ctrl_mode": 0,
+    "teach_status": 0,
+    "err_code": 0,
+    "motors_enabled": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "joint_degrees": [
+      -81.44600000000001,
+      28.871000000000002,
+      -29.196,
+      4.41,
+      42.105000000000004,
+      -7.937
+    ],
+    "command_received_count": 0,
+    "sdk_command_call_count": 0,
+    "command_rejected_count": 0,
+    "last_command_error": "",
+    "gripper_opening_m": -0.0011,
+    "reason": "Gripper feedback exceeds configured measurement tolerance"
+  },
+  "vision": {
+    "valid": false,
+    "reason": "Insufficient mask depth coverage 6.3%; require 60% within 0.35..1.50m. Move to a valid observation distance; do not use isolated background depths",
+    "frame": "base_link",
+    "stamp_sec": 1793862325.3408885,
+    "selected_id": null,
+    "objects": [
+      {
+        "id": 0,
+        "class": "bottle",
+        "confidence": 0.6943405270576477,
+        "cloud_valid": false,
+        "reason": "Insufficient mask depth coverage 6.3%; require 60% within 0.35..1.50m. Move to a valid observation distance; do not use isolated background depths",
+        "valid": false
+      }
+    ],
+    "generator": "bottle_cylinder",
+    "processing_age_sec": 0.1498103141784668
+  },
+  "ready": {
+    "gripper_contact_tolerance_supported": true,
+    "execution_enabled": false,
+    "active": false,
+    "reason": "Gripper feedback exceeds configured measurement tolerance"
+  },
+  "gripper_width_mm_min_median_max": [
+    -1.1,
+    -1.1,
+    -1.1
+  ],
+  "rgb_depth_delta_sec": 0.0,
+  "depth_encoding": "16UC1",
+  "rgb_frame": "camera_color_optical_frame"
+}

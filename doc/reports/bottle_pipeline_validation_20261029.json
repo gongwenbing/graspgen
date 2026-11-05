@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-29",
+  "unit_tests_passed": 118,
+  "isolated_ros_checks": [
+    "RGB-D segmentation -> cloud -> independent PCA generator",
+    "synthetic cylinder + exact metadata matching + image-time TF -> base-frame grip centre",
+    "130.8mm TCP preview and invalid candidate clearing"
+  ],
+  "build": "graspgen_vision, graspgen_handeye, piper_moveit_bridge: 3 packages finished",
+  "installed_runtime_matches_source": true,
+  "launch_description_checks": [
+    "vision.launch.py --show-args",
+    "grasp_system.launch.py --show-args"
+  ],
+  "physical_robot_motion_requested": false,
+  "real_bottle_fit_and_grasp_verified": false,
+  "known_limits": [
+    "Same measured upright 32mm diameter /120mm high bottle on base_link Z=0 table",
+    "Original 135.8mm empirical profile intentionally retained and rejected with new TCP",
+    "Synthetic ROS checks ran in isolated domains; cross-process DDS/real camera/MoveIt collision preflight still require live verification"
+  ]
+}

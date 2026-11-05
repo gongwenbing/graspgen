@@ -8,7 +8,8 @@ from piper_moveit_bridge import speed_settings as speed
 def test_stage_speeds_remain_inside_existing_gateway_limits():
     assert .2*speed.APPROACH_VELOCITY_SCALE<=speed.ARM_EXECUTION_CAP<=.2
     assert 0<speed.CARTESIAN_JOINT_SPEED<=speed.ARM_EXECUTION_CAP
-    assert 0<speed.GRIPPER_TOTAL_SPEED<=.01
+    assert 0<speed.GRIPPER_OPEN_SPEED<=speed.GRIPPER_OPENING_CAP==.02
+    assert 0<speed.GRIPPER_CLOSE_SPEED<=speed.GRIPPER_OPENING_CAP
     assert 0<speed.APPROACH_ACCELERATION_SCALE<=1
 
 

@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-05",
+  "unit_tests_passed": 137,
+  "tcp_translation_m": [
+    0.0,
+    0.0,
+    0.1358
+  ],
+  "normal_gripper_tolerance_m": 0.0005,
+  "normal_min_depth_m": 0.35,
+  "mode_check_fix": "Runtime now accepts healthy standby0/CAN1 while retaining execution gates",
+  "recovery_script": "scripts/open_empty_gripper.py",
+  "recovery_execute_requested_by_assistant": false,
+  "hardware_diagnosis": "222 samples all -1.1mm, not intermittent noise",
+  "image_diagnosis": "81.8% missing,12.6% too near,5.6% valid; positive depth median0.318m",
+  "actual_robot_motion_verified": false,
+  "next": "User-confirmed empty gripper recovery and greater observation distance; do not bypass table-height check",
+  "last_live_check": "CAN feedback later became stale (gripper age136.2s); can0 no longer exists; recovery inspect refused and sent no command",
+  "recovery_live_inspect": "blocked as designed by stale feedback",
+  "physical_recovery_executed": false
+}

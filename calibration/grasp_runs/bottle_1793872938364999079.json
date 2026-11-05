@@ -1,0 +1,47 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793872938.365006,
+  "execute_requested": true,
+  "reach_only": false,
+  "pick_only": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "random_placement_candidates_xy": [
+    [
+      0.045,
+      -0.545
+    ],
+    [
+      0.015,
+      -0.465
+    ],
+    [
+      0.225,
+      -0.365
+    ],
+    [
+      0.015,
+      -0.625
+    ],
+    [
+      0.015,
+      -0.405
+    ],
+    [
+      0.255,
+      -0.435
+    ],
+    [
+      0.275,
+      -0.505
+    ],
+    [
+      0.165,
+      -0.34500000000000003
+    ]
+  ],
+  "error": "A possibly held bottle is still attached; inspect before a new grasp",
+  "placed_object_retained": false,
+  "possible_held_object": false,
+  "finished_unix": 1793872943.4210796
+}

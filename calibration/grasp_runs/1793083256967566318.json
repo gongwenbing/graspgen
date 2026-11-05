@@ -1,0 +1,8 @@
+{
+  "started_unix": 1793083256.9675317,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "Invalid approach/lift configuration",
+  "finished_unix": 1793083261.7225263
+}

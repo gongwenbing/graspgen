@@ -1,0 +1,12 @@
+{
+  "translation_m": [
+    0.0,
+    0.0,
+    0.1358
+  ],
+  "translation_verified": false,
+  "orientation_verified": false,
+  "method": "model_fingertip_level_user_selected",
+  "note": "2026-10-29 用户要求恢复135.8mm：指尖高度处两指之间的中心。实物与模型尺寸一致，未经多姿态TCP拟合。",
+  "physical_geometry_user_confirmed": true
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "diameter_m": 0.032,
+  "total_height_m": 0.12,
+  "body_bottom_m": 0.045,
+  "body_top_m": 0.075,
+  "grasp_height_m": 0.06,
+  "note": "用户实测直径32mm、总高120mm，夹中间60mm；45..75mm为待几何检查的采样区域，不宣称整个瓶身为直筒。",
+  "table_z_m": -0.0118,
+  "table_reference_note": "用户最新实测：机械臂底座底面比瓶子桌面高约11.8mm；瓶身尺寸及夹持高度相对该桌面。",
+  "gripper_contact": {
+    "user_confirmed_body_grasp": true,
+    "diameter_m": 0.032,
+    "tilt_deg": 20.0,
+    "observed_opening_m": 0.0392,
+    "command_opening_m": 0.0372,
+    "observed_effort_nm": -1.05,
+    "source_run": "bottle_1793872067185167327.json",
+    "evidence_file": "bottle_contact_observation_20261105.json",
+    "note": "101 samples stable at 39.2mm; user confirmed body grasp and successful lift. Applies only to same bottle/fingers/+20 degree grasp; torque is detection reference, not increased command."
+  }
+}

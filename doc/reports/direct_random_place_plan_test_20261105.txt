@@ -1,0 +1,6 @@
+RETURN 0
+Previous bottle location verified empty from matching scene cloud; updating selected bottle model
+Planning direct grasp candidate: tilt_+20
+Full plan: direct -> close -> lift -> random same-table placement -> open -> retreat ; candidate= tilt_+20 ; log= /home/zlq/GraspGen/calibration/grasp_runs/bottle_1793874628686789552.json
+Observed clear random place XY(m): [0.265, -0.445]
+PLAN ONLY: no actuator action client created.

@@ -113,7 +113,13 @@ def validate_profile(profile,model_path):
 def auto_main():
     parser=argparse.ArgumentParser(description='Local taught-bottle grasp: fresh target, hover, descend, close, test lift. No transport/release.')
     parser.add_argument('--profile',default=str(PROFILE));parser.add_argument('--execute',action='store_true')
+    parser.add_argument('--mode',choices=['empirical','bottle'],default='empirical')
+    stages=parser.add_mutually_exclusive_group();stages.add_argument('--reach-only',action='store_true');stages.add_argument('--pick-only',action='store_true')
     args=parser.parse_args()
+    if args.mode=='bottle':
+        from .bottle_workflow import run
+        return run(args.execute,reach_only=args.reach_only,pick_only=args.pick_only)
+    if args.reach_only or args.pick_only:parser.error('Stage options require --mode bottle')
     rclpy.init(signal_handler_options=SignalHandlerOptions.NO);node=rclpy.create_node('piper_auto_grasp');rt=None
     run={'started_unix':time.time(),'execute_requested':args.execute,'stages':[],'physical_grasp_verified':False}
     log=ROOT/'calibration/grasp_runs'/f'{time.time_ns()}.json'
@@ -135,6 +141,7 @@ def auto_main():
             rt.wait(lambda:True,.1)
             try:
                 p,v,obj=rt.candidate()
+                if obj.get('position_semantics','observed_surface_center')!='observed_surface_center':raise ValueError('Empirical mode requires PCA surface; use bottle_grasp for cylinder centres')
                 if obj['class']!=profile['object_class']:raise ValueError('Wrong object class')
                 if abs(obj['opening_m']-profile['reference_observed_opening_m'])>.008:raise ValueError('Observed bottle width differs from taught bottle')
                 stamp=v['stamp_sec']

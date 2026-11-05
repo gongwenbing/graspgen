@@ -1,0 +1,13 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793871802.2368526,
+  "execute_requested": false,
+  "reach_only": false,
+  "pick_only": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "No matching full scene cloud for random placement; restart updated vision",
+  "placed_object_retained": false,
+  "possible_held_object": false,
+  "finished_unix": 1793871806.1434312
+}

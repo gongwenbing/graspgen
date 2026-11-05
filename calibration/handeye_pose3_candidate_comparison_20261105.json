@@ -1,0 +1,80 @@
+{
+  "samples": 20,
+  "old": {
+    "marker_xyz_median_mm": [
+      66.55176839031982,
+      -420.3266977588967,
+      -17.338869676859574
+    ],
+    "reference_xyz_mm": [
+      69.85412280952661,
+      -421.3121213375161,
+      -14.527226480829611
+    ],
+    "distance_from_reference_mm": 4.447689490188727,
+    "peak_to_peak_mm": [
+      0.04818151655498759,
+      0.1504528305392161,
+      0.1980989036038383
+    ]
+  },
+  "candidate": {
+    "marker_xyz_median_mm": [
+      72.59211976733664,
+      -422.3861176904321,
+      -11.6381252529478
+    ],
+    "reference_xyz_mm": [
+      72.80080243597178,
+      -422.33572723406405,
+      -10.134663933771884
+    ],
+    "distance_from_reference_mm": 1.5187111616564386,
+    "peak_to_peak_mm": [
+      0.048952046949615746,
+      0.1531875976398811,
+      0.19578362215499912
+    ]
+  },
+  "calibration_changed": false,
+  "old_live_tf_matrix_max_difference": 7.245793770784684e-16,
+  "latest_hardware": {
+    "gripper_effort_nm": -0.028,
+    "gripper_enabled": true,
+    "gripper_fault": false,
+    "gripper_feedback_age_sec": 0.0026688575744628906,
+    "read_only": false,
+    "outputs_enabled": false,
+    "ctrl_mode": 2,
+    "teach_status": 2,
+    "err_code": 0,
+    "motors_enabled": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "joint_degrees": [
+      -83.922,
+      32.208999999999996,
+      -42.43,
+      -6.592,
+      64.318,
+      0.0
+    ],
+    "command_received_count": 3473,
+    "sdk_command_call_count": 3473,
+    "command_rejected_count": 0,
+    "last_command_error": "",
+    "gripper_opening_m": 0.0693,
+    "reason": "Teaching/recording mode active; exit it manually before enabling control"
+  },
+  "notes": [
+    "Independent image-time matrices directly recorded; no calibration was activated.",
+    "Candidate relative error from its fitted reference is1.519mm; absolute marker Z is-11.638mm.",
+    "Manual flange height~320mm compared with model325.34mm is approximate; it does not identify a joint offset.",
+    "Await confirmation that marker/table and physical base mounting plane share the same Z=0 plane."
+  ]
+}

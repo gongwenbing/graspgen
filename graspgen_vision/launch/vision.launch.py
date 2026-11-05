@@ -14,7 +14,10 @@ def generate_launch_description():
         DeclareLaunchArgument('python',default_value=str(workspace/'.venv-vision/bin/python')),
         DeclareLaunchArgument('model',default_value=str(workspace/'models/yolov8n-seg.pt')),
         DeclareLaunchArgument('device',default_value='cpu'),
+        DeclareLaunchArgument('imgsz',default_value='960'),
         DeclareLaunchArgument('backend',default_value='yolo'),
+        DeclareLaunchArgument('generator',default_value='auto'),
+        DeclareLaunchArgument('bottle_config',default_value=str(workspace/'calibration/bottle_geometry.json')),
         DeclareLaunchArgument('cube_size',default_value='0.04'),
         DeclareLaunchArgument('use_sim_time',default_value='false'),
         DeclareLaunchArgument('target_classes',default_value='bottle,cup,mouse,cell phone,orange'),
@@ -29,10 +32,17 @@ def generate_launch_description():
              },parameters=[{
                  'use_sim_time':ParameterValue(LaunchConfiguration('use_sim_time'),value_type=bool),
                  'model':LaunchConfiguration('model'),'device':LaunchConfiguration('device'),
+                 'imgsz':ParameterValue(LaunchConfiguration('imgsz'),value_type=int),
                  'backend':LaunchConfiguration('backend'),
                  'cube_size':ParameterValue(LaunchConfiguration('cube_size'),value_type=float),
                  'target_classes':ParameterValue(LaunchConfiguration('target_classes'),value_type=str),
                  'min_depth':ParameterValue(LaunchConfiguration('min_depth'),value_type=float),
                  'max_depth':ParameterValue(LaunchConfiguration('max_depth'),value_type=float),
+             }]),
+        Node(package='graspgen_vision',executable='generate_grasps',output='screen',
+             parameters=[{
+                 'use_sim_time':ParameterValue(LaunchConfiguration('use_sim_time'),value_type=bool),
+                 'generator':LaunchConfiguration('generator'),
+                 'bottle_config':LaunchConfiguration('bottle_config'),
              }]),
     ])

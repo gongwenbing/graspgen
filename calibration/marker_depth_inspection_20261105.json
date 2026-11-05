@@ -1,0 +1,1088 @@
+{
+  "read_only": true,
+  "marker_id": 0,
+  "marker_length_m": 0.095,
+  "sample_count": 20,
+  "reliable_sample_count": 20,
+  "failure_counts": {},
+  "samples": [
+    {
+      "stamp_sec": 1793863635.959684,
+      "reprojection_error_px": 0.10246222088532105,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07082849450121079,
+        -0.41261804112861583,
+        -0.024287070845267045
+      ],
+      "marker_depth_coverage": 0.9937552039966694,
+      "marker_depth_z_base_median_mm": -23.897420966390413,
+      "depth_minus_pnp_camera_z_median_mm": -0.32094880526017944,
+      "depth_minus_pnp_base_z_median_mm": 0.2954682146361909,
+      "depth_plane_residual_median_mm": 0.29103597866072434,
+      "hardware": {
+        "gripper_effort_nm": 0.057,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.003495454788208008,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.0597272,
+      "reprojection_error_px": 0.08857431507501283,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07082411004571412,
+        -0.41266039000606775,
+        -0.02444005444821834
+      ],
+      "marker_depth_coverage": 0.9972939217318901,
+      "marker_depth_z_base_median_mm": -23.95544279944589,
+      "depth_minus_pnp_camera_z_median_mm": -0.45289810355719773,
+      "depth_minus_pnp_base_z_median_mm": 0.41491617587885443,
+      "depth_plane_residual_median_mm": 0.4093953341026326,
+      "hardware": {
+        "gripper_effort_nm": 0.061,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.003202199935913086,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.159769,
+      "reprojection_error_px": 0.07794644988889847,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07082806949917925,
+        -0.4124618013062162,
+        -0.024250767255265815
+      ],
+      "marker_depth_coverage": 0.9970686767169179,
+      "marker_depth_z_base_median_mm": -24.087303674772965,
+      "depth_minus_pnp_camera_z_median_mm": -0.12230057082546208,
+      "depth_minus_pnp_base_z_median_mm": 0.11087160201436741,
+      "depth_plane_residual_median_mm": 0.109137840271768,
+      "hardware": {
+        "gripper_effort_nm": 0.042,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0032472610473632812,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.259812,
+      "reprojection_error_px": 0.09666028996205389,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07083666744515013,
+        -0.4125521238156666,
+        -0.024438798827730424
+      ],
+      "marker_depth_coverage": 0.9966499162479062,
+      "marker_depth_z_base_median_mm": -24.075304279442545,
+      "depth_minus_pnp_camera_z_median_mm": -0.27387403376652464,
+      "depth_minus_pnp_base_z_median_mm": 0.25407556696815936,
+      "depth_plane_residual_median_mm": 0.25021563508580147,
+      "hardware": {
+        "gripper_effort_nm": 0.063,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.003249645233154297,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.359854,
+      "reprojection_error_px": 0.08894138757105208,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07081272787465358,
+        -0.412516509996052,
+        -0.024438325899446056
+      ],
+      "marker_depth_coverage": 0.9970686767169179,
+      "marker_depth_z_base_median_mm": -24.1341630780475,
+      "depth_minus_pnp_camera_z_median_mm": -0.1867259527250087,
+      "depth_minus_pnp_base_z_median_mm": 0.173258573718027,
+      "depth_plane_residual_median_mm": 0.17090910936863168,
+      "hardware": {
+        "gripper_effort_nm": 0.064,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0034856796264648438,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.459897,
+      "reprojection_error_px": 0.09236677061246487,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07081322479088376,
+        -0.4124399387922491,
+        -0.02431631687842367
+      ],
+      "marker_depth_coverage": 0.9966499162479062,
+      "marker_depth_z_base_median_mm": -24.135153213943994,
+      "depth_minus_pnp_camera_z_median_mm": -0.07324268330685668,
+      "depth_minus_pnp_base_z_median_mm": 0.06609270808416445,
+      "depth_plane_residual_median_mm": 0.06499910535924786,
+      "hardware": {
+        "gripper_effort_nm": 0.046,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0031914710998535156,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.5599391,
+      "reprojection_error_px": 0.10161323800902766,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07085559223618637,
+        -0.4125120526318352,
+        -0.024356487914582392
+      ],
+      "marker_depth_coverage": 0.9964612822647794,
+      "marker_depth_z_base_median_mm": -24.06480510581549,
+      "depth_minus_pnp_camera_z_median_mm": -0.14348104847139442,
+      "depth_minus_pnp_base_z_median_mm": 0.13083530757557194,
+      "depth_plane_residual_median_mm": 0.12865034824766433,
+      "hardware": {
+        "gripper_effort_nm": 0.061,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.003133058547973633,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.6599817,
+      "reprojection_error_px": 0.07786160623747485,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07083564277878583,
+        -0.4124496520302867,
+        -0.02426023916688469
+      ],
+      "marker_depth_coverage": 0.998324958123953,
+      "marker_depth_z_base_median_mm": -24.078471476172314,
+      "depth_minus_pnp_camera_z_median_mm": -0.11852802792813866,
+      "depth_minus_pnp_base_z_median_mm": 0.1079051384278995,
+      "depth_plane_residual_median_mm": 0.10593419371963173,
+      "hardware": {
+        "gripper_effort_nm": 0.077,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0032639503479003906,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.793372,
+      "reprojection_error_px": 0.07750921201236367,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07084093651298158,
+        -0.4125109957682239,
+        -0.024270156420511613
+      ],
+      "marker_depth_coverage": 0.9977102414654455,
+      "marker_depth_z_base_median_mm": -23.934591158142172,
+      "depth_minus_pnp_camera_z_median_mm": -0.3837528209706398,
+      "depth_minus_pnp_base_z_median_mm": 0.3518535936232192,
+      "depth_plane_residual_median_mm": 0.34693961098484527,
+      "hardware": {
+        "gripper_effort_nm": 0.058,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.003190279006958008,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.8934135,
+      "reprojection_error_px": 0.10648373219167628,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07088527983677376,
+        -0.41240585959216164,
+        -0.024071116615404675
+      ],
+      "marker_depth_coverage": 0.9962863626985764,
+      "marker_depth_z_base_median_mm": -24.048876243566,
+      "depth_minus_pnp_camera_z_median_mm": 0.07679250581982267,
+      "depth_minus_pnp_base_z_median_mm": -0.06974323262148863,
+      "depth_plane_residual_median_mm": -0.06855228986177428,
+      "hardware": {
+        "gripper_effort_nm": 0.046,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.003262758255004883,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863636.9934566,
+      "reprojection_error_px": 0.10659661932083805,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07095684263299001,
+        -0.4122367897146324,
+        -0.02382080215558413
+      ],
+      "marker_depth_coverage": 0.9973179286156385,
+      "marker_depth_z_base_median_mm": -24.071158996224888,
+      "depth_minus_pnp_camera_z_median_mm": 0.28042057956595423,
+      "depth_minus_pnp_base_z_median_mm": -0.2514624401426524,
+      "depth_plane_residual_median_mm": -0.24729225757269957,
+      "hardware": {
+        "gripper_effort_nm": 0.063,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0031201839447021484,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.0934985,
+      "reprojection_error_px": 0.12018985665439841,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07095363893181116,
+        -0.4123579404802714,
+        -0.023923004782918256
+      ],
+      "marker_depth_coverage": 0.996080049515164,
+      "marker_depth_z_base_median_mm": -23.85784375471539,
+      "depth_minus_pnp_camera_z_median_mm": 0.17164078490047863,
+      "depth_minus_pnp_base_z_median_mm": -0.15871551814575224,
+      "depth_plane_residual_median_mm": -0.15628073767724857,
+      "hardware": {
+        "gripper_effort_nm": 0.04,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0031807422637939453,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.226888,
+      "reprojection_error_px": 0.12082005486679066,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07095902546438226,
+        -0.4123807357050006,
+        -0.02402296986026181
+      ],
+      "marker_depth_coverage": 0.9969053022488137,
+      "marker_depth_z_base_median_mm": -23.90414605585145,
+      "depth_minus_pnp_camera_z_median_mm": -0.032893247594117936,
+      "depth_minus_pnp_base_z_median_mm": 0.029826055596510193,
+      "depth_plane_residual_median_mm": 0.029367741167771882,
+      "hardware": {
+        "gripper_effort_nm": 0.084,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0032460689544677734,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.3269308,
+      "reprojection_error_px": 0.11574007989534833,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07094417664519562,
+        -0.4123608906174945,
+        -0.023964210640054218
+      ],
+      "marker_depth_coverage": 0.9964926758819889,
+      "marker_depth_z_base_median_mm": -23.80930839107259,
+      "depth_minus_pnp_camera_z_median_mm": -0.10603303426012789,
+      "depth_minus_pnp_base_z_median_mm": 0.09658490138925169,
+      "depth_plane_residual_median_mm": 0.0951547274692559,
+      "hardware": {
+        "gripper_effort_nm": 0.055,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0032198429107666016,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.4269748,
+      "reprojection_error_px": 0.10115177273762,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07092006815666203,
+        -0.41232372514139815,
+        -0.02400591167761762
+      ],
+      "marker_depth_coverage": 0.9985558077161131,
+      "marker_depth_z_base_median_mm": -23.92086122065995,
+      "depth_minus_pnp_camera_z_median_mm": 0.04246376921857031,
+      "depth_minus_pnp_base_z_median_mm": -0.037570080862414645,
+      "depth_plane_residual_median_mm": -0.03693482490571684,
+      "hardware": {
+        "gripper_effort_nm": 0.07,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.003234386444091797,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.5270195,
+      "reprojection_error_px": 0.10632755651516612,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07093578841782208,
+        -0.4124931125574886,
+        -0.024202140677581585
+      ],
+      "marker_depth_coverage": 0.9977305549824633,
+      "marker_depth_z_base_median_mm": -24.02364337178356,
+      "depth_minus_pnp_camera_z_median_mm": -0.1047482839019176,
+      "depth_minus_pnp_base_z_median_mm": 0.09701194657196766,
+      "depth_plane_residual_median_mm": 0.09551160307326727,
+      "hardware": {
+        "gripper_effort_nm": 0.063,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0032126903533935547,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.6270638,
+      "reprojection_error_px": 0.1151934995972886,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07091978256997192,
+        -0.4124429731798438,
+        -0.0241190808607325
+      ],
+      "marker_depth_coverage": 0.9981431813492883,
+      "marker_depth_z_base_median_mm": -23.94131237348973,
+      "depth_minus_pnp_camera_z_median_mm": -0.1819924637059267,
+      "depth_minus_pnp_base_z_median_mm": 0.16838972881857983,
+      "depth_plane_residual_median_mm": 0.16570476382699734,
+      "hardware": {
+        "gripper_effort_nm": 0.046,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0032973289489746094,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.760456,
+      "reprojection_error_px": 0.10646949403517526,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.0709354667093261,
+        -0.4123423852554934,
+        -0.024001179718721344
+      ],
+      "marker_depth_coverage": 0.9979368681658758,
+      "marker_depth_z_base_median_mm": -23.94135436600625,
+      "depth_minus_pnp_camera_z_median_mm": 0.03167146223803652,
+      "depth_minus_pnp_base_z_median_mm": -0.029587459348889844,
+      "depth_plane_residual_median_mm": -0.02916314262384201,
+      "hardware": {
+        "gripper_effort_nm": 0.062,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0031783580780029297,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.8605013,
+      "reprojection_error_px": 0.10260928348320929,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07093844329415466,
+        -0.41225460709807676,
+        -0.023873615235901036
+      ],
+      "marker_depth_coverage": 0.9966989890654013,
+      "marker_depth_z_base_median_mm": -23.97745169243365,
+      "depth_minus_pnp_camera_z_median_mm": 0.27209731993677044,
+      "depth_minus_pnp_base_z_median_mm": -0.254945647335858,
+      "depth_plane_residual_median_mm": -0.250403987839752,
+      "hardware": {
+        "gripper_effort_nm": 0.063,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0031440258026123047,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    },
+    {
+      "stamp_sec": 1793863637.9605455,
+      "reprojection_error_px": 0.10895744122423028,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.07094504903234726,
+        -0.41232856878394003,
+        -0.023948958844332735
+      ],
+      "marker_depth_coverage": 0.997524241799051,
+      "marker_depth_z_base_median_mm": -23.943584637439287,
+      "depth_minus_pnp_camera_z_median_mm": 0.06143279751774644,
+      "depth_minus_pnp_base_z_median_mm": -0.056958135228102336,
+      "depth_plane_residual_median_mm": -0.0560695816038629,
+      "hardware": {
+        "gripper_effort_nm": 0.063,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0032007694244384766,
+        "read_only": false,
+        "outputs_enabled": true,
+        "ctrl_mode": 1,
+        "teach_status": 0,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -74.828,
+          28.651000000000003,
+          -52.09700000000001,
+          6.9430000000000005,
+          64.703,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0694,
+        "reason": ""
+      }
+    }
+  ],
+  "latest_status": {
+    "hardware": {
+      "gripper_effort_nm": 0.063,
+      "gripper_enabled": true,
+      "gripper_fault": false,
+      "gripper_feedback_age_sec": 0.0032007694244384766,
+      "read_only": false,
+      "outputs_enabled": true,
+      "ctrl_mode": 1,
+      "teach_status": 0,
+      "err_code": 0,
+      "motors_enabled": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "joint_degrees": [
+        -74.828,
+        28.651000000000003,
+        -52.09700000000001,
+        6.9430000000000005,
+        64.703,
+        0.0
+      ],
+      "command_received_count": 3473,
+      "sdk_command_call_count": 3473,
+      "command_rejected_count": 0,
+      "last_command_error": "",
+      "gripper_opening_m": 0.0694,
+      "reason": ""
+    },
+    "vision": {
+      "valid": false,
+      "reason": "Bottle height mismatch in base_link: Z p01=-14.7mm, p99=91.9mm; allowed [-5.0,125.0]mm. Check table plane / image-time hand-eye TF; TCP does not affect this cloud transform",
+      "frame": "base_link",
+      "stamp_sec": 1793863637.8605013,
+      "selected_id": null,
+      "objects": [
+        {
+          "id": 0,
+          "class": "bottle",
+          "confidence": 0.507980465888977,
+          "cloud_valid": true,
+          "depth_diagnostics": {
+            "mask_pixels": 2082,
+            "missing_fraction": 0.2079731027857829,
+            "too_near_fraction": 0.0,
+            "too_far_fraction": 0.0,
+            "valid_fraction": 0.7920268972142172,
+            "positive_depth_median_m": 0.40400001406669617
+          },
+          "point_count": 1480,
+          "valid": false,
+          "geometry_diagnostics": {
+            "frame": "base_link",
+            "point_count": 1480,
+            "z_quantile_levels": [
+              0.0,
+              0.01,
+              0.05,
+              0.5,
+              0.95,
+              0.99,
+              1.0
+            ],
+            "z_quantiles_mm": [
+              -18.478685053219202,
+              -14.650202071016482,
+              -8.719549922252051,
+              51.605148871150696,
+              86.0699036543217,
+              91.89973222237984,
+              93.74321180367356
+            ],
+            "xyz_min_mm": [
+              135.88153361058946,
+              -385.87302549197375,
+              -18.478685053219202
+            ],
+            "xyz_max_mm": [
+              167.31219304220554,
+              -363.4987995016655,
+              93.74321180367356
+            ],
+            "below_table_allowance_fraction": 0.06418918918918919,
+            "above_height_allowance_fraction": 0.0,
+            "grasp_band_point_count": 409
+          },
+          "reason": "Bottle height mismatch in base_link: Z p01=-14.7mm, p99=91.9mm; allowed [-5.0,125.0]mm. Check table plane / image-time hand-eye TF; TCP does not affect this cloud transform"
+        }
+      ],
+      "generator": "bottle_cylinder",
+      "processing_age_sec": 0.08729171752929688
+    }
+  },
+  "images_received": {
+    "rgb": 40,
+    "depth": 40
+  },
+  "camera_info_received": [
+    "depth",
+    "rgb"
+  ],
+  "summary": {
+    "marker_pnp_base_z_median_mm": -24.160610769157042,
+    "marker_depth_base_z_median_mm": -23.96644724593977,
+    "depth_minus_pnp_base_z_median_mm": 0.09679842398060967,
+    "depth_minus_pnp_camera_z_median_mm": -0.10539065908102274,
+    "marker_position_peak_to_peak_mm": [
+      0.14629758972868956,
+      0.4236002914353776,
+      0.6192522926342079
+    ],
+    "median_reprojection_error_px": 0.10253575218426517
+  }
+}

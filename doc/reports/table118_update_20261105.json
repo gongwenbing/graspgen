@@ -1,0 +1,20 @@
+{
+  "table_z_m": -0.0118,
+  "table_box_center_z_m": -0.0368,
+  "grasp_height_above_table_m": 0.06,
+  "grasp_center_base_z_m": 0.0482,
+  "tcp_translation_m": [
+    0,
+    0,
+    0.1358
+  ],
+  "active_handeye_source": "calibration/handeye_result_20261105_candidate.yaml",
+  "active_handeye_sha256": "daaafce2c6016320bd61af316c7dcfef160b2fd4c2b6fa59614f55161600e561",
+  "old_handeye_backup": "calibration/handeye_result_before_20261105_table11.yaml",
+  "unit_tests_passed": 140,
+  "isolated_generator_test": "passed with nonzero table height",
+  "source_installed_match": true,
+  "processes_restarted_by_assistant": false,
+  "physical_motion_requested": false,
+  "requires_user_restart": true
+}

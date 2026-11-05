@@ -1,0 +1,1052 @@
+{
+  "read_only": true,
+  "marker_id": 0,
+  "marker_length_m": 0.095,
+  "sample_count": 20,
+  "reliable_sample_count": 20,
+  "failure_counts": {},
+  "samples": [
+    {
+      "stamp_sec": 1793864562.5380354,
+      "reprojection_error_px": 0.09471421296869202,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06547452511934945,
+        -0.4201418054166322,
+        -0.01577250562233229
+      ],
+      "marker_depth_coverage": 0.9764464925755248,
+      "marker_depth_z_base_median_mm": -15.97247422898529,
+      "depth_minus_pnp_camera_z_median_mm": 0.18533421793442972,
+      "depth_minus_pnp_base_z_median_mm": -0.1619965549810587,
+      "depth_plane_residual_median_mm": -0.16168896407395966,
+      "hardware": {
+        "gripper_effort_nm": -0.032,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0021941661834716797,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864562.6047316,
+      "reprojection_error_px": 0.09065202618639011,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06549036288847564,
+        -0.4201997087567968,
+        -0.015844064929984136
+      ],
+      "marker_depth_coverage": 0.9781532684758492,
+      "marker_depth_z_base_median_mm": -15.832849619220102,
+      "depth_minus_pnp_camera_z_median_mm": -0.07873513440986857,
+      "depth_minus_pnp_base_z_median_mm": 0.06958441579885122,
+      "depth_plane_residual_median_mm": 0.0694021221394718,
+      "hardware": {
+        "gripper_effort_nm": -0.027,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0023474693298339844,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864562.738124,
+      "reprojection_error_px": 0.09521367696260069,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06547591960403737,
+        -0.42013413909522257,
+        -0.015727617701894125
+      ],
+      "marker_depth_coverage": 0.9776412357057518,
+      "marker_depth_z_base_median_mm": -15.677606353049377,
+      "depth_minus_pnp_camera_z_median_mm": -0.08003500527853369,
+      "depth_minus_pnp_base_z_median_mm": 0.069970119644297,
+      "depth_plane_residual_median_mm": 0.0697436573730767,
+      "hardware": {
+        "gripper_effort_nm": -0.033,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.002321481704711914,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864562.8381672,
+      "reprojection_error_px": 0.089609787950476,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06549107836022877,
+        -0.4201916933545503,
+        -0.015837698510833942
+      ],
+      "marker_depth_coverage": 0.9769585253456221,
+      "marker_depth_z_base_median_mm": -15.798496002495193,
+      "depth_minus_pnp_camera_z_median_mm": -0.08147926061435884,
+      "depth_minus_pnp_base_z_median_mm": 0.07192056876562103,
+      "depth_plane_residual_median_mm": 0.07165330457798987,
+      "hardware": {
+        "gripper_effort_nm": -0.037,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0021147727966308594,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864562.938212,
+      "reprojection_error_px": 0.08218732541808223,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06549164066263662,
+        -0.42015832483577054,
+        -0.015781750670810224
+      ],
+      "marker_depth_coverage": 0.9781532684758492,
+      "marker_depth_z_base_median_mm": -15.893137955616476,
+      "depth_minus_pnp_camera_z_median_mm": 0.10713869822415178,
+      "depth_minus_pnp_base_z_median_mm": -0.09444032405397929,
+      "depth_plane_residual_median_mm": -0.09404689767469193,
+      "hardware": {
+        "gripper_effort_nm": -0.028,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0020966529846191406,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.071604,
+      "reprojection_error_px": 0.07763607414192279,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06548563384444946,
+        -0.4202053614466995,
+        -0.01580954271022117
+      ],
+      "marker_depth_coverage": 0.9781532684758492,
+      "marker_depth_z_base_median_mm": -15.949504959663463,
+      "depth_minus_pnp_camera_z_median_mm": 0.10130676129099792,
+      "depth_minus_pnp_base_z_median_mm": -0.09149359485766118,
+      "depth_plane_residual_median_mm": -0.09134707509145246,
+      "hardware": {
+        "gripper_effort_nm": -0.047,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0020859241485595703,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.1716475,
+      "reprojection_error_px": 0.08795698862301696,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06548091181014926,
+        -0.42014890150259815,
+        -0.015744258306198466
+      ],
+      "marker_depth_coverage": 0.9766171701655573,
+      "marker_depth_z_base_median_mm": -15.875783135477716,
+      "depth_minus_pnp_camera_z_median_mm": 0.0546634316954675,
+      "depth_minus_pnp_base_z_median_mm": -0.04745276741816018,
+      "depth_plane_residual_median_mm": -0.04725940436951272,
+      "hardware": {
+        "gripper_effort_nm": -0.035,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0020303726196289062,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.2716913,
+      "reprojection_error_px": 0.09035206445015,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06547751397019486,
+        -0.4201342146387156,
+        -0.015754512908909224
+      ],
+      "marker_depth_coverage": 0.9767878477555897,
+      "marker_depth_z_base_median_mm": -15.76550629358664,
+      "depth_minus_pnp_camera_z_median_mm": 0.0006952429922324477,
+      "depth_minus_pnp_base_z_median_mm": -0.0005975414387737743,
+      "depth_plane_residual_median_mm": -0.0005958768528151193,
+      "hardware": {
+        "gripper_effort_nm": -0.032,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0020329952239990234,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.3717334,
+      "reprojection_error_px": 0.09673342915317107,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06549318670447961,
+        -0.4201710881088889,
+        -0.015806888012488418
+      ],
+      "marker_depth_coverage": 0.9778119132957843,
+      "marker_depth_z_base_median_mm": -15.820730817808993,
+      "depth_minus_pnp_camera_z_median_mm": 0.014629336207050425,
+      "depth_minus_pnp_base_z_median_mm": -0.012324292047061203,
+      "depth_plane_residual_median_mm": -0.012304717422868816,
+      "hardware": {
+        "gripper_effort_nm": -0.035,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.002120494842529297,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.5051236,
+      "reprojection_error_px": 0.08635118179082403,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06549193720093141,
+        -0.42021827480039065,
+        -0.015876444871451845
+      ],
+      "marker_depth_coverage": 0.9774705581157194,
+      "marker_depth_z_base_median_mm": -15.782128671014418,
+      "depth_minus_pnp_camera_z_median_mm": -0.15808993030264062,
+      "depth_minus_pnp_base_z_median_mm": 0.13889849736842264,
+      "depth_plane_residual_median_mm": 0.13857364894608037,
+      "hardware": {
+        "gripper_effort_nm": -0.047,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.002080202102661133,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.605167,
+      "reprojection_error_px": 0.09192922751498858,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06548351778715994,
+        -0.42019012312135484,
+        -0.015812602069618598
+      ],
+      "marker_depth_coverage": 0.9774705581157194,
+      "marker_depth_z_base_median_mm": -15.74743511174126,
+      "depth_minus_pnp_camera_z_median_mm": -0.0933555849285117,
+      "depth_minus_pnp_base_z_median_mm": 0.08351151196678286,
+      "depth_plane_residual_median_mm": 0.0832107562243993,
+      "hardware": {
+        "gripper_effort_nm": -0.031,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.002090930938720703,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.7052088,
+      "reprojection_error_px": 0.07910835080372368,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06550254088153315,
+        -0.42016656563419796,
+        -0.01580284713583685
+      ],
+      "marker_depth_coverage": 0.9769585253456221,
+      "marker_depth_z_base_median_mm": -15.846334133783142,
+      "depth_minus_pnp_camera_z_median_mm": 0.048375528096250564,
+      "depth_minus_pnp_base_z_median_mm": -0.0425268488557784,
+      "depth_plane_residual_median_mm": -0.04241989121105908,
+      "hardware": {
+        "gripper_effort_nm": -0.028,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0021088123321533203,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.8052518,
+      "reprojection_error_px": 0.0941439422216218,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06549008872885176,
+        -0.42014552674740646,
+        -0.015752331353360682
+      ],
+      "marker_depth_coverage": 0.9783239460658816,
+      "marker_depth_z_base_median_mm": -15.922241404893455,
+      "depth_minus_pnp_camera_z_median_mm": 0.1284212721538447,
+      "depth_minus_pnp_base_z_median_mm": -0.11186648239669417,
+      "depth_plane_residual_median_mm": -0.11152272746403841,
+      "hardware": {
+        "gripper_effort_nm": -0.024,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0020990371704101562,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864563.905294,
+      "reprojection_error_px": 0.08560629086613866,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06549105362248564,
+        -0.4201439061857696,
+        -0.015736704150161485
+      ],
+      "marker_depth_coverage": 0.977299880525687,
+      "marker_depth_z_base_median_mm": -15.763133041236138,
+      "depth_minus_pnp_camera_z_median_mm": 0.008610911200163107,
+      "depth_minus_pnp_base_z_median_mm": -0.0077868567164296465,
+      "depth_plane_residual_median_mm": -0.007759564566155522,
+      "hardware": {
+        "gripper_effort_nm": -0.029,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0020885467529296875,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864564.0386841,
+      "reprojection_error_px": 0.0828862047576653,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06549046806114171,
+        -0.4201472941128277,
+        -0.015740074465392495
+      ],
+      "marker_depth_coverage": 0.9762758149854924,
+      "marker_depth_z_base_median_mm": -15.844861444482605,
+      "depth_minus_pnp_camera_z_median_mm": 0.025896796441049474,
+      "depth_minus_pnp_base_z_median_mm": -0.022622765759705565,
+      "depth_plane_residual_median_mm": -0.022576176948540735,
+      "hardware": {
+        "gripper_effort_nm": -0.043,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0020575523376464844,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864564.1053789,
+      "reprojection_error_px": 0.08707636911209274,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06547011296034486,
+        -0.42012258436450717,
+        -0.01573941816970892
+      ],
+      "marker_depth_coverage": 0.9778119132957843,
+      "marker_depth_z_base_median_mm": -15.824905589370275,
+      "depth_minus_pnp_camera_z_median_mm": 0.09538219113353064,
+      "depth_minus_pnp_base_z_median_mm": -0.08380300407168084,
+      "depth_plane_residual_median_mm": -0.08353798504199314,
+      "hardware": {
+        "gripper_effort_nm": -0.032,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0024743080139160156,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864564.2387693,
+      "reprojection_error_px": 0.08792783700561019,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06547991753090618,
+        -0.4201723326706234,
+        -0.015835030044797582
+      ],
+      "marker_depth_coverage": 0.9774705581157194,
+      "marker_depth_z_base_median_mm": -15.705573249644944,
+      "depth_minus_pnp_camera_z_median_mm": -0.10062054271731125,
+      "depth_minus_pnp_base_z_median_mm": 0.08891242766584373,
+      "depth_plane_residual_median_mm": 0.08869527545492945,
+      "hardware": {
+        "gripper_effort_nm": -0.03,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0021429061889648438,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864564.3388145,
+      "reprojection_error_px": 0.08563882915203794,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06547469000196302,
+        -0.4202157445824217,
+        -0.015895709716878315
+      ],
+      "marker_depth_coverage": 0.9781532684758492,
+      "marker_depth_z_base_median_mm": -15.742123512350547,
+      "depth_minus_pnp_camera_z_median_mm": -0.1914045522753427,
+      "depth_minus_pnp_base_z_median_mm": 0.1680484265189075,
+      "depth_plane_residual_median_mm": 0.16773229927132416,
+      "hardware": {
+        "gripper_effort_nm": -0.027,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0021278858184814453,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864564.4388585,
+      "reprojection_error_px": 0.09387363184339619,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06548040483324764,
+        -0.42018456183922037,
+        -0.015825020421580405
+      ],
+      "marker_depth_coverage": 0.9779825908858167,
+      "marker_depth_z_base_median_mm": -15.855472287847588,
+      "depth_minus_pnp_camera_z_median_mm": 0.008743161678426148,
+      "depth_minus_pnp_base_z_median_mm": -0.007823009074592324,
+      "depth_plane_residual_median_mm": -0.00779918839934903,
+      "hardware": {
+        "gripper_effort_nm": -0.037,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0020990371704101562,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    },
+    {
+      "stamp_sec": 1793864564.5722508,
+      "reprojection_error_px": 0.08883405760086001,
+      "pose_ambiguous": false,
+      "marker_center_base_m": [
+        0.06547241012003754,
+        -0.4201191369904559,
+        -0.01570655907447266
+      ],
+      "marker_depth_coverage": 0.9776412357057518,
+      "marker_depth_z_base_median_mm": -15.829727359439383,
+      "depth_minus_pnp_camera_z_median_mm": 0.08363072930281379,
+      "depth_minus_pnp_base_z_median_mm": -0.07428242575968635,
+      "depth_plane_residual_median_mm": -0.07403749438059451,
+      "hardware": {
+        "gripper_effort_nm": -0.037,
+        "gripper_enabled": true,
+        "gripper_fault": false,
+        "gripper_feedback_age_sec": 0.0021371841430664062,
+        "read_only": false,
+        "outputs_enabled": false,
+        "ctrl_mode": 2,
+        "teach_status": 2,
+        "err_code": 0,
+        "motors_enabled": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "joint_degrees": [
+          -72.757,
+          44.333,
+          -52.474,
+          -7.247999999999999,
+          65.63,
+          0.0
+        ],
+        "command_received_count": 3473,
+        "sdk_command_call_count": 3473,
+        "command_rejected_count": 0,
+        "last_command_error": "",
+        "gripper_opening_m": 0.0693,
+        "reason": "Teaching/recording mode active; exit it manually before enabling control"
+      }
+    }
+  ],
+  "latest_status": {
+    "hardware": {
+      "gripper_effort_nm": -0.037,
+      "gripper_enabled": true,
+      "gripper_fault": false,
+      "gripper_feedback_age_sec": 0.0021371841430664062,
+      "read_only": false,
+      "outputs_enabled": false,
+      "ctrl_mode": 2,
+      "teach_status": 2,
+      "err_code": 0,
+      "motors_enabled": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "joint_degrees": [
+        -72.757,
+        44.333,
+        -52.474,
+        -7.247999999999999,
+        65.63,
+        0.0
+      ],
+      "command_received_count": 3473,
+      "sdk_command_call_count": 3473,
+      "command_rejected_count": 0,
+      "last_command_error": "",
+      "gripper_opening_m": 0.0693,
+      "reason": "Teaching/recording mode active; exit it manually before enabling control"
+    },
+    "vision": {
+      "valid": false,
+      "reason": "Insufficient mask depth coverage 16.2%; require 60% within 0.35..1.50m. Move to a valid observation distance; do not use isolated background depths Missing=29.9%, too_near=53.8%, too_far=0.0%, positive_depth_median=0.329m.",
+      "frame": "base_link",
+      "stamp_sec": 1793864564.3388145,
+      "selected_id": null,
+      "objects": [
+        {
+          "id": 0,
+          "class": "bottle",
+          "confidence": 0.6011953353881836,
+          "cloud_valid": false,
+          "depth_diagnostics": {
+            "mask_pixels": 2930,
+            "missing_fraction": 0.29931740614334473,
+            "too_near_fraction": 0.5382252559726962,
+            "too_far_fraction": 0.0,
+            "valid_fraction": 0.16245733788395905,
+            "positive_depth_median_m": 0.3290000259876251
+          },
+          "reason": "Insufficient mask depth coverage 16.2%; require 60% within 0.35..1.50m. Move to a valid observation distance; do not use isolated background depths Missing=29.9%, too_near=53.8%, too_far=0.0%, positive_depth_median=0.329m.",
+          "valid": false
+        }
+      ],
+      "generator": "bottle_cylinder",
+      "processing_age_sec": 0.10631465911865234
+    }
+  },
+  "images_received": {
+    "rgb": 40,
+    "depth": 40
+  },
+  "camera_info_received": [
+    "depth",
+    "rgb"
+  ],
+  "summary": {
+    "marker_pnp_base_z_median_mm": -15.792298903323537,
+    "marker_depth_base_z_median_mm": -15.827316474404828,
+    "depth_minus_pnp_base_z_median_mm": -0.010073650560826763,
+    "depth_minus_pnp_camera_z_median_mm": 0.011686248942738287,
+    "marker_position_peak_to_peak_mm": [
+      0.03242792118830096,
+      0.09913780993474575,
+      0.1891506424056555
+    ],
+    "median_reprojection_error_px": 0.08839552311193849
+  }
+}

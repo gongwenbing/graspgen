@@ -1,0 +1,72 @@
+{
+  "marker_assumed_fixed_by_user": true,
+  "poses": [
+    {
+      "file": "marker_depth_inspection_20261105.json",
+      "marker_base_m": [
+        0.07090253120337284,
+        -0.4124414559860464,
+        -0.024160610769157043
+      ],
+      "summary": {
+        "marker_pnp_base_z_median_mm": -24.160610769157042,
+        "marker_depth_base_z_median_mm": -23.96644724593977,
+        "depth_minus_pnp_base_z_median_mm": 0.09679842398060967,
+        "depth_minus_pnp_camera_z_median_mm": -0.10539065908102274,
+        "marker_position_peak_to_peak_mm": [
+          0.14629758972868956,
+          0.4236002914353776,
+          0.6192522926342079
+        ],
+        "median_reprojection_error_px": 0.10253575218426517
+      },
+      "sample_count": 20
+    },
+    {
+      "file": "marker_depth_pose1.json",
+      "marker_base_m": [
+        0.06548457581580469,
+        -0.42016244523498425,
+        -0.015792298903323537
+      ],
+      "summary": {
+        "marker_pnp_base_z_median_mm": -15.792298903323537,
+        "marker_depth_base_z_median_mm": -15.827316474404828,
+        "depth_minus_pnp_base_z_median_mm": -0.010073650560826763,
+        "depth_minus_pnp_camera_z_median_mm": 0.011686248942738287,
+        "marker_position_peak_to_peak_mm": [
+          0.03242792118830096,
+          0.09913780993474575,
+          0.1891506424056555
+        ],
+        "median_reprojection_error_px": 0.08839552311193849
+      },
+      "sample_count": 20
+    },
+    {
+      "file": "marker_depth_pose2.json",
+      "marker_base_m": [
+        0.06727597006529283,
+        -0.41983541081460696,
+        -0.01821460691163937
+      ],
+      "summary": {
+        "marker_pnp_base_z_median_mm": -18.214606911639372,
+        "marker_depth_base_z_median_mm": -17.760026041371532,
+        "depth_minus_pnp_base_z_median_mm": 0.41218960278785466,
+        "depth_minus_pnp_camera_z_median_mm": -0.48921478653679573,
+        "marker_position_peak_to_peak_mm": [
+          0.2238027926902646,
+          0.11069939049269806,
+          0.22642765720287628
+        ],
+        "median_reprojection_error_px": 0.10553056904150819
+      },
+      "sample_count": 20
+    }
+  ],
+  "max_pairwise_marker_drift_mm": 12.609383769548058,
+  "marker_z_range_mm": 8.368311865833505,
+  "calibration_changed": false,
+  "conclusion": "Pose-dependent coordinate error; constant base-Z correction insufficient. Collect a new hand-eye dataset and independently validate before replacing calibration."
+}

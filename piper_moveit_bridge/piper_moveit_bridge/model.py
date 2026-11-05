@@ -42,7 +42,7 @@ class Model:
         result = {name: values[name] for name in ARM}
         width = values['gripper'] if 'gripper' in values else 2 * values['joint7']
         if not -gripper_tolerance <= width <= self.max_opening + gripper_tolerance:
-            raise ValueError('Gripper feedback exceeds configured measurement tolerance')
+            raise ValueError(f'Gripper feedback exceeds configured measurement tolerance: total opening {width*1000:.3f}mm, allowed [{-gripper_tolerance*1000:.3f},{(self.max_opening+gripper_tolerance)*1000:.3f}]mm')
         # Raw measurements remain on /joint_states_single and hardware/status.
         # Normalize only sub-0.05-degree boundary excursions for planning.
         for name in ARM:

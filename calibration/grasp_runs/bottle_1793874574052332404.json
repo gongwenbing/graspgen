@@ -1,0 +1,198 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793874574.0523396,
+  "execute_requested": true,
+  "reach_only": false,
+  "pick_only": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "random_placement_candidates_xy": [
+    [
+      0.035,
+      -0.405
+    ],
+    [
+      0.055,
+      -0.465
+    ],
+    [
+      0.195,
+      -0.5750000000000001
+    ],
+    [
+      0.035,
+      -0.545
+    ],
+    [
+      0.135,
+      -0.585
+    ],
+    [
+      0.005,
+      -0.615
+    ],
+    [
+      0.155,
+      -0.365
+    ],
+    [
+      0.245,
+      -0.325
+    ]
+  ],
+  "config": {
+    "schema_version": 1,
+    "diameter_m": 0.032,
+    "total_height_m": 0.12,
+    "body_bottom_m": 0.045,
+    "body_top_m": 0.075,
+    "grasp_height_m": 0.06,
+    "note": "用户实测直径32mm、总高120mm，夹中间60mm；45..75mm为待几何检查的采样区域，不宣称整个瓶身为直筒。",
+    "table_z_m": -0.0118,
+    "table_reference_note": "用户最新实测：机械臂底座底面比瓶子桌面高约11.8mm；瓶身尺寸及夹持高度相对该桌面。",
+    "gripper_contact": {
+      "user_confirmed_body_grasp": true,
+      "diameter_m": 0.032,
+      "tilt_deg": 20.0,
+      "observed_opening_m": 0.0392,
+      "command_opening_m": 0.0372,
+      "observed_effort_nm": -1.05,
+      "source_run": "bottle_1793872067185167327.json",
+      "evidence_file": "bottle_contact_observation_20261105.json",
+      "note": "101 samples stable at 39.2mm; user confirmed body grasp and successful lift. Applies only to same bottle/fingers/+20 degree grasp; torque is detection reference, not increased command."
+    }
+  },
+  "tcp": {
+    "translation_m": [
+      0.0,
+      0.0,
+      0.1358
+    ],
+    "translation_verified": false,
+    "orientation_verified": false,
+    "method": "model_fingertip_level_user_selected",
+    "note": "2026-10-29 用户要求恢复135.8mm：指尖高度处两指之间的中心。实物与模型尺寸一致，未经多姿态TCP拟合。",
+    "physical_geometry_user_confirmed": true
+  },
+  "source_snapshot": {
+    "valid": true,
+    "reason": "",
+    "frame": "base_link",
+    "stamp_sec": 1793874578.1612937,
+    "selected_id": 0,
+    "objects": [
+      {
+        "id": 0,
+        "class": "bottle",
+        "confidence": 0.587457001209259,
+        "cloud_valid": true,
+        "depth_diagnostics": {
+          "mask_pixels": 1704,
+          "missing_fraction": 0.10974178403755869,
+          "too_near_fraction": 0.0,
+          "too_far_fraction": 0.0,
+          "valid_fraction": 0.8902582159624414,
+          "positive_depth_median_m": 0.48000001907348633
+        },
+        "point_count": 1379,
+        "valid": true,
+        "handeye_sha256": "daaafce2c6016320bd61af316c7dcfef160b2fd4c2b6fa59614f55161600e561",
+        "geometry_diagnostics": {
+          "frame": "base_link",
+          "point_count": 1379,
+          "table_z_m": -0.0118,
+          "z_above_table_quantiles_mm": [
+            0.14190988760145495,
+            1.41678070925314,
+            4.318451041630545,
+            67.34674903651019,
+            108.6686027586838,
+            115.09397260284034,
+            117.0993728585544
+          ],
+          "z_quantile_levels": [
+            0.0,
+            0.01,
+            0.05,
+            0.5,
+            0.95,
+            0.99,
+            1.0
+          ],
+          "z_quantiles_mm": [
+            -11.658090112398545,
+            -10.38321929074686,
+            -7.481548958369455,
+            55.54674903651019,
+            96.86860275868379,
+            103.29397260284033,
+            105.29937285855439
+          ],
+          "xyz_min_mm": [
+            229.39182248792358,
+            -455.23527887523284,
+            -11.658090112398545
+          ],
+          "xyz_max_mm": [
+            260.0853550404935,
+            -431.653012708041,
+            105.29937285855439
+          ],
+          "below_table_allowance_fraction": 0.0,
+          "above_height_allowance_fraction": 0.0,
+          "grasp_band_point_count": 302
+        },
+        "generator": "bottle_cylinder",
+        "position_semantics": "bottle_grasp_center",
+        "opening_m": 0.04,
+        "center_m": [
+          0.24777534131653015,
+          -0.44884144133463444,
+          0.0482
+        ],
+        "quaternion_xyzw": [
+          0.9683654383856866,
+          0.24953632549209545,
+          0.0,
+          0.0
+        ],
+        "observed_extent_m": [
+          0.032,
+          0.032,
+          0.12
+        ],
+        "fit_rms_m": 0.0010438438450802714,
+        "arc_deg": 132.94646673092598,
+        "diameter_m": 0.032,
+        "total_height_m": 0.12,
+        "grasp_height_m": 0.06,
+        "body_bottom_m": 0.045,
+        "body_top_m": 0.075,
+        "table_z_m": -0.0118
+      }
+    ],
+    "generator": "bottle_cylinder",
+    "processing_age_sec": 0.13056278228759766
+  },
+  "configuration_sha256": {
+    "/home/zlq/GraspGen/calibration/bottle_geometry.json": "6f8136f57777258900e1e42f81334008ae89934f2fee019abee047ee87eeb979",
+    "/home/zlq/GraspGen/calibration/tcp_config.json": "0c12dd5b3f1e93b21ca316c8fa0b30347710584c43c583c6eddee21ee4210ad0",
+    "/home/zlq/GraspGen/calibration/handeye_result.yaml": "daaafce2c6016320bd61af316c7dcfef160b2fd4c2b6fa59614f55161600e561"
+  },
+  "target_tcp_base_m": [
+    0.24777534131653015,
+    -0.44884144133463444,
+    0.0482
+  ],
+  "direct_grasp": true,
+  "contact_model": {
+    "command_opening_m": 0.0372,
+    "observed_opening_m": 0.0392,
+    "observed_effort_nm": -1.05
+  },
+  "collision_model": "target cylinder and existing MoveIt scene; placement support from observed full cloud",
+  "error": "All direct grasp candidates failed; no motion requested. [{'candidate': 'tilt_+20', 'tilt_deg': 20.0, 'stage': 'direct_path', 'error': 'Direct grasp planning failed: -2'}]",
+  "placed_object_retained": false,
+  "possible_held_object": false,
+  "finished_unix": 1793874578.429984
+}

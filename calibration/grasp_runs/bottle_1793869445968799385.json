@@ -1,0 +1,151 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793869445.9688053,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "config": {
+    "schema_version": 1,
+    "diameter_m": 0.032,
+    "total_height_m": 0.12,
+    "body_bottom_m": 0.045,
+    "body_top_m": 0.075,
+    "grasp_height_m": 0.06,
+    "note": "用户实测直径32mm、总高120mm，夹中间60mm；45..75mm为待几何检查的采样区域，不宣称整个瓶身为直筒。",
+    "table_z_m": -0.0118,
+    "table_reference_note": "用户最新实测：机械臂底座底面比瓶子桌面高约11.8mm；瓶身尺寸及夹持高度相对该桌面。"
+  },
+  "tcp": {
+    "translation_m": [
+      0.0,
+      0.0,
+      0.1358
+    ],
+    "translation_verified": false,
+    "orientation_verified": false,
+    "method": "model_fingertip_level_user_selected",
+    "note": "2026-10-29 用户要求恢复135.8mm：指尖高度处两指之间的中心。实物与模型尺寸一致，未经多姿态TCP拟合。",
+    "physical_geometry_user_confirmed": true
+  },
+  "source_snapshot": {
+    "valid": true,
+    "reason": "",
+    "frame": "base_link",
+    "stamp_sec": 1793869449.7272341,
+    "selected_id": 0,
+    "objects": [
+      {
+        "id": 0,
+        "class": "bottle",
+        "confidence": 0.6613349318504333,
+        "cloud_valid": true,
+        "depth_diagnostics": {
+          "mask_pixels": 1759,
+          "missing_fraction": 0.11085844229675952,
+          "too_near_fraction": 0.0,
+          "too_far_fraction": 0.0,
+          "valid_fraction": 0.8891415577032404,
+          "positive_depth_median_m": 0.46000000834465027
+        },
+        "point_count": 1461,
+        "valid": true,
+        "handeye_sha256": "daaafce2c6016320bd61af316c7dcfef160b2fd4c2b6fa59614f55161600e561",
+        "geometry_diagnostics": {
+          "frame": "base_link",
+          "point_count": 1461,
+          "table_z_m": -0.0118,
+          "z_above_table_quantiles_mm": [
+            0.7944678726902413,
+            2.039461284511823,
+            6.09576145533266,
+            67.65741147620433,
+            108.32389947088907,
+            114.98638944366272,
+            117.37462275704965
+          ],
+          "z_quantile_levels": [
+            0.0,
+            0.01,
+            0.05,
+            0.5,
+            0.95,
+            0.99,
+            1.0
+          ],
+          "z_quantiles_mm": [
+            -11.005532127309758,
+            -9.760538715488176,
+            -5.704238544667339,
+            55.85741147620432,
+            96.52389947088908,
+            103.1863894436627,
+            105.57462275704965
+          ],
+          "xyz_min_mm": [
+            117.69929219477507,
+            -474.1172299845823,
+            -11.005532127309758
+          ],
+          "xyz_max_mm": [
+            148.3570483692118,
+            -453.06713348731915,
+            105.57462275704965
+          ],
+          "below_table_allowance_fraction": 0.0,
+          "above_height_allowance_fraction": 0.0,
+          "grasp_band_point_count": 291
+        },
+        "generator": "bottle_cylinder",
+        "position_semantics": "bottle_grasp_center",
+        "opening_m": 0.04,
+        "center_m": [
+          0.13444428794622526,
+          -0.47069813425481266,
+          0.0482
+        ],
+        "quaternion_xyzw": [
+          0.9903398434235865,
+          0.1386614385030907,
+          0.0,
+          0.0
+        ],
+        "observed_extent_m": [
+          0.032,
+          0.032,
+          0.12
+        ],
+        "fit_rms_m": 0.0010417591047481311,
+        "arc_deg": 116.63342679994399,
+        "diameter_m": 0.032,
+        "total_height_m": 0.12,
+        "grasp_height_m": 0.06,
+        "body_bottom_m": 0.045,
+        "body_top_m": 0.075,
+        "table_z_m": -0.0118
+      }
+    ],
+    "generator": "bottle_cylinder",
+    "processing_age_sec": 0.14552593231201172
+  },
+  "configuration_sha256": {
+    "/home/zlq/GraspGen/calibration/bottle_geometry.json": "dd1546be619ad93d3ceba123207afe0c6b0771b398e207438d8ee06454eabc92",
+    "/home/zlq/GraspGen/calibration/tcp_config.json": "0c12dd5b3f1e93b21ca316c8fa0b30347710584c43c583c6eddee21ee4210ad0",
+    "/home/zlq/GraspGen/calibration/handeye_result.yaml": "daaafce2c6016320bd61af316c7dcfef160b2fd4c2b6fa59614f55161600e561"
+  },
+  "target_tcp_base_m": [
+    0.13444428794622526,
+    -0.47069813425481266,
+    0.0482
+  ],
+  "grasp_link6_base_m": [
+    0.13444428794622526,
+    -0.47069813425481266,
+    0.18400000000000002
+  ],
+  "hover_height_m": 0.1,
+  "contact_model": "expected diameter ±1.5mm, closing torque <=-0.25Nm; not proof of hold",
+  "collision_model": "upright cylinder, radius padded 2mm; other obstacles must already be in MoveIt",
+  "error": "Hover planning failed: 99999",
+  "possible_held_object": false,
+  "finished_unix": 1793869449.9221117
+}

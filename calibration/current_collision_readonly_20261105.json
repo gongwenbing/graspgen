@@ -1,0 +1,66 @@
+{
+  "valid": false,
+  "contacts": [
+    {
+      "a": "link8",
+      "b": "graspgen_camera_and_mount",
+      "depth_m": 0.00038824313890701716
+    }
+  ],
+  "world": [
+    {
+      "id": "graspgen_base_height_guard",
+      "frame": "base_link",
+      "object_pose": "geometry_msgs.msg.Pose(position=geometry_msgs.msg.Point(x=0.0, y=0.0, z=-0.0059), orientation=geometry_msgs.msg.Quaternion(x=0.0, y=0.0, z=0.0, w=1.0))",
+      "dimensions": [
+        [
+          2.0,
+          2.0,
+          0.0118
+        ]
+      ],
+      "primitive_poses": [
+        "geometry_msgs.msg.Pose(position=geometry_msgs.msg.Point(x=0.0, y=0.0, z=0.0), orientation=geometry_msgs.msg.Quaternion(x=0.0, y=0.0, z=0.0, w=1.0))"
+      ]
+    },
+    {
+      "id": "graspgen_table",
+      "frame": "base_link",
+      "object_pose": "geometry_msgs.msg.Pose(position=geometry_msgs.msg.Point(x=0.0, y=0.0, z=-0.0368), orientation=geometry_msgs.msg.Quaternion(x=0.0, y=0.0, z=0.0, w=1.0))",
+      "dimensions": [
+        [
+          2.0,
+          2.0,
+          0.05
+        ]
+      ],
+      "primitive_poses": [
+        "geometry_msgs.msg.Pose(position=geometry_msgs.msg.Point(x=0.0, y=0.0, z=0.0), orientation=geometry_msgs.msg.Quaternion(x=0.0, y=0.0, z=0.0, w=1.0))"
+      ]
+    }
+  ],
+  "attached": [
+    {
+      "link": "link6",
+      "touch_links": [
+        "gripper_base",
+        "link6"
+      ],
+      "object": {
+        "id": "graspgen_camera_and_mount",
+        "frame": "link6",
+        "object_pose": "geometry_msgs.msg.Pose(position=geometry_msgs.msg.Point(x=-0.059290997840969695, y=0.004706704664770251, z=0.059032483857391266), orientation=geometry_msgs.msg.Quaternion(x=-0.029787371757523846, y=-0.7038674496151056, z=-0.031375370971833814, w=0.7090126317298487))",
+        "dimensions": [
+          [
+            0.036,
+            0.131,
+            0.056
+          ]
+        ],
+        "primitive_poses": [
+          "geometry_msgs.msg.Pose(position=geometry_msgs.msg.Point(x=0.0, y=0.0, z=0.0), orientation=geometry_msgs.msg.Quaternion(x=0.0, y=0.0, z=0.0, w=1.0))"
+        ]
+      }
+    }
+  ]
+}

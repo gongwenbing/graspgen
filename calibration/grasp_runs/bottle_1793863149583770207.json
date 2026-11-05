@@ -1,0 +1,10 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793863149.5837786,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "Open EMPTY gripper to at least 40.0mm before planning; no motion sent",
+  "possible_held_object": false,
+  "finished_unix": 1793863153.3937976
+}

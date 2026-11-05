@@ -122,7 +122,7 @@ class Preview(Node):
             self.current.publish(PoseStamped(header=header,pose=pose));current_ok=True
             items.append(self.marker(header,'current_model_tcp',Marker.SPHERE,pose,[0,1,1,1],[.012]*3))
             text=self.marker(header,'tcp_label',Marker.TEXT_VIEW_FACING,fill_pose(actual),[0,1,1,1],[0,0,.018])
-            text.pose.position.z+=.025;text.text='MODEL TCP - verify physical tip';items.append(text)
+            text.pose.position.z+=.025;text.text='MODEL TCP - verify physical contact centre';items.append(text)
         except Exception as e:reason=f'Robot TCP unavailable: {e}'
         try:
             s=self.status;p=self.pose
@@ -148,7 +148,7 @@ class Preview(Node):
             line.points=[Point(x=float(v[0]),y=float(v[1]),z=float(v[2])) for v in (surface[:3,3],tcp[:3,3])];items.append(line)
             target_ok=True
             self.info.publish(String(data=json.dumps({'display_only':True,'tcp_provisional':True,'tcp_translation_m':self.tcp_translation,'tcp_translation_verified':self.tcp_translation_verified,'current_tcp_valid':True,'target_valid':True,
-                'hover_height_m':self.height,'surface_base_m':surface[:3,3].tolist(),'pregrasp_tcp_base_m':tcp[:3,3].tolist(),
+                'target_semantics':next((o.get('position_semantics','observed_surface_center') for o in s.get('objects',[]) if o.get('id')==s.get('selected_id')),'observed_surface_center'),'source_stamp_sec':stamp,'hover_height_m':self.height,'surface_base_m':surface[:3,3].tolist(),'pregrasp_tcp_base_m':tcp[:3,3].tolist(),
                 'pregrasp_link6_base_m':flange[:3,3].tolist(),'reason':''})))
         except Exception as e:
             self.info.publish(String(data=json.dumps({'display_only':True,'tcp_provisional':True,'tcp_translation_m':self.tcp_translation,'tcp_translation_verified':self.tcp_translation_verified,'current_tcp_valid':current_ok,'target_valid':False,'reason':reason or str(e)})))

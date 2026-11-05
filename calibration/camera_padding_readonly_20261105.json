@@ -1,0 +1,332 @@
+[
+  {
+    "padding_mm": 3.0,
+    "checks": [
+      {
+        "width_mm": 0,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 5,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 10,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 15,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 20,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 25,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 30,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 35,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 40,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 45,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 50,
+        "valid": false,
+        "pairs": [
+          "link8 / graspgen_camera_and_mount"
+        ]
+      },
+      {
+        "width_mm": 55,
+        "valid": false,
+        "pairs": [
+          "link8 / graspgen_camera_and_mount"
+        ]
+      },
+      {
+        "width_mm": 60,
+        "valid": false,
+        "pairs": [
+          "link8 / graspgen_camera_and_mount"
+        ]
+      },
+      {
+        "width_mm": 65,
+        "valid": false,
+        "pairs": [
+          "link8 / graspgen_camera_and_mount"
+        ]
+      },
+      {
+        "width_mm": 70,
+        "valid": false,
+        "pairs": [
+          "link8 / graspgen_camera_and_mount"
+        ]
+      }
+    ]
+  },
+  {
+    "padding_mm": 2.0,
+    "checks": [
+      {
+        "width_mm": 0,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 5,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 10,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 15,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 20,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 25,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 30,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 35,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 40,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 45,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 50,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 55,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 60,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 65,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 70,
+        "valid": true,
+        "pairs": []
+      }
+    ]
+  },
+  {
+    "padding_mm": 1.0,
+    "checks": [
+      {
+        "width_mm": 0,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 5,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 10,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 15,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 20,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 25,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 30,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 35,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 40,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 45,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 50,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 55,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 60,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 65,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 70,
+        "valid": true,
+        "pairs": []
+      }
+    ]
+  },
+  {
+    "padding_mm": 0.0,
+    "checks": [
+      {
+        "width_mm": 0,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 5,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 10,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 15,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 20,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 25,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 30,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 35,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 40,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 45,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 50,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 55,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 60,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 65,
+        "valid": true,
+        "pairs": []
+      },
+      {
+        "width_mm": 70,
+        "valid": true,
+        "pairs": []
+      }
+    ]
+  }
+]

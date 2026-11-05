@@ -39,7 +39,7 @@ def check_surface_above_table(preview):
 class HoverExecution:
     motion_name='Pregrasp hover'
     def __init__(self):
-        self.handle=None;self.finished=False
+        self.handle=None;self.finished=False;self.contact_guard=None
 
     @staticmethod
     def check_hardware(h,b,active_allowed=False):
@@ -127,12 +127,14 @@ class HoverExecution:
             raise ValueError('Only six arm joints may execute')
         times,_=validate_trajectory(trajectory,ARM,model.feedback(js),model,ARM_EXECUTION_CAP,.005,.005)
         previous=times[-1]
+        if self.contact_guard is not None and not self.contact_guard(json.loads(hardware[-1][1].data)):
+            raise RuntimeError('Held-bottle contact not confirmed before carry; no new motion')
         goal=ExecuteTrajectory.Goal();goal.trajectory=plan.trajectory
         print(f'EXECUTE: {self.motion_name}, duration={previous:.1f}s; fixed target; no gripper command',flush=True)
         f=self.action.send_goal_async(goal);self.wait(f.done,10,error='Execution goal acknowledgement timed out; check controller status before retrying')
         self.handle=f.result()
         if not self.handle.accepted:raise RuntimeError('MoveIt rejected execution goal')
-        result=self.handle.get_result_async();started=time.monotonic();deadline=started+previous*2+15
+        result=self.handle.get_result_async();started=time.monotonic();deadline=started+previous*2+15;contact_lost_since=None
         while not result.done():
             self.wait(lambda:True,.2)
             if time.monotonic()>deadline:raise RuntimeError('Execution timed out; cancel requested')
@@ -140,6 +142,10 @@ class HoverExecution:
                 raise RuntimeError('Execution feedback lost; cancel requested')
             h=json.loads(hardware[-1][1].data);b=json.loads(readiness[-1][1].data)
             self.check_hardware(h,b,active_allowed=True)
+            if self.contact_guard is not None:
+                if self.contact_guard(h):contact_lost_since=None
+                elif contact_lost_since is None:contact_lost_since=time.monotonic()
+                elif time.monotonic()-contact_lost_since>.3:raise RuntimeError('Held-bottle contact lost during carry; cancel requested')
             if time.monotonic()-started>1 and h.get('ctrl_mode')!=1:
                 raise RuntimeError('CAN control mode not established during execution; cancel requested')
             js=states[-1][1];stamp=js.header.stamp.sec+js.header.stamp.nanosec*1e-9

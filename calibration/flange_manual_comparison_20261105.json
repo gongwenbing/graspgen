@@ -1,0 +1,19 @@
+{
+  "user_approx_height_mm": 290,
+  "model_flange_height_mm": 325.3404918126589,
+  "difference_mm": 35.34049181265891,
+  "measurement_point_unconfirmed": false,
+  "tool_axis_in_base": [
+    -0.033614626683433034,
+    -0.6658031894923409,
+    -0.7453698207834543
+  ],
+  "equivalent_tool_axial_offset_mm": 47.4133655901346,
+  "calibration_changed": false,
+  "joint_zero_changed": false,
+  "note": "Difference may reflect reference-point mismatch or kinematic/reference error; confirm exact physical flange plane before changing anything.",
+  "first_measurement_point": "front gripper mounting region, user confirmed",
+  "corrected_user_approx_flange_height_mm": 320,
+  "corrected_model_minus_measured_mm": 5.340491812658911,
+  "measurement_precision": "approximate ruler reading; do not infer joint offset from this alone"
+}

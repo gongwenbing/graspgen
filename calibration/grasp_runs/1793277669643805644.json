@@ -1,0 +1,8 @@
+{
+  "started_unix": 1793277669.6437712,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "No stable fresh taught-bottle target within 15s: Vision: Bottle height mismatch in base_link: Z p01=-18.0mm, p99=81.4mm; allowed [-5.0,125.0]mm. Check table plane / image-time hand-eye TF; TCP does not affect this cloud transform",
+  "finished_unix": 1793277688.6971636
+}

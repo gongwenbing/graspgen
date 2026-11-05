@@ -1,0 +1,10 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793862135.7812119,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "Hardware not healthy: {\"gripper_effort_nm\": -0.022, \"gripper_enabled\": true, \"gripper_fault\": false, \"gripper_feedback_age_sec\": 0.003500223159790039, \"read_only\": false, \"outputs_enabled\": false, \"ctrl_mode\": 0, \"teach_status\": 0, \"err_code\": 0, \"motors_enabled\": [true, true, true, true, true, true], \"joint_degrees\": [-81.44600000000001, 28.871000000000002, -29.196, 4.41, 42.105000000000004, -7.937], \"command_received_count\": 0, \"sdk_command_call_count\": 0, \"command_rejected_count\": 0, \"last_command_error\": \"\", \"gripper_opening_m\": -0.0011, \"reason\": \"Gripper feedback exceeds configured measurement tolerance\"}",
+  "possible_held_object": false,
+  "finished_unix": 1793862139.3566823
+}

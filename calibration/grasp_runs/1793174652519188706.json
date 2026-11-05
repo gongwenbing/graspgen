@@ -1,0 +1,8 @@
+{
+  "started_unix": 1793174652.5191567,
+  "execute_requested": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "Target outside empirical profile 50mm neighborhood; collect more successful examples",
+  "finished_unix": 1793174657.1797676
+}

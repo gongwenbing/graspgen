@@ -13,6 +13,7 @@ setup(name='piper_moveit_bridge', version='0.1.0', packages=['piper_moveit_bridg
           'can_gateway = piper_moveit_bridge.can_gateway:main',
           'record_grasp = piper_moveit_bridge.grasp_workflow:record_main',
           'resume_grasp = piper_moveit_bridge.grasp_resume:main',
+          'bottle_grasp = piper_moveit_bridge.bottle_workflow:main',
           'auto_grasp = piper_moveit_bridge.grasp_workflow:auto_main',
           'tcp_calibration = piper_moveit_bridge.tcp_calibration:main',
           'cartesian_step = piper_moveit_bridge.cartesian_step:main',
