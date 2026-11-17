@@ -1,0 +1,13 @@
+{
+  "method": "measured_upright_bottle",
+  "started_unix": 1793947948.3939583,
+  "execute_requested": true,
+  "reach_only": false,
+  "pick_only": false,
+  "stages": [],
+  "physical_grasp_verified": false,
+  "error": "MoveIt planning scene/execution action unavailable",
+  "placed_object_retained": false,
+  "possible_held_object": false,
+  "finished_unix": 1793947953.4561832
+}
