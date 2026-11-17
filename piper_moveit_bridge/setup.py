@@ -11,7 +11,6 @@ setup(name='piper_moveit_bridge', version='0.1.0', packages=['piper_moveit_bridg
       entry_points={'console_scripts':[
           'trajectory_bridge = piper_moveit_bridge.trajectory_bridge:main',
           'can_gateway = piper_moveit_bridge.can_gateway:main',
-          'vibration_monitor = piper_moveit_bridge.vibration_monitor:main',
           'record_grasp = piper_moveit_bridge.grasp_workflow:record_main',
           'resume_grasp = piper_moveit_bridge.grasp_resume:main',
           'bottle_grasp = piper_moveit_bridge.bottle_workflow:main',
